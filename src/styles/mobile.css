@@ -1,6 +1,6 @@
 /* Mobile-specific styles */
 :root {
-  --nav-height: 80px;
+  --nav-height: 64px;
   --safe-area-inset-top: env(safe-area-inset-top, 0px);
   --safe-area-inset-bottom: env(safe-area-inset-bottom, 0px);
 }
@@ -25,51 +25,78 @@ html, body, #root {
 
 /* Content area */
 .mobile-content {
-  padding-bottom: 80px; /* Space for bottom navigation */
-  -webkit-overflow-scrolling: touch;
+  flex: 1;
   overflow-y: auto;
-  height: calc(100vh - 80px);
+  -webkit-overflow-scrolling: touch;
+  padding: 16px 16px calc(var(--nav-height) + var(--safe-area-inset-bottom)) 16px;
+  height: calc(100vh - var(--nav-height));
 }
 
-/* Safe area insets */
-.safe-area-top {
-  padding-top: env(safe-area-inset-top);
-}
-
-.safe-area-bottom {
-  padding-bottom: env(safe-area-inset-bottom);
-}
-
-/* Bottom navigation */
-.bottom-nav {
+/* Mobile navigation */
+.mobile-nav {
   position: fixed;
   bottom: 0;
   left: 0;
   right: 0;
+  height: calc(var(--nav-height) + var(--safe-area-inset-bottom));
   background: white;
-  padding-bottom: env(safe-area-inset-bottom);
   border-top: 1px solid #eee;
-  z-index: 50;
-  height: 80px;
+  padding-bottom: var(--safe-area-inset-bottom);
+  box-shadow: 0 -2px 10px rgba(0, 0, 0, 0.05);
+  z-index: 1000;
 }
 
-/* Touch-friendly elements */
+.mobile-nav .nav-content {
+  height: var(--nav-height);
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+}
+
+/* Touch-friendly buttons */
 .touch-target {
   min-height: 44px;
   min-width: 44px;
   display: flex;
+  flex-direction: column;
   align-items: center;
   justify-content: center;
+  padding: 4px;
+}
+
+/* Mobile header */
+.mobile-header {
+  position: sticky;
+  top: 0;
+  background: white;
+  padding: calc(12px + var(--safe-area-inset-top)) 16px 12px;
+  z-index: 100;
+  border-bottom: 1px solid #eee;
+}
+
+/* Floating elements */
+.floating-assistant {
+  position: fixed;
+  bottom: calc(var(--nav-height) + 16px + var(--safe-area-inset-bottom));
+  right: 16px;
+  z-index: 900;
+}
+
+.style-arena-button {
+  position: fixed;
+  bottom: calc(var(--nav-height) + 16px + var(--safe-area-inset-bottom));
+  left: 16px;
+  z-index: 900;
 }
 
 /* Hide scrollbar but maintain functionality */
 .no-scrollbar {
-  -ms-overflow-style: none;
-  scrollbar-width: none;
+  -ms-overflow-style: none;  /* IE and Edge */
+  scrollbar-width: none;  /* Firefox */
 }
 
 .no-scrollbar::-webkit-scrollbar {
-  display: none;
+  display: none;  /* Chrome, Safari and Opera */
 }
 
 /* Transitions */
@@ -97,27 +124,11 @@ html, body, #root {
   transform: translateX(-100%);
 }
 
-/* Floating elements */
-.floating-assistant {
-  position: fixed;
-  bottom: calc(80px + 16px + var(--safe-area-inset-bottom));
-  right: 16px;
-  z-index: 900;
+/* Safe area insets */
+.safe-area-top {
+  padding-top: env(safe-area-inset-top);
 }
 
-.style-arena-button {
-  position: fixed;
-  bottom: calc(80px + 16px + var(--safe-area-inset-bottom));
-  left: 16px;
-  z-index: 900;
-}
-
-/* Mobile header */
-.mobile-header {
-  position: sticky;
-  top: 0;
-  background: white;
-  padding: calc(12px + var(--safe-area-inset-top)) 16px 12px;
-  z-index: 100;
-  border-bottom: 1px solid #eee;
+.safe-area-bottom {
+  padding-bottom: env(safe-area-inset-bottom);
 }
