@@ -104,19 +104,19 @@ export default function PlannerModal({ onClose, onSaveWeek }: PlannerModalProps)
 
   return (
     <div className="fixed inset-0 bg-black/50 flex items-center justify-center z-50">
-      <div className="bg-white rounded-2xl w-full max-w-xl mx-4">
-        <div className="p-6">
-          <div className="flex justify-between items-center mb-6">
-            <h2 className="text-xl font-semibold">Planner</h2>
+      <div className="bg-white rounded-lg md:rounded-2xl w-full max-w-xl mx-3 md:mx-4">
+        <div className="p-4 md:p-6">
+          <div className="flex justify-between items-center mb-4 md:mb-6">
+            <h2 className="text-lg md:text-xl font-semibold">Planner</h2>
             <button
               onClick={onClose}
-              className="p-2 hover:bg-gray-100 rounded-full"
+              className="p-1.5 md:p-2 hover:bg-gray-100 rounded-full"
             >
-              <X className="w-5 h-5" />
+              <X className="w-4 h-4 md:w-5 md:h-5" />
             </button>
           </div>
 
-          <div className="flex w-full gap-0 mb-6">
+          <div className="flex w-full gap-0 mb-4 md:mb-6">
             {weekDays.map((day, index) => (
               <PlannerWeatherDay
                 key={index}
@@ -128,19 +128,19 @@ export default function PlannerModal({ onClose, onSaveWeek }: PlannerModalProps)
             ))}
           </div>
 
-          <div className="bg-gray-50 rounded-lg p-4">
+          <div className="bg-gray-50 rounded-lg p-3 md:p-4">
             <div className="flex justify-between items-center mb-2">
-              <span className="text-sm font-medium">
+              <span className="text-xs md:text-sm font-medium">
                 {weekDays[selectedDay].day}, {weekDays[selectedDay].date}
               </span>
-              <div className="flex gap-2">
+              <div className="flex gap-1.5 md:gap-2">
                 <div className="relative">
                   <button
                     onClick={() => setShowQuickMenu(!showQuickMenu)}
-                    className="flex items-center gap-1 text-gray-600 hover:text-gray-700"
+                    className="flex items-center gap-0.5 md:gap-1 text-gray-600 hover:text-gray-700"
                   >
-                    <ChevronDown className="w-4 h-4" />
-                    <span className="text-sm">Quick</span>
+                    <ChevronDown className="w-3.5 h-3.5 md:w-4 md:h-4" />
+                    <span className="text-xs md:text-sm">Quick</span>
                   </button>
                   {showQuickMenu && (
                     <QuickMenu
@@ -156,56 +156,49 @@ export default function PlannerModal({ onClose, onSaveWeek }: PlannerModalProps)
                         }));
                         setShowQuickMenu(false);
                       }}
+                      onClose={() => setShowQuickMenu(false)}
                     />
                   )}
                 </div>
                 <button
                   onClick={() => setShowDayOutfitModal(true)}
-                  className="flex items-center gap-1 text-purple-600 hover:text-purple-700"
+                  className="flex items-center gap-0.5 md:gap-1 text-gray-600 hover:text-gray-700"
                 >
-                  <Wand2 className="w-4 h-4" />
-                  <span className="text-sm">Plan</span>
+                  <Wand2 className="w-3.5 h-3.5 md:w-4 md:h-4" />
+                  <span className="text-xs md:text-sm">AI</span>
                 </button>
               </div>
             </div>
 
-            <div className="bg-white rounded-lg p-4 min-h-[100px]">
-              {currentOutfit ? (
+            {currentOutfit ? (
+              <div className="flex items-center justify-between">
                 <div className="flex items-center gap-2">
-                  <div className="w-12 h-12 rounded-md overflow-hidden">
-                    <div
-                      className="w-full h-full bg-cover bg-center"
-                      style={{ backgroundImage: `url(${currentOutfit.image})` }}
+                  <div className="w-10 h-10 md:w-12 md:h-12 rounded-lg overflow-hidden">
+                    <img
+                      src={currentOutfit.image}
+                      alt={currentOutfit.text}
+                      className="w-full h-full object-cover"
                     />
                   </div>
-                  <span className="text-sm">{currentOutfit.text}</span>
+                  <div>
+                    <h3 className="text-sm md:text-base font-medium">{currentOutfit.text}</h3>
+                    <p className="text-xs md:text-sm text-gray-600 capitalize">{currentOutfit.category}</p>
+                  </div>
                 </div>
-              ) : (
-                <div className="text-sm text-gray-500">
-                  No outfit planned yet
-                </div>
-              )}
-            </div>
+                <Check className="w-4 h-4 md:w-5 md:h-5 text-green-500" />
+              </div>
+            ) : (
+              <div className="text-center py-6">
+                <p className="text-sm md:text-base text-gray-600">No outfit selected for this day</p>
+              </div>
+            )}
           </div>
-        </div>
 
-        <div className="flex justify-between items-center gap-3 p-4 border-t">
-          <div className="text-sm text-gray-500">
-            {Object.keys(weekOutfits).length} of 7 days planned
-          </div>
-          <div className="flex gap-3">
-            <button
-              onClick={onClose}
-              className="px-4 py-2 text-sm text-gray-600 hover:text-gray-700"
-            >
-              Cancel
-            </button>
+          <div className="flex justify-end mt-4 md:mt-6">
             <button
               onClick={handleSaveWeek}
-              className="flex items-center gap-2 px-4 py-2 text-sm text-white bg-purple-600 rounded-lg hover:bg-purple-700"
-              disabled={Object.keys(weekOutfits).length === 0}
+              className="px-4 py-2 bg-purple-600 text-white text-xs md:text-sm rounded-lg hover:bg-purple-700 transition-colors"
             >
-              <Check className="w-4 h-4" />
               Save Week
             </button>
           </div>
@@ -217,11 +210,7 @@ export default function PlannerModal({ onClose, onSaveWeek }: PlannerModalProps)
           date={weekDays[selectedDay].date}
           onClose={() => setShowDayOutfitModal(false)}
           onSave={handleSaveOutfit}
-          initialOutfit={currentOutfit ? {
-            planned: currentOutfit.text,
-            worn: '',
-            mood: ''
-          } : undefined}
+          initialOutfit={weekOutfits[weekDays[selectedDay].date]?.outfit?.text}
         />
       )}
     </div>
