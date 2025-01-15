@@ -150,33 +150,33 @@ export default function CreatePage() {
       {/* Clean Modern Navigation */}
       <div className="fixed bottom-0 inset-x-0">
         <div className="bg-black py-3">
-          <div className="max-w-md mx-auto flex justify-between px-12">
-            <button className="flex flex-col items-center opacity-60 hover:opacity-100 transition-opacity">
-              <Grid className="w-5 h-5 text-white mb-1" strokeWidth={1.5} />
-              <span className="text-[10px] text-white">My Items</span>
+          <div className="max-w-md mx-auto flex justify-between px-8">
+            <button className="flex flex-col items-center justify-center w-16 opacity-60 hover:opacity-100 transition-opacity">
+              <Grid className="w-5 h-5 text-white" strokeWidth={1.5} />
+              <span className="text-[10px] text-white mt-1.5">My Items</span>
             </button>
 
-            <button className="flex flex-col items-center opacity-60 hover:opacity-100 transition-opacity">
-              <CircleDot className="w-5 h-5 text-white mb-1" strokeWidth={1.5} />
-              <span className="text-[10px] text-white">Swipe</span>
+            <button className="flex flex-col items-center justify-center w-16 opacity-60 hover:opacity-100 transition-opacity">
+              <CircleDot className="w-5 h-5 text-white" strokeWidth={1.5} />
+              <span className="text-[10px] text-white mt-1.5">Swipe</span>
             </button>
 
-            <button className="flex flex-col items-center">
-              <div className="relative">
-                <div className="absolute -inset-2 bg-[#FF7043]/10 rounded-full"></div>
-                <Pencil className="w-5 h-5 text-[#FF7043] mb-1" strokeWidth={1.5} />
+            <button className="flex flex-col items-center justify-center w-16">
+              <div className="relative flex items-center justify-center">
+                <div className="absolute -inset-3 bg-[#FF7043]/10 rounded-full"></div>
+                <Pencil className="w-5 h-5 text-[#FF7043]" strokeWidth={1.5} />
               </div>
-              <span className="text-[10px] text-[#FF7043]">Canvas</span>
+              <span className="text-[10px] text-[#FF7043] mt-1.5">Canvas</span>
             </button>
 
-            <button className="flex flex-col items-center opacity-60 hover:opacity-100 transition-opacity">
-              <Heart className="w-5 h-5 text-white mb-1" strokeWidth={1.5} />
-              <span className="text-[10px] text-white">Try On</span>
+            <button className="flex flex-col items-center justify-center w-16 opacity-60 hover:opacity-100 transition-opacity">
+              <Heart className="w-5 h-5 text-white" strokeWidth={1.5} />
+              <span className="text-[10px] text-white mt-1.5">Try On</span>
             </button>
 
-            <button className="flex flex-col items-center opacity-60 hover:opacity-100 transition-opacity">
-              <ImageIcon className="w-5 h-5 text-white mb-1" strokeWidth={1.5} />
-              <span className="text-[10px] text-white">Gallery</span>
+            <button className="flex flex-col items-center justify-center w-16 opacity-60 hover:opacity-100 transition-opacity">
+              <ImageIcon className="w-5 h-5 text-white" strokeWidth={1.5} />
+              <span className="text-[10px] text-white mt-1.5">Gallery</span>
             </button>
           </div>
         </div>
