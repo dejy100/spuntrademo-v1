@@ -7,7 +7,7 @@ export default function CreatePage() {
   const navigate = useNavigate();
 
   return (
-    <div className="min-h-screen bg-gradient-to-b from-white to-gray-50">
+    <div className="h-screen overflow-hidden bg-gradient-to-b from-white to-gray-50 flex flex-col">
       {/* Top Navigation with Glassmorphism */}
       <div className="flex justify-between items-center p-4 bg-white/70 backdrop-blur-lg">
         <motion.button 
@@ -28,7 +28,7 @@ export default function CreatePage() {
       </div>
 
       {/* Main Content with Enhanced Animation */}
-      <div className="flex flex-col items-center justify-center px-6 mt-16">
+      <div className="flex-1 flex flex-col items-center justify-center px-6 relative">
         <motion.div
           initial={{ scale: 0.9, opacity: 0, y: 20 }}
           animate={{ scale: 1, opacity: 1, y: 0 }}
@@ -62,7 +62,7 @@ export default function CreatePage() {
           />
 
           {/* Octopus Icon with Enhanced Animation */}
-          <div className="w-28 h-28 mx-auto mb-8 relative">
+          <div className="w-24 h-24 mx-auto mb-6 relative">
             <motion.div
               animate={{ 
                 rotate: [0, 5, -5, 0],
@@ -113,19 +113,19 @@ export default function CreatePage() {
           </div>
 
           <motion.h1 
-            className="text-4xl font-bold mb-3 bg-gradient-to-r from-purple-600 to-pink-600 text-transparent bg-clip-text"
+            className="text-3xl font-bold mb-2 bg-gradient-to-r from-purple-600 to-pink-600 text-transparent bg-clip-text"
             animate={{ scale: [1, 1.02, 1] }}
             transition={{ duration: 2, repeat: Infinity }}
           >
             Create your outfit
           </motion.h1>
-          <p className="text-gray-500 mb-24 text-lg">Start by selecting items</p>
+          <p className="text-gray-500 text-lg">Start by selecting items</p>
         </motion.div>
 
         {/* Looking for new ideas section with Enhanced Design */}
-        <div className="fixed bottom-32 w-full max-w-md px-6">
+        <div className="absolute bottom-24 w-full max-w-md px-6">
           <motion.p 
-            className="text-gray-500 text-center mb-4"
+            className="text-gray-500 text-center mb-3"
             initial={{ opacity: 0, y: 10 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ delay: 0.5 }}
@@ -156,41 +156,41 @@ export default function CreatePage() {
             <span className="font-medium">Style 5 random items</span>
           </motion.button>
         </div>
+      </div>
 
-        {/* Bottom Navigation with Glass Effect */}
-        <div className="fixed bottom-0 left-0 right-0 bg-black/90 backdrop-blur-lg text-white py-6 border-t border-white/10">
-          <div className="flex justify-around items-center max-w-md mx-auto px-6">
-            <motion.button 
+      {/* Bottom Navigation with Glass Effect */}
+      <div className="bg-black/90 backdrop-blur-lg text-white py-5 border-t border-white/10">
+        <div className="flex justify-around items-center max-w-md mx-auto px-6">
+          <motion.button 
+            whileHover={{ scale: 1.1 }}
+            whileTap={{ scale: 0.9 }}
+            className="flex flex-col items-center gap-1"
+          >
+            <LayoutGrid className="w-6 h-6" />
+            <span className="text-xs font-medium">My Outfits</span>
+          </motion.button>
+          <div className="flex gap-8">
+            <motion.span 
               whileHover={{ scale: 1.1 }}
-              whileTap={{ scale: 0.9 }}
-              className="flex flex-col items-center gap-1"
+              className="text-gray-400 cursor-pointer"
             >
-              <LayoutGrid className="w-6 h-6" />
-              <span className="text-xs font-medium">My Outfits</span>
-            </motion.button>
-            <div className="flex gap-8">
-              <motion.span 
-                whileHover={{ scale: 1.1 }}
-                className="text-gray-400 cursor-pointer"
-              >
-                SWIPE
-              </motion.span>
-              <motion.span 
-                whileHover={{ scale: 1.1 }}
-                className="text-[#FF7A50] cursor-pointer"
-              >
-                CANVAS
-              </motion.span>
-            </div>
-            <motion.button 
+              SWIPE
+            </motion.span>
+            <motion.span 
               whileHover={{ scale: 1.1 }}
-              whileTap={{ scale: 0.9 }}
-              className="flex flex-col items-center gap-1"
+              className="text-[#FF7A50] cursor-pointer"
             >
-              <Image className="w-6 h-6" />
-              <span className="text-xs font-medium">Wallpapers</span>
-            </motion.button>
+              CANVAS
+            </motion.span>
           </div>
+          <motion.button 
+            whileHover={{ scale: 1.1 }}
+            whileTap={{ scale: 0.9 }}
+            className="flex flex-col items-center gap-1"
+          >
+            <Image className="w-6 h-6" />
+            <span className="text-xs font-medium">Wallpapers</span>
+          </motion.button>
         </div>
       </div>
     </div>
