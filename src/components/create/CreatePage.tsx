@@ -146,6 +146,38 @@ export default function CreatePage() {
           </div>
         </div>
       </motion.div>
+
+      {/* Bottom Navigation */}
+      <div className="fixed bottom-0 inset-x-0 bg-black py-4 px-8">
+        <div className="flex justify-between items-center">
+          <div className="flex flex-col items-center">
+            <button className="p-2">
+              <svg className="w-6 h-6 text-white" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
+                <rect x="3" y="3" width="7" height="7" />
+                <rect x="14" y="3" width="7" height="7" />
+                <rect x="3" y="14" width="7" height="7" />
+                <rect x="14" y="14" width="7" height="7" />
+              </svg>
+            </button>
+            <span className="text-xs text-white mt-1">My Outfits</span>
+          </div>
+
+          <div className="flex flex-col items-center">
+            <div className="text-[#FF7043] font-medium">SWIPE</div>
+            <div className="text-[#FF7043] font-medium">CANVAS</div>
+          </div>
+
+          <div className="flex flex-col items-center">
+            <button className="p-2">
+              <svg className="w-6 h-6 text-white" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
+                <path d="M21 19V5a2 2 0 00-2-2H5a2 2 0 00-2 2v14a2 2 0 002 2h14a2 2 0 002-2z" />
+                <path d="M8.5 13.5l2.5 3 3.5-4.5 4.5 6H5l3.5-4.5z" />
+              </svg>
+            </button>
+            <span className="text-xs text-white mt-1">Wallpapers</span>
+          </div>
+        </div>
+      </div>
     </motion.div>
   );
 }
