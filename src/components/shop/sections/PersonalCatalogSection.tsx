@@ -16,35 +16,35 @@ const brands = [
 export default function PersonalCatalogSection() {
   return (
     <section>
-      <div className="flex flex-col gap-2 mb-4 md:flex-row md:items-center md:justify-between md:mb-6">
+      <div className="flex items-center justify-between mb-4">
         <div>
-          <h2 className="text-lg font-semibold mb-1 md:text-2xl md:mb-2">Compare Prices</h2>
-          <p className="text-sm text-gray-600 md:text-base">Find the best deals across multiple luxury retailers</p>
+          <h2 className="text-lg font-semibold mb-1">Compare Prices</h2>
+          <p className="text-sm text-gray-600">Find the best deals across multiple luxury retailers</p>
         </div>
-        <button className="flex items-center text-sm text-purple-600 hover:text-purple-700 font-medium md:text-base">
+        <button className="flex items-center text-sm text-purple-600 hover:text-purple-700 font-medium">
           View all
-          <ChevronRight className="w-4 h-4 ml-1 md:w-5 md:h-5" />
+          <ChevronRight className="w-4 h-4 ml-1" />
         </button>
       </div>
 
       <div className="relative">
-        <div className="grid grid-cols-2 gap-3 overflow-y-auto max-h-[400px] scrollbar-hide md:grid-cols-4 md:gap-4">
+        <div className="grid grid-cols-2 gap-3 overflow-y-auto max-h-[400px] scrollbar-hide">
           {brands.map((brand) => (
             <motion.div
               key={brand.id}
               whileHover={{ scale: 1.02 }}
-              className="bg-white rounded-lg shadow-sm hover:shadow-md transition-all p-3 md:rounded-xl md:p-4"
+              className="bg-white rounded-lg shadow-sm hover:shadow-md transition-all p-3"
             >
               <img
                 src={brand.logo}
                 alt={brand.name}
-                className="w-full aspect-square object-cover rounded-lg mb-3 md:rounded-xl md:mb-4"
+                className="w-full aspect-square object-cover rounded-lg mb-3"
               />
-              <p className="text-sm font-medium text-center md:text-base">{brand.name}</p>
+              <p className="text-sm font-medium text-center">{brand.name}</p>
             </motion.div>
           ))}
         </div>
-        <div className="absolute inset-x-0 bottom-0 h-16 bg-gradient-to-t from-purple-50 to-transparent pointer-events-none md:h-20" />
+        <div className="absolute inset-x-0 bottom-0 h-16 bg-gradient-to-t from-purple-50 to-transparent pointer-events-none" />
       </div>
     </section>
   );

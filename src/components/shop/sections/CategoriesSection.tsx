@@ -134,9 +134,9 @@ export default function CategoriesSection() {
   };
 
   return (
-    <section className="bg-white rounded-lg shadow-sm p-3 md:rounded-xl md:shadow-md md:p-4">
-      <h2 className="text-base font-semibold mb-3 md:text-xl md:mb-4">Categories</h2>
-      <div className="space-y-1 md:space-y-2">
+    <section className="bg-white rounded-lg shadow-sm p-3">
+      <h2 className="text-base font-semibold mb-3">Categories</h2>
+      <div className="space-y-1">
         {categories.map((category) => {
           const Icon = category.icon;
           const isExpanded = expandedCategory === category.id;
@@ -147,13 +147,13 @@ export default function CategoriesSection() {
                 whileHover={{ x: 2 }}
                 whileTap={{ scale: 0.98 }}
                 onClick={() => category.subcategories && toggleCategory(category.id)}
-                className="w-full flex items-center justify-between p-2.5 rounded-lg hover:bg-purple-50 transition-colors group md:p-3"
+                className="w-full flex items-center justify-between p-2.5 rounded-lg hover:bg-purple-50 transition-colors group"
               >
-                <div className="flex items-center gap-2 md:gap-3">
-                  <div className="p-1.5 bg-purple-50 rounded-lg group-hover:bg-white transition-colors md:p-2">
+                <div className="flex items-center gap-2">
+                  <div className="p-1.5 bg-purple-50 rounded-lg group-hover:bg-white transition-colors">
                     <Icon className="w-4 h-4 text-purple-600" />
                   </div>
-                  <span className="text-sm font-medium md:text-base">{category.name}</span>
+                  <span className="text-sm font-medium">{category.name}</span>
                 </div>
                 {category.subcategories && (
                   <ChevronRight 
@@ -173,13 +173,13 @@ export default function CategoriesSection() {
                     transition={{ duration: 0.2 }}
                     className="overflow-hidden"
                   >
-                    <div className="pl-10 pr-2 py-1 space-y-1 md:pl-12 md:pr-3 md:py-2">
+                    <div className="pl-10 pr-2 py-1 space-y-1">
                       {category.subcategories.map((subcategory) => (
                         <motion.button
                           key={subcategory}
                           whileHover={{ x: 2 }}
                           whileTap={{ scale: 0.98 }}
-                          className="w-full text-left py-2 px-2.5 rounded-lg text-sm text-gray-600 hover:bg-purple-50 hover:text-purple-600 transition-colors md:px-3"
+                          className="w-full text-left py-2 px-2.5 rounded-lg text-sm text-gray-600 hover:bg-purple-50 hover:text-purple-600 transition-colors"
                         >
                           {subcategory}
                         </motion.button>
