@@ -1,5 +1,6 @@
 import React from 'react';
-import { BrowserRouter as Router, Routes, Route, Navigate } from 'react-router-dom';
+import { BrowserRouter as Router, Routes, Route, Navigate, useLocation } from 'react-router-dom';
+import { AnimatePresence } from 'framer-motion';
 import Layout from './components/Layout';
 import PersonalityQuiz from './components/PersonalityQuiz';
 import ProductDetail from './components/ProductDetail';
@@ -27,34 +28,44 @@ function App() {
   return (
     <ChakraProvider>
       <Router>
-        <div className="mobile-container">
-          <div className="mobile-content">
-            <Routes>
-              <Route path="/" element={<Layout><LandingPage /></Layout>} />
-              <Route path="/value-proposition" element={<Layout><ValueProposition /></Layout>} />
-              <Route path="/how-it-works" element={<Layout><HowItWorks /></Layout>} />
-              <Route path="/register" element={<Layout><Registration /></Layout>} />
-              <Route path="/quiz-intro" element={<Layout><QuizIntro /></Layout>} />
-              <Route path="/quiz" element={<Layout><PersonalityQuiz /></Layout>} />
-              <Route path="/archetype-result" element={<Layout><ArchetypeResult /></Layout>} />
-              <Route path="/product/:id" element={<Layout><ProductDetail /></Layout>} />
-              <Route path="/wardrobe" element={<Layout><WardrobePage /></Layout>} />
-              <Route path="/create" element={<CreatePage />} />
-              <Route path="/add-item" element={<AddItemPage />} />
-              <Route path="/shop" element={<ShopPage />} />
-              <Route path="/in-store-shopping" element={<InStoreShoppingPage />} />
-              <Route path="/games" element={<GamesPage />} />
-              <Route path="/matches" element={<Layout><Matches /></Layout>} />
-              <Route path="/profile" element={<ProfilePage />} />
-              <Route path="*" element={<Navigate to="/" replace />} />
-            </Routes>
-          </div>
-          <MobileNavigation />
-          <FloatingAssistant />
-          <StyleArenaButton />
-        </div>
+        <AppContent />
       </Router>
     </ChakraProvider>
+  );
+}
+
+function AppContent() {
+  const location = useLocation();
+  
+  return (
+    <div className="mobile-container">
+      <div className="mobile-content">
+        <AnimatePresence mode="wait">
+          <Routes location={location} key={location.pathname}>
+            <Route path="/" element={<Layout><LandingPage /></Layout>} />
+            <Route path="/value-proposition" element={<Layout><ValueProposition /></Layout>} />
+            <Route path="/how-it-works" element={<Layout><HowItWorks /></Layout>} />
+            <Route path="/register" element={<Layout><Registration /></Layout>} />
+            <Route path="/quiz-intro" element={<Layout><QuizIntro /></Layout>} />
+            <Route path="/quiz" element={<Layout><PersonalityQuiz /></Layout>} />
+            <Route path="/archetype-result" element={<Layout><ArchetypeResult /></Layout>} />
+            <Route path="/product/:id" element={<Layout><ProductDetail /></Layout>} />
+            <Route path="/wardrobe" element={<Layout><WardrobePage /></Layout>} />
+            <Route path="/create" element={<CreatePage />} />
+            <Route path="/add-item" element={<AddItemPage />} />
+            <Route path="/shop" element={<ShopPage />} />
+            <Route path="/in-store-shopping" element={<InStoreShoppingPage />} />
+            <Route path="/games" element={<GamesPage />} />
+            <Route path="/matches" element={<Layout><Matches /></Layout>} />
+            <Route path="/profile" element={<ProfilePage />} />
+            <Route path="*" element={<Navigate to="/" replace />} />
+          </Routes>
+        </AnimatePresence>
+      </div>
+      <MobileNavigation />
+      <FloatingAssistant />
+      <StyleArenaButton />
+    </div>
   );
 }
 

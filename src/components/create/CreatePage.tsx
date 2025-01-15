@@ -1,12 +1,19 @@
 import React from 'react';
 import { X, Shirt } from 'lucide-react';
 import { useNavigate } from 'react-router-dom';
+import { motion } from 'framer-motion';
 
 export default function CreatePage() {
   const navigate = useNavigate();
   
   return (
-    <div className="fixed inset-0 z-50 bg-gradient-to-b from-white to-gray-50">
+    <motion.div 
+      className="fixed inset-0 z-50 bg-gradient-to-b from-white to-gray-50"
+      initial={{ y: '100%' }}
+      animate={{ y: 0 }}
+      exit={{ y: '100%' }}
+      transition={{ type: "spring", stiffness: 300, damping: 30 }}
+    >
       {/* Top Navigation */}
       <div className="flex justify-between items-center p-5 bg-white/70">
         <button 
@@ -22,6 +29,6 @@ export default function CreatePage() {
           <Shirt className="w-5 h-5 text-gray-700" strokeWidth={2.5} />
         </button>
       </div>
-    </div>
+    </motion.div>
   );
 }
