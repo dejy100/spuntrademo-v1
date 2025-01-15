@@ -1,5 +1,5 @@
 import React from 'react';
-import { X, Shirt, Wand2, LayoutGrid, Gallery, Brush, PenLine, Shapes } from 'lucide-react';
+import { X, Shirt, Wand2, LayoutGrid, ImageIcon, Brush, PenLine, Shapes } from 'lucide-react';
 import { useNavigate } from 'react-router-dom';
 import { motion } from 'framer-motion';
 
@@ -174,7 +174,7 @@ export default function CreatePage() {
             </div>
 
             <button className="flex flex-col items-center w-12 transition-colors">
-              <Gallery className="w-6 h-6 text-white/80" strokeWidth={1.5} />
+              <ImageIcon className="w-6 h-6 text-white/80" strokeWidth={1.5} />
               <span className="text-[10px] text-white/80 mt-1">Gallery</span>
             </button>
           </div>
