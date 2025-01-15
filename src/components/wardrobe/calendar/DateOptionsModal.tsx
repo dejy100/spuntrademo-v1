@@ -39,17 +39,17 @@ export default function DateOptionsModal({
         initial={{ scale: 0.9 }}
         animate={{ scale: 1 }}
         exit={{ scale: 0.9 }}
-        className="bg-white rounded-xl p-6 max-w-md w-full mx-4"
+        className="bg-white rounded-lg md:rounded-xl p-4 md:p-6 max-w-md w-full mx-3 md:mx-4"
         onClick={e => e.stopPropagation()}
       >
         {/* Header */}
-        <div className="flex items-center justify-between mb-6">
-          <h3 className="font-semibold text-lg">{formattedDate}</h3>
+        <div className="flex items-center justify-between mb-4 md:mb-6">
+          <h3 className="font-semibold text-base md:text-lg">{formattedDate}</h3>
           <button
             onClick={onClose}
-            className="p-2 hover:bg-gray-100 rounded-full transition-colors"
+            className="p-1.5 md:p-2 hover:bg-gray-100 rounded-full transition-colors"
           >
-            <X className="w-5 h-5" />
+            <X className="w-4 h-4 md:w-5 md:h-5" />
           </button>
         </div>
 
@@ -67,36 +67,42 @@ export default function DateOptionsModal({
         )}
 
         {/* Options */}
-        <div className="space-y-3">
-          <motion.button
-            whileHover={{ scale: 1.02 }}
+        <div className="space-y-3 md:space-y-4">
+          {/* Plan Outfit */}
+          <button
             onClick={onPlanOutfit}
-            className="w-full p-4 bg-purple-50 rounded-lg flex items-center justify-between hover:bg-purple-100 transition-colors group"
+            className="w-full flex items-center justify-between p-3 md:p-4 bg-purple-50 hover:bg-purple-100 rounded-lg md:rounded-xl transition-colors group"
           >
             <div className="flex items-center gap-3">
-              <Calendar className="w-5 h-5 text-purple-600" />
+              <div className="p-2 bg-purple-100 group-hover:bg-purple-200 rounded-lg transition-colors">
+                <Calendar className="w-4 h-4 md:w-5 md:h-5 text-purple-600" />
+              </div>
               <div className="text-left">
-                <p className="font-medium">Plan Outfit</p>
-                <p className="text-sm text-gray-600">Create or modify your outfit</p>
+                <h4 className="font-medium text-sm md:text-base">Plan Outfit</h4>
+                <p className="text-xs md:text-sm text-gray-600">Choose what to wear</p>
               </div>
             </div>
-            <ChevronRight className="w-5 h-5 text-purple-600 group-hover:translate-x-1 transition-transform" />
-          </motion.button>
+            <ChevronRight className="w-4 h-4 md:w-5 md:h-5 text-gray-400 group-hover:text-gray-600" />
+          </button>
 
-          <motion.button
-            whileHover={{ scale: 1.02 }}
+          {/* View Weather */}
+          <button
             onClick={onViewWeather}
-            className="w-full p-4 bg-blue-50 rounded-lg flex items-center justify-between hover:bg-blue-100 transition-colors group"
+            className="w-full flex items-center justify-between p-3 md:p-4 bg-blue-50 hover:bg-blue-100 rounded-lg md:rounded-xl transition-colors group"
           >
             <div className="flex items-center gap-3">
-              <Cloud className="w-5 h-5 text-blue-600" />
+              <div className="p-2 bg-blue-100 group-hover:bg-blue-200 rounded-lg transition-colors">
+                <Cloud className="w-4 h-4 md:w-5 md:h-5 text-blue-600" />
+              </div>
               <div className="text-left">
-                <p className="font-medium">View Weather</p>
-                <p className="text-sm text-gray-600">See detailed forecast</p>
+                <h4 className="font-medium text-sm md:text-base">Weather</h4>
+                <p className="text-xs md:text-sm text-gray-600">
+                  {weatherData ? `${weatherData.temperature}°F, ${weatherData.condition}` : 'Check forecast'}
+                </p>
               </div>
             </div>
-            <ChevronRight className="w-5 h-5 text-blue-600 group-hover:translate-x-1 transition-transform" />
-          </motion.button>
+            <ChevronRight className="w-4 h-4 md:w-5 md:h-5 text-gray-400 group-hover:text-gray-600" />
+          </button>
         </div>
       </motion.div>
     </motion.div>

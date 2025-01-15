@@ -12,7 +12,7 @@ export default function ImagePreviewModal({ image, alt, onClose }: ImagePreviewM
   return (
     <AnimatePresence>
       <div 
-        className="fixed inset-0 backdrop-blur-sm bg-white/30 z-50 flex items-center justify-center p-8"
+        className="fixed inset-0 backdrop-blur-sm bg-white/30 z-50 flex items-center justify-center p-3 md:p-8"
         onClick={onClose}
       >
         <motion.div
@@ -25,23 +25,23 @@ export default function ImagePreviewModal({ image, alt, onClose }: ImagePreviewM
         >
           <button
             onClick={onClose}
-            className="absolute -top-12 right-0 p-2 text-gray-800 hover:text-gray-600"
+            className="absolute -top-8 md:-top-12 right-0 p-1.5 md:p-2 text-gray-800 hover:text-gray-600"
           >
-            <X className="w-6 h-6" />
+            <X className="w-5 h-5 md:w-6 md:h-6" />
           </button>
           
-          <div className="bg-white/80 backdrop-blur-md rounded-xl overflow-hidden shadow-2xl">
+          <div className="bg-white/80 backdrop-blur-md rounded-lg md:rounded-xl overflow-hidden shadow-xl md:shadow-2xl">
             <img
               src={image}
               alt={alt}
-              className="w-full h-auto max-h-[85vh] object-contain"
+              className="w-full h-auto max-h-[80vh] md:max-h-[85vh] object-contain"
               style={{
                 imageRendering: 'high-quality',
                 objectFit: 'contain'
               }}
             />
-            <div className="p-4 bg-white/80 backdrop-blur-sm border-t">
-              <h3 className="text-lg font-medium text-gray-900">{alt}</h3>
+            <div className="p-3 md:p-4 bg-white/80 backdrop-blur-sm border-t">
+              <h3 className="text-base md:text-lg font-medium text-gray-900">{alt}</h3>
             </div>
           </div>
         </motion.div>

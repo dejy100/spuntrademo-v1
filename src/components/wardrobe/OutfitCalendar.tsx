@@ -52,95 +52,87 @@ export default function OutfitCalendar({ onClose }: OutfitCalendarProps) {
         initial={{ scale: 0.9 }}
         animate={{ scale: 1 }}
         exit={{ scale: 0.9 }}
-        className="bg-white rounded-2xl p-6 max-w-2xl w-full mx-4 shadow-xl"
+        className="bg-white rounded-xl md:rounded-2xl p-4 md:p-6 max-w-2xl w-full mx-3 md:mx-4 shadow-xl"
         onClick={e => e.stopPropagation()}
       >
-        <div className="flex items-center justify-between mb-6">
-          <h2 className="text-2xl font-semibold">Outfit Calendar</h2>
+        <div className="flex items-center justify-between mb-4 md:mb-6">
+          <h2 className="text-lg md:text-2xl font-semibold">Outfit Calendar</h2>
           <button
             onClick={onClose}
-            className="p-2 hover:bg-gray-100 rounded-full transition-colors"
+            className="p-1.5 md:p-2 hover:bg-gray-100 rounded-full transition-colors"
           >
-            <X className="w-5 h-5" />
+            <X className="w-4 h-4 md:w-5 md:h-5" />
           </button>
         </div>
 
-        <div className="flex items-center justify-between mb-6">
+        <div className="flex items-center justify-between mb-4 md:mb-6">
           <button
             onClick={prevMonth}
-            className="p-2 hover:bg-gray-100 rounded-full transition-colors"
+            className="p-1.5 md:p-2 hover:bg-gray-100 rounded-full transition-colors"
           >
-            <ChevronLeft className="w-5 h-5" />
+            <ChevronLeft className="w-4 h-4 md:w-5 md:h-5" />
           </button>
-          <h3 className="text-lg font-medium">
+          <h3 className="text-base md:text-lg font-medium">
             {months[currentMonth.getMonth()]} {currentMonth.getFullYear()}
           </h3>
           <button
             onClick={nextMonth}
-            className="p-2 hover:bg-gray-100 rounded-full transition-colors"
+            className="p-1.5 md:p-2 hover:bg-gray-100 rounded-full transition-colors"
           >
-            <ChevronRight className="w-5 h-5" />
+            <ChevronRight className="w-4 h-4 md:w-5 md:h-5" />
           </button>
         </div>
 
-        <div className="grid grid-cols-7 gap-2 mb-4">
+        <div className="grid grid-cols-7 gap-1 md:gap-2 mb-3 md:mb-4">
           {['Sun', 'Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat'].map(day => (
-            <div key={day} className="text-center text-sm font-medium text-gray-500">
+            <div key={day} className="text-center text-xs md:text-sm font-medium text-gray-500">
               {day}
             </div>
           ))}
         </div>
 
-        <div className="grid grid-cols-7 gap-2">
-          {[...Array(firstDayOfMonth)].map((_, index) => (
+        <div className="grid grid-cols-7 gap-1 md:gap-2">
+          {Array.from({ length: firstDayOfMonth }).map((_, index) => (
             <div key={`empty-${index}`} className="aspect-square" />
           ))}
-          
-          {[...Array(daysInMonth)].map((_, index) => {
-            const date = new Date(
-              currentMonth.getFullYear(),
-              currentMonth.getMonth(),
-              index + 1
-            );
-            const dateString = date.toISOString().split('T')[0];
-            const specialDate = specialDates.find(d => d.date === dateString);
-            
+          {Array.from({ length: daysInMonth }).map((_, index) => {
+            const day = index + 1;
+            const date = `${currentMonth.getFullYear()}-${String(currentMonth.getMonth() + 1).padStart(2, '0')}-${String(day).padStart(2, '0')}`;
+            const specialDate = specialDates.find(d => d.date === date);
+
             return (
-              <motion.button
-                key={index}
+              <motion.div
+                key={day}
                 whileHover={{ scale: 1.05 }}
                 whileTap={{ scale: 0.95 }}
-                className={`aspect-square rounded-lg p-2 text-sm relative group ${
-                  specialDate 
-                    ? 'bg-purple-50 text-purple-600' 
-                    : 'hover:bg-gray-50'
-                }`}
+                className={`
+                  aspect-square p-1 md:p-2 rounded-lg cursor-pointer relative
+                  ${specialDate ? 'bg-purple-50 hover:bg-purple-100' : 'hover:bg-gray-50'}
+                `}
               >
-                <span className="relative z-10">{index + 1}</span>
+                <span className="text-xs md:text-sm font-medium">{day}</span>
                 {specialDate && (
-                  <div className="absolute inset-0 flex items-center justify-center opacity-0 group-hover:opacity-100 bg-purple-600 text-white rounded-lg transition-opacity">
-                    <span className="text-xs text-center">
-                      {specialDate.name}
-                    </span>
+                  <div className="absolute bottom-1 md:bottom-2 left-1/2 -translate-x-1/2">
+                    <div className="w-1 h-1 md:w-1.5 md:h-1.5 rounded-full bg-purple-500"></div>
                   </div>
                 )}
-              </motion.button>
+              </motion.div>
             );
           })}
         </div>
 
-        <div className="mt-6 space-y-2">
-          <h4 className="font-medium">Upcoming Special Events</h4>
-          {specialDates.map(date => (
+        <div className="mt-4 md:mt-6 space-y-2 md:space-y-3">
+          <h4 className="text-sm md:text-base font-medium">Upcoming Events</h4>
+          {specialDates.map((date, index) => (
             <div
-              key={date.date}
-              className="flex items-center justify-between p-3 bg-purple-50 rounded-lg"
+              key={index}
+              className="flex items-center justify-between p-2 md:p-3 bg-gray-50 rounded-lg"
             >
               <div>
-                <p className="font-medium text-purple-600">{date.name}</p>
-                <p className="text-sm text-gray-600">{date.date}</p>
+                <p className="text-xs md:text-sm font-medium">{date.name}</p>
+                <p className="text-xs text-gray-500">{date.date}</p>
               </div>
-              <p className="text-sm font-medium">{date.outfit}</p>
+              <div className="text-xs md:text-sm text-purple-600">{date.outfit}</div>
             </div>
           ))}
         </div>

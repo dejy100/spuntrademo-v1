@@ -53,12 +53,12 @@ export default function CategorySection({ title, categories }: CategorySectionPr
           whileHover={{ scale: 1.02 }}
           whileTap={{ scale: 0.98 }}
           onClick={() => navigate('/add-item')}
-          className="aspect-square bg-gradient-to-r from-purple-50 to-pink-50 rounded-xl flex flex-col items-center justify-center gap-3 border-2 border-dashed border-gray-200 hover:border-purple-300 transition-colors group"
+          className="aspect-square bg-gradient-to-r from-purple-50 to-pink-50 rounded-lg md:rounded-xl flex flex-col items-center justify-center gap-2 md:gap-3 border-2 border-dashed border-gray-200 hover:border-purple-300 transition-colors group"
         >
-          <div className="w-14 h-14 rounded-full bg-gradient-to-r from-purple-500 to-pink-500 flex items-center justify-center shadow-lg group-hover:shadow-xl transition-shadow">
-            <Plus className="w-7 h-7 text-white" />
+          <div className="w-12 h-12 md:w-14 md:h-14 rounded-full bg-gradient-to-r from-purple-500 to-pink-500 flex items-center justify-center shadow-lg group-hover:shadow-xl transition-shadow">
+            <Plus className="w-6 h-6 md:w-7 md:h-7 text-white" />
           </div>
-          <span className="text-sm font-medium text-gray-600">Add New Item</span>
+          <span className="text-xs md:text-sm font-medium text-gray-600">Add New Item</span>
         </motion.button>
         
         {[1, 2, 3, 4].map((item) => (

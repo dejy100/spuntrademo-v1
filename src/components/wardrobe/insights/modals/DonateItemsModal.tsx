@@ -31,93 +31,86 @@ export default function DonateItemsModal({ insight, onClose }: DonateItemsModalP
         initial={{ scale: 0.9 }}
         animate={{ scale: 1 }}
         exit={{ scale: 0.9 }}
-        className="bg-white rounded-2xl p-6 max-w-lg w-full mx-4"
+        className="bg-white rounded-xl md:rounded-2xl p-4 md:p-6 max-w-lg w-full mx-3 md:mx-4"
         onClick={e => e.stopPropagation()}
       >
-        <div className="flex items-center justify-between mb-6">
-          <h2 className="text-xl font-semibold">Consider Donating</h2>
+        <div className="flex items-center justify-between mb-4 md:mb-6">
+          <h2 className="text-lg md:text-xl font-semibold">Consider Donating</h2>
           <button
             onClick={onClose}
-            className="p-2 hover:bg-gray-100 rounded-full transition-colors"
+            className="p-1.5 md:p-2 hover:bg-gray-100 rounded-full transition-colors"
           >
-            <X className="w-5 h-5" />
+            <X className="w-4 h-4 md:w-5 md:h-5" />
           </button>
         </div>
 
-        <div className="space-y-6">
+        <div className="space-y-4 md:space-y-6">
           {/* Featured Item Display */}
-          <div className="aspect-video rounded-xl overflow-hidden bg-gray-100">
+          <div className="aspect-video rounded-lg md:rounded-xl overflow-hidden bg-gray-100">
             <img
               src={insight.items?.[0].imageUrl}
-              alt={insight.items?.[0].name}
+              alt="Item to donate"
               className="w-full h-full object-cover"
             />
           </div>
 
-          {/* Quick Actions */}
-          <div className="grid grid-cols-2 gap-4">
-            <motion.button
-              whileHover={{ scale: 1.02 }}
-              className="p-4 bg-purple-50 rounded-xl text-left hover:bg-purple-100 transition-colors"
-            >
-              <Truck className="w-5 h-5 text-purple-600 mb-2" />
-              <p className="font-medium mb-1">Schedule Pickup</p>
-              <p className="text-sm text-gray-600">Free collection service</p>
-            </motion.button>
-
-            <motion.button
-              whileHover={{ scale: 1.02 }}
-              className="p-4 bg-purple-50 rounded-xl text-left hover:bg-purple-100 transition-colors"
-            >
-              <Gift className="w-5 h-5 text-purple-600 mb-2" />
-              <p className="font-medium mb-1">Drop-off</p>
-              <p className="text-sm text-gray-600">Find nearest center</p>
-            </motion.button>
+          {/* Impact Stats */}
+          <div className="grid grid-cols-3 gap-2 md:gap-3">
+            <div className="bg-purple-50 rounded-lg p-3 md:p-4 text-center">
+              <Heart className="w-4 h-4 md:w-5 md:h-5 text-purple-600 mx-auto mb-1 md:mb-2" />
+              <p className="text-xs md:text-sm text-purple-600 font-medium">Make an Impact</p>
+            </div>
+            <div className="bg-purple-50 rounded-lg p-3 md:p-4 text-center">
+              <Gift className="w-4 h-4 md:w-5 md:h-5 text-purple-600 mx-auto mb-1 md:mb-2" />
+              <p className="text-xs md:text-sm text-purple-600 font-medium">Help Others</p>
+            </div>
+            <div className="bg-purple-50 rounded-lg p-3 md:p-4 text-center">
+              <Truck className="w-4 h-4 md:w-5 md:h-5 text-purple-600 mx-auto mb-1 md:mb-2" />
+              <p className="text-xs md:text-sm text-purple-600 font-medium">Free Pickup</p>
+            </div>
           </div>
 
-          {/* Other Items Preview */}
+          {/* Item Selection */}
           <div>
-            <div className="flex items-center justify-between mb-3">
-              <h3 className="font-medium">Other Items to Consider</h3>
-              <span className="text-sm text-purple-600">{insight.items?.length} items</span>
-            </div>
-            <div className="flex gap-2 overflow-x-auto pb-2">
-              {insight.items?.slice(1).map((item) => (
-                <motion.div
+            <h3 className="text-sm md:text-base font-medium mb-2 md:mb-3">Select Items to Donate</h3>
+            <div className="space-y-2 md:space-y-3">
+              {insight.items?.map(item => (
+                <div
                   key={item.id}
-                  whileHover={{ scale: 1.02 }}
-                  className={`relative w-20 h-20 flex-shrink-0 rounded-lg overflow-hidden cursor-pointer ${
-                    selectedItems.includes(item.id) ? 'ring-2 ring-purple-500' : ''
-                  }`}
+                  className={`flex items-center gap-3 md:gap-4 p-2 md:p-3 rounded-lg border transition-colors cursor-pointer
+                    ${selectedItems.includes(item.id)
+                      ? 'border-purple-500 bg-purple-50'
+                      : 'border-gray-200 hover:border-purple-200'
+                    }`}
                   onClick={() => handleItemToggle(item.id)}
                 >
-                  <img
-                    src={item.imageUrl}
-                    alt={item.name}
-                    className="w-full h-full object-cover"
-                  />
-                  <div className={`absolute inset-0 flex items-center justify-center ${
-                    selectedItems.includes(item.id) ? 'bg-purple-500/20' : 'bg-black/40 opacity-0 hover:opacity-100'
-                  }`}>
-                    <Gift className="w-4 h-4 text-white" />
+                  <div className="w-12 h-12 md:w-16 md:h-16 rounded-lg overflow-hidden bg-gray-100 flex-shrink-0">
+                    <img src={item.imageUrl} alt={item.name} className="w-full h-full object-cover" />
                   </div>
-                </motion.div>
+                  <div>
+                    <h4 className="text-sm md:text-base font-medium">{item.name}</h4>
+                    <p className="text-xs md:text-sm text-gray-600">Last worn {item.lastWorn}</p>
+                  </div>
+                </div>
               ))}
             </div>
           </div>
 
-          <div className="flex justify-between items-center">
-            <p className="text-sm text-gray-600">
-              {selectedItems.length} items selected
-            </p>
-            <motion.button
-              whileHover={{ scale: 1.02 }}
+          {/* Action Buttons */}
+          <div className="flex flex-col md:flex-row gap-2 md:gap-3">
+            <button
               onClick={onClose}
-              className="px-6 py-3 bg-purple-600 text-white rounded-xl flex items-center gap-2"
+              className="px-4 py-2 md:px-6 md:py-3 text-gray-600 hover:bg-gray-100 rounded-lg transition-colors text-xs md:text-sm"
             >
-              Continue
-              <ArrowRight className="w-4 h-4" />
-            </motion.button>
+              Maybe Later
+            </button>
+            <button
+              className="flex items-center justify-center gap-1.5 md:gap-2 px-4 py-2 md:px-6 md:py-3 bg-purple-600 text-white rounded-lg hover:bg-purple-700 transition-colors text-xs md:text-sm"
+              onClick={onClose}
+            >
+              Continue to Donation
+              <ArrowRight className="w-3.5 h-3.5 md:w-4 md:h-4" />
+            </button>
           </div>
         </div>
       </motion.div>

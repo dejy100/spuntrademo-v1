@@ -23,21 +23,21 @@ export default function ResellItemModal({ insight, onClose }: ResellItemModalPro
         initial={{ scale: 0.9 }}
         animate={{ scale: 1 }}
         exit={{ scale: 0.9 }}
-        className="bg-white rounded-2xl p-6 max-w-lg w-full mx-4"
+        className="bg-white rounded-xl md:rounded-2xl p-4 md:p-6 max-w-lg w-full mx-3 md:mx-4"
         onClick={e => e.stopPropagation()}
       >
-        <div className="flex items-center justify-between mb-6">
-          <h2 className="text-xl font-semibold">Resell Item</h2>
+        <div className="flex items-center justify-between mb-4 md:mb-6">
+          <h2 className="text-lg md:text-xl font-semibold">Resell Item</h2>
           <button
             onClick={onClose}
-            className="p-2 hover:bg-gray-100 rounded-full transition-colors"
+            className="p-1.5 md:p-2 hover:bg-gray-100 rounded-full transition-colors"
           >
-            <X className="w-5 h-5" />
+            <X className="w-4 h-4 md:w-5 md:h-5" />
           </button>
         </div>
 
-        <div className="space-y-6">
-          <div className="aspect-video rounded-xl overflow-hidden mb-6 bg-gray-100">
+        <div className="space-y-4 md:space-y-6">
+          <div className="aspect-video rounded-lg md:rounded-xl overflow-hidden mb-4 md:mb-6 bg-gray-100">
             <img
               src="https://images.unsplash.com/photo-1584917865442-de89df76afd3"
               alt="Item for resale"
@@ -45,63 +45,53 @@ export default function ResellItemModal({ insight, onClose }: ResellItemModalPro
             />
           </div>
 
-          <div className="bg-green-50 rounded-xl p-4 flex items-center gap-3">
-            <TrendingUp className="w-5 h-5 text-green-600" />
+          <div className="bg-green-50 rounded-lg md:rounded-xl p-3 md:p-4 flex items-center gap-2 md:gap-3">
+            <TrendingUp className="w-4 h-4 md:w-5 md:h-5 text-green-600" />
             <div>
-              <p className="font-medium text-green-800">High Demand Item</p>
-              <p className="text-sm text-green-700">
-                Similar items are selling quickly at ${insight.estimatedValue}
-              </p>
+              <p className="text-sm md:text-base font-medium text-green-800">High Demand Item</p>
+              <p className="text-xs md:text-sm text-green-700">Similar items are selling quickly</p>
             </div>
           </div>
 
-          <div className="space-y-4">
-            <div>
-              <label className="block text-sm font-medium text-gray-700 mb-2">
-                Set Your Price
-              </label>
-              <div className="relative">
-                <DollarSign className="absolute left-3 top-1/2 -translate-y-1/2 w-5 h-5 text-gray-400" />
-                <input
-                  type="number"
-                  value={price}
-                  onChange={(e) => setPrice(e.target.value)}
-                  className="w-full pl-10 pr-4 py-3 rounded-xl border border-gray-200 focus:ring-2 focus:ring-purple-500 focus:border-transparent"
-                  placeholder="Enter price"
-                />
-              </div>
-            </div>
-
-            <div className="grid grid-cols-2 gap-4">
-              <motion.button
-                whileHover={{ scale: 1.02 }}
-                className="p-4 bg-purple-50 rounded-xl text-left hover:bg-purple-100 transition-colors"
-              >
-                <Camera className="w-5 h-5 text-purple-600 mb-2" />
-                <p className="font-medium mb-1">Add Photos</p>
-                <p className="text-sm text-gray-600">Upload item photos</p>
-              </motion.button>
-
-              <motion.button
-                whileHover={{ scale: 1.02 }}
-                className="p-4 bg-purple-50 rounded-xl text-left hover:bg-purple-100 transition-colors"
-              >
-                <Share2 className="w-5 h-5 text-purple-600 mb-2" />
-                <p className="font-medium mb-1">Share Listing</p>
-                <p className="text-sm text-gray-600">Post to marketplaces</p>
-              </motion.button>
+          <div>
+            <label className="block text-sm md:text-base font-medium text-gray-700 mb-2">Set Your Price</label>
+            <div className="relative">
+              <DollarSign className="absolute left-3 top-1/2 -translate-y-1/2 w-4 h-4 md:w-5 md:h-5 text-gray-400" />
+              <input
+                type="number"
+                value={price}
+                onChange={(e) => setPrice(e.target.value)}
+                placeholder="0.00"
+                className="w-full pl-9 md:pl-10 pr-4 py-2.5 md:py-3 text-sm md:text-base rounded-lg border border-gray-200 focus:ring-2 focus:ring-purple-500 focus:border-transparent"
+              />
             </div>
           </div>
 
-          <div className="flex justify-end">
-            <motion.button
-              whileHover={{ scale: 1.02 }}
+          <div className="grid grid-cols-2 gap-2 md:gap-3">
+            <button className="flex items-center justify-center gap-1.5 md:gap-2 p-3 md:p-4 bg-purple-50 rounded-lg hover:bg-purple-100 transition-colors">
+              <Camera className="w-4 h-4 md:w-5 md:h-5 text-purple-600" />
+              <span className="text-xs md:text-sm font-medium text-purple-600">Add Photos</span>
+            </button>
+            <button className="flex items-center justify-center gap-1.5 md:gap-2 p-3 md:p-4 bg-purple-50 rounded-lg hover:bg-purple-100 transition-colors">
+              <Share2 className="w-4 h-4 md:w-5 md:h-5 text-purple-600" />
+              <span className="text-xs md:text-sm font-medium text-purple-600">Share</span>
+            </button>
+          </div>
+
+          <div className="flex flex-col md:flex-row gap-2 md:gap-3 pt-4 md:pt-6 border-t">
+            <button
               onClick={onClose}
-              className="px-6 py-3 bg-purple-600 text-white rounded-xl flex items-center gap-2"
+              className="px-4 py-2 md:px-6 md:py-3 text-gray-600 hover:bg-gray-100 rounded-lg transition-colors text-xs md:text-sm"
+            >
+              Cancel
+            </button>
+            <button
+              onClick={onClose}
+              className="flex items-center justify-center gap-1.5 md:gap-2 px-4 py-2 md:px-6 md:py-3 bg-purple-600 text-white rounded-lg hover:bg-purple-700 transition-colors text-xs md:text-sm"
             >
               List Item
-              <ArrowRight className="w-4 h-4" />
-            </motion.button>
+              <ArrowRight className="w-3.5 h-3.5 md:w-4 md:h-4" />
+            </button>
           </div>
         </div>
       </motion.div>
