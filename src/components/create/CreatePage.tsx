@@ -8,7 +8,7 @@ export default function CreatePage() {
   
   return (
     <motion.div 
-      className="fixed inset-0 z-50 bg-black/50"
+      className="fixed inset-0 z-50 bg-black/90"
       initial={{ opacity: 0 }}
       animate={{ opacity: 1 }}
       exit={{ opacity: 0 }}
@@ -31,12 +31,28 @@ export default function CreatePage() {
 
       {/* White Card with Curved Corners */}
       <motion.div 
-        className="absolute inset-x-0 bottom-[18vh] bg-white rounded-t-[3rem] shadow-xl min-h-[90vh]"
+        className="absolute inset-x-0 bottom-[8vh] bg-white rounded-[2rem] shadow-lg min-h-[92vh]"
         initial={{ y: '100%' }}
         animate={{ y: 0 }}
         exit={{ y: '100%' }}
         transition={{ type: "spring", stiffness: 300, damping: 30 }}
       >
+        {/* Content */}
+        <div className="flex flex-col items-center justify-center h-full px-6 pt-16 pb-8">
+          <div className="w-20 h-20 mb-6">
+            <img src="/octopus.png" alt="Octopus" className="w-full h-full" />
+          </div>
+          <h1 className="text-2xl font-semibold mb-2">Create your outfit</h1>
+          <p className="text-gray-500 mb-20">Start by selecting items</p>
+          
+          <div className="mt-auto w-full">
+            <p className="text-center text-gray-500 mb-4">Looking for new ideas?</p>
+            <button className="w-full bg-[#FF7043] text-white rounded-full py-4 px-6 flex items-center justify-center gap-2">
+              <span className="text-xl">🎲</span>
+              Style 5 random items
+            </button>
+          </div>
+        </div>
       </motion.div>
     </motion.div>
   );
