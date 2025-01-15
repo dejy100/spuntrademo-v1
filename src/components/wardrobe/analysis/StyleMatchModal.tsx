@@ -8,21 +8,20 @@ interface Props {
 
 export default function StyleMatchModal({ onClose }: Props) {
   const fileInputRef = useRef<HTMLInputElement>(null);
-  const cameraInputRef = useRef<HTMLInputElement>(null);
-
-  const handleUploadClick = () => {
-    fileInputRef.current?.click();
-  };
-
-  const handleTakePhotoClick = () => {
-    cameraInputRef.current?.click();
-  };
 
   const handleFileChange = (event: React.ChangeEvent<HTMLInputElement>) => {
     const file = event.target.files?.[0];
     if (file) {
       // Handle the selected file here
       console.log('Selected file:', file);
+      // You might want to add your file handling logic here
+      const reader = new FileReader();
+      reader.onload = (e) => {
+        const imageDataUrl = e.target?.result as string;
+        // Do something with the image data URL
+        console.log('Image loaded:', imageDataUrl);
+      };
+      reader.readAsDataURL(file);
     }
   };
 
@@ -34,36 +33,32 @@ export default function StyleMatchModal({ onClose }: Props) {
         <p className="text-sm text-gray-600 mb-4">Upload an image to find similar items</p>
         
         <div className="space-y-2">
-          <input
-            type="file"
-            ref={fileInputRef}
-            accept="image/*"
-            onChange={handleFileChange}
-            className="hidden"
-          />
-          <input
-            type="file"
-            ref={cameraInputRef}
-            accept="image/*"
-            capture="environment"
-            onChange={handleFileChange}
-            className="hidden"
-          />
-          <button 
-            className="w-full flex items-center gap-2 px-4 py-3 bg-purple-50 hover:bg-purple-100 rounded-lg text-sm text-purple-700 transition-colors"
-            onClick={handleUploadClick}
+          <label 
+            className="w-full flex items-center gap-2 px-4 py-3 bg-purple-50 hover:bg-purple-100 rounded-lg text-sm text-purple-700 transition-colors cursor-pointer"
           >
             <Upload size={18} />
-            Upload Image
-          </button>
+            <span>Upload Image</span>
+            <input
+              type="file"
+              accept="image/*"
+              onChange={handleFileChange}
+              className="hidden"
+            />
+          </label>
           
-          <button 
-            className="w-full flex items-center gap-2 px-4 py-3 bg-purple-50 hover:bg-purple-100 rounded-lg text-sm text-purple-700 transition-colors"
-            onClick={handleTakePhotoClick}
+          <label 
+            className="w-full flex items-center gap-2 px-4 py-3 bg-purple-50 hover:bg-purple-100 rounded-lg text-sm text-purple-700 transition-colors cursor-pointer"
           >
             <Camera size={18} />
-            Take Photo
-          </button>
+            <span>Take Photo</span>
+            <input
+              type="file"
+              accept="image/*"
+              capture="environment"
+              onChange={handleFileChange}
+              className="hidden"
+            />
+          </label>
         </div>
       </div>
     </>
