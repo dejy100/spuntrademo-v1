@@ -31,7 +31,7 @@ export default function CreatePage() {
 
       {/* White Card with Curved Corners */}
       <motion.div 
-        className="absolute inset-x-0 bottom-[8vh] bg-white rounded-[2rem] shadow-lg min-h-[92vh]"
+        className="absolute top-[5vh] bottom-[12vh] inset-x-0 bg-white rounded-[2rem] shadow-lg"
         initial={{ y: '100%' }}
         animate={{ y: 0 }}
         exit={{ y: '100%' }}
