@@ -21,8 +21,7 @@ export default function CreatePage() {
       </header>
 
       {/* Main Content */}
-      <main className="flex-1 flex flex-col items-center">
-        {/* Logo and Title Section */}
+      <main className="flex-1 flex flex-col items-center justify-between py-8">
         <div className="flex-1 flex flex-col items-center justify-center">
           <div className="w-24 h-24">
             <svg viewBox="0 0 100 100" className="w-full h-full">
@@ -49,8 +48,8 @@ export default function CreatePage() {
           <p className="text-gray-500 mt-2">Start by selecting items</p>
         </div>
 
-        {/* Random Style Button Section */}
-        <div className="w-full px-6 mb-8">
+        {/* Random Style Button */}
+        <div className="w-full px-6">
           <p className="text-gray-500 text-center mb-3">Looking for new ideas?</p>
           <button
             className="w-full max-w-md mx-auto bg-gradient-to-r from-[#FF7A50] to-[#FF5B7F] text-white rounded-xl py-3.5 flex items-center justify-center gap-2 shadow-lg"
