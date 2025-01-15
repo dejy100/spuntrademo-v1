@@ -18,7 +18,7 @@ export default function Header() {
             <img 
               src="/images/branding/spuntra-logo.png" 
               alt="Spuntra" 
-              className="h-8 md:h-10 w-auto cursor-pointer hover:opacity-90 transition-opacity"
+              className="h-12 w-auto cursor-pointer hover:opacity-90 transition-opacity"
               onClick={() => navigate('/')}
             />
           </div>
