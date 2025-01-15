@@ -43,49 +43,97 @@ export default function CreatePage() {
         {/* Content */}
         <div className="flex flex-col items-center justify-center h-full px-6 pt-16 pb-8">
           <motion.div
-            className="w-24 h-24 mb-6 relative"
+            className="w-32 h-32 mb-8 relative"
             initial={{ y: 0, rotate: 0 }}
             animate={{ 
-              y: [-5, 5, -5],
-              rotate: [-5, 5, -5]
+              y: [-8, 8, -8],
+              rotate: [-8, 8, -8]
             }}
             transition={{
               y: {
                 repeat: Infinity,
-                duration: 3,
+                duration: 4,
                 ease: "easeInOut"
               },
               rotate: {
                 repeat: Infinity,
-                duration: 4,
+                duration: 5,
                 ease: "easeInOut"
               }
             }}
           >
             <motion.div 
-              className="w-full h-full bg-white rounded-full shadow-lg flex items-center justify-center"
+              className="w-full h-full bg-gradient-to-br from-[#FF7043] via-[#FF9D80] to-[#FFB74D] rounded-2xl shadow-xl flex items-center justify-center relative overflow-hidden"
               whileHover={{ scale: 1.05 }}
               whileTap={{ scale: 0.95 }}
             >
+              {/* Creative Elements */}
+              <motion.div 
+                className="absolute w-24 h-24 bg-white/20 rounded-full"
+                animate={{ 
+                  scale: [1, 1.2, 1],
+                  rotate: [0, 180, 360]
+                }}
+                transition={{
+                  duration: 8,
+                  repeat: Infinity,
+                  ease: "linear"
+                }}
+              />
+              <motion.div 
+                className="absolute w-16 h-16 bg-white/30 rounded-full"
+                animate={{ 
+                  scale: [1.2, 1, 1.2],
+                  rotate: [360, 180, 0]
+                }}
+                transition={{
+                  duration: 6,
+                  repeat: Infinity,
+                  ease: "linear"
+                }}
+              />
+              
+              {/* Fashion Icon */}
               <svg
-                className="w-16 h-16"
+                className="w-16 h-16 text-white relative z-10"
                 viewBox="0 0 24 24"
                 fill="none"
-                stroke="currentColor"
                 strokeWidth="1.5"
-                strokeLinecap="round"
-                strokeLinejoin="round"
               >
-                <path d="M3 12h2l4-8h6l4 8h2" />
-                <path d="M12 12v9" />
-                <path d="M8 16h8" />
+                <path
+                  d="M12 3L4 10l2 11h12l2-11-8-7z"
+                  stroke="currentColor"
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                />
+                <path
+                  d="M8 15l4-4 4 4"
+                  stroke="currentColor"
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                />
               </svg>
             </motion.div>
-            <div className="absolute inset-0 bg-gradient-to-b from-white/20 to-transparent rounded-full" />
+            {/* Enhanced Shadow Effect */}
+            <div className="absolute -inset-1 bg-gradient-to-b from-white/10 via-[#FF7043]/20 to-transparent rounded-2xl blur-xl" />
           </motion.div>
 
-          <h1 className="text-2xl font-semibold mb-2">Create your outfit</h1>
-          <p className="text-gray-500 mb-20">Start by selecting items</p>
+          <motion.h1 
+            className="text-2xl font-semibold mb-2"
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ delay: 0.2, duration: 0.6 }}
+          >
+            Create your outfit
+          </motion.h1>
+          <motion.p 
+            className="text-gray-500 mb-20"
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ delay: 0.3, duration: 0.6 }}
+          >
+            Start by selecting items
+          </motion.p>
           
           <div className="mt-auto w-full flex flex-col items-center">
             <p className="text-gray-500 mb-0.5 w-[240px] text-center">Need some inspiration?</p>
