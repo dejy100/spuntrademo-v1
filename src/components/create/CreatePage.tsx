@@ -1,5 +1,5 @@
 import React from 'react';
-import { X, Shirt, Wand2, LayoutGrid, ImageIcon, Brush, PenLine, Shapes } from 'lucide-react';
+import { X, Shirt, Wand2, Grid, ImageIcon, Pencil, Heart, CircleDot } from 'lucide-react';
 import { useNavigate } from 'react-router-dom';
 import { motion } from 'framer-motion';
 
@@ -147,35 +147,36 @@ export default function CreatePage() {
         </div>
       </motion.div>
 
-      {/* Modern Creative Navigation */}
+      {/* Clean Modern Navigation */}
       <div className="fixed bottom-0 inset-x-0">
-        <div className="bg-black/95 backdrop-blur-sm px-6 py-4">
-          <div className="flex justify-between items-center">
-            <button className="flex flex-col items-center w-12 transition-colors">
-              <LayoutGrid className="w-6 h-6 text-white/80" strokeWidth={1.5} />
-              <span className="text-[10px] text-white/80 mt-1">Outfits</span>
+        <div className="bg-black py-3">
+          <div className="max-w-md mx-auto flex justify-between px-12">
+            <button className="flex flex-col items-center opacity-60 hover:opacity-100 transition-opacity">
+              <Grid className="w-5 h-5 text-white mb-1" strokeWidth={1.5} />
+              <span className="text-[10px] text-white">My Items</span>
             </button>
 
-            <div className="flex gap-12">
-              <button className="flex flex-col items-center w-12 transition-colors">
-                <Brush className="w-6 h-6 text-white/80" strokeWidth={1.5} />
-                <span className="text-[10px] text-white/80 mt-1">Swipe</span>
-              </button>
+            <button className="flex flex-col items-center opacity-60 hover:opacity-100 transition-opacity">
+              <CircleDot className="w-5 h-5 text-white mb-1" strokeWidth={1.5} />
+              <span className="text-[10px] text-white">Swipe</span>
+            </button>
 
-              <button className="flex flex-col items-center w-12 transition-colors">
-                <PenLine className="w-6 h-6 text-[#FF7043]" strokeWidth={1.5} />
-                <span className="text-[10px] text-[#FF7043] mt-1">Canvas</span>
-              </button>
+            <button className="flex flex-col items-center">
+              <div className="relative">
+                <div className="absolute -inset-2 bg-[#FF7043]/10 rounded-full"></div>
+                <Pencil className="w-5 h-5 text-[#FF7043] mb-1" strokeWidth={1.5} />
+              </div>
+              <span className="text-[10px] text-[#FF7043]">Canvas</span>
+            </button>
 
-              <button className="flex flex-col items-center w-12 transition-colors">
-                <Shapes className="w-6 h-6 text-white/80" strokeWidth={1.5} />
-                <span className="text-[10px] text-white/80 mt-1">Try On</span>
-              </button>
-            </div>
+            <button className="flex flex-col items-center opacity-60 hover:opacity-100 transition-opacity">
+              <Heart className="w-5 h-5 text-white mb-1" strokeWidth={1.5} />
+              <span className="text-[10px] text-white">Try On</span>
+            </button>
 
-            <button className="flex flex-col items-center w-12 transition-colors">
-              <ImageIcon className="w-6 h-6 text-white/80" strokeWidth={1.5} />
-              <span className="text-[10px] text-white/80 mt-1">Gallery</span>
+            <button className="flex flex-col items-center opacity-60 hover:opacity-100 transition-opacity">
+              <ImageIcon className="w-5 h-5 text-white mb-1" strokeWidth={1.5} />
+              <span className="text-[10px] text-white">Gallery</span>
             </button>
           </div>
         </div>
