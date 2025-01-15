@@ -2,6 +2,7 @@ import React from 'react';
 import { X, Shirt } from 'lucide-react';
 import { useNavigate } from 'react-router-dom';
 import { motion } from 'framer-motion';
+import { SparklesIcon } from '@heroicons/react/24/outline';
 
 export default function CreatePage() {
   const navigate = useNavigate();
@@ -140,8 +141,8 @@ export default function CreatePage() {
           <div className="absolute bottom-12 w-full flex flex-col items-center">
             <p className="text-gray-500 mb-0.5 w-[200px] text-center">Need some inspiration?</p>
             <button className="w-[200px] px-6 py-2.5 bg-[#FF7043] text-white rounded-full flex items-center justify-center gap-1.5 text-xs shadow-md">
-              <span className="text-sm">🎲</span>
-              Style 5 random items
+              <SparklesIcon className="w-3.5 h-3.5" />
+              Get creative ideas
             </button>
           </div>
         </div>
