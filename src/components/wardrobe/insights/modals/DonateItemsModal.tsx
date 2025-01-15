@@ -31,7 +31,7 @@ export default function DonateItemsModal({ insight, onClose }: DonateItemsModalP
         initial={{ scale: 0.9 }}
         animate={{ scale: 1 }}
         exit={{ scale: 0.9 }}
-        className="bg-white rounded-xl md:rounded-2xl p-4 md:p-6 max-w-lg w-full mx-3 md:mx-4 max-h-[85vh] overflow-y-auto"
+        className="bg-white rounded-xl md:rounded-2xl p-4 md:p-6 max-w-lg w-full mx-3 md:mx-4 max-h-[80vh] overflow-y-auto flex flex-col"
         onClick={e => e.stopPropagation()}
       >
         <div className="flex items-center justify-between mb-4 md:mb-6">
@@ -44,7 +44,7 @@ export default function DonateItemsModal({ insight, onClose }: DonateItemsModalP
           </button>
         </div>
 
-        <div className="space-y-4 md:space-y-6">
+        <div className="space-y-4 overflow-y-auto flex-1">
           {/* Featured Item Display */}
           <div className="aspect-video rounded-lg md:rounded-xl overflow-hidden bg-gray-100">
             <img
@@ -95,23 +95,15 @@ export default function DonateItemsModal({ insight, onClose }: DonateItemsModalP
               ))}
             </div>
           </div>
+        </div>
 
-          {/* Action Buttons */}
-          <div className="flex flex-col md:flex-row gap-2 md:gap-3">
-            <button
-              onClick={onClose}
-              className="px-4 py-2 md:px-6 md:py-3 text-gray-600 hover:bg-gray-100 rounded-lg transition-colors text-xs md:text-sm"
-            >
-              Maybe Later
-            </button>
-            <button
-              className="flex items-center justify-center gap-1.5 md:gap-2 px-4 py-2 md:px-6 md:py-3 bg-purple-600 text-white rounded-lg hover:bg-purple-700 transition-colors text-xs md:text-sm"
-              onClick={onClose}
-            >
-              Continue to Donation
-              <ArrowRight className="w-3.5 h-3.5 md:w-4 md:h-4" />
-            </button>
-          </div>
+        <div className="mt-auto pt-4 sticky bottom-0 bg-white border-t">
+          <button
+            onClick={() => {}}
+            className="w-full py-3 px-6 bg-purple-600 text-white rounded-lg flex items-center justify-center gap-2"
+          >
+            Continue to Donation <ArrowRight className="w-4 h-4" />
+          </button>
         </div>
       </motion.div>
     </motion.div>
