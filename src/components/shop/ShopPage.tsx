@@ -21,7 +21,7 @@ export default function ShopPage() {
             <input
               type="text"
               placeholder="Search products, brands..."
-              className="w-full bg-white rounded-lg pl-10 pr-4 py-2.5 text-sm placeholder:text-gray-400 focus:outline-none focus:ring-2 focus:ring-purple-500"
+              className="w-full bg-white rounded-full pl-10 pr-4 py-2.5 text-sm placeholder:text-gray-400 focus:outline-none focus:ring-2 focus:ring-purple-500 shadow-sm hover:shadow-md transition-shadow"
             />
             <Search className="absolute left-3 top-1/2 -translate-y-1/2 w-4 h-4 text-gray-400" />
           </div>
