@@ -22,19 +22,22 @@ export default function CreatePage() {
         transition={{ type: "spring", stiffness: 300, damping: 30 }}
       >
         {/* Top Navigation */}
-        <div className="absolute top-0 w-full flex justify-between items-center px-6 pt-4">
+        <div className="absolute top-6 inset-x-0 flex justify-between items-start px-5">
           <button 
             onClick={() => navigate(-1)}
-            className="p-2 rounded-full bg-gray-100/80 backdrop-blur-sm"
+            className="w-11 h-11 bg-[#E0E0E0] rounded-full flex items-center justify-center shadow-lg hover:shadow-xl transition-shadow"
           >
-            <X className="w-5 h-5 text-gray-600" />
+            <X className="w-5 h-5 text-gray-700" />
           </button>
 
-          <button 
-            className="p-2 rounded-full bg-gray-100/80 backdrop-blur-sm"
-          >
-            <Shirt className="w-5 h-5 text-gray-600" strokeWidth={2.5} />
-          </button>
+          <div className="flex flex-col items-center">
+            <button 
+              className="w-11 h-11 bg-[#E0E0E0] rounded-full flex items-center justify-center shadow-lg hover:shadow-xl transition-shadow"
+            >
+              <Shirt className="w-5 h-5 text-gray-700" strokeWidth={2.5} />
+            </button>
+            <span className="text-sm text-gray-600 mt-1">Items</span>
+          </div>
         </div>
 
         {/* Content */}
