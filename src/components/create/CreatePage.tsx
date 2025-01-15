@@ -7,28 +7,28 @@ export default function CreatePage() {
   const navigate = useNavigate();
 
   return (
-    <div className="h-screen overflow-hidden bg-gradient-to-b from-white to-gray-50 flex flex-col">
+    <div className="h-screen bg-gradient-to-b from-white to-gray-50 flex flex-col">
       {/* Top Navigation with Glassmorphism */}
-      <div className="flex justify-between items-center p-4 bg-white/70 backdrop-blur-lg">
+      <div className="h-[10vh] flex justify-between items-center px-4 bg-white/70 backdrop-blur-lg">
         <motion.button 
           whileHover={{ scale: 1.05 }}
           whileTap={{ scale: 0.95 }}
           onClick={() => navigate(-1)}
-          className="w-12 h-12 bg-white/80 rounded-full flex items-center justify-center shadow-lg hover:shadow-xl transition-all"
+          className="w-10 h-10 bg-white/80 rounded-full flex items-center justify-center shadow-lg hover:shadow-xl transition-all"
         >
-          <X className="w-6 h-6 text-gray-700" />
+          <X className="w-5 h-5 text-gray-700" />
         </motion.button>
         <motion.button 
           whileHover={{ scale: 1.05 }}
           whileTap={{ scale: 0.95 }}
-          className="w-12 h-12 bg-white/80 rounded-full flex items-center justify-center shadow-lg hover:shadow-xl transition-all"
+          className="w-10 h-10 bg-white/80 rounded-full flex items-center justify-center shadow-lg hover:shadow-xl transition-all"
         >
-          <Shirt className="w-6 h-6 text-gray-700" />
+          <Shirt className="w-5 h-5 text-gray-700" />
         </motion.button>
       </div>
 
       {/* Main Content with Enhanced Animation */}
-      <div className="flex-1 flex flex-col items-center justify-center px-6 relative">
+      <div className="h-[75vh] flex flex-col items-center justify-center px-6">
         <motion.div
           initial={{ scale: 0.9, opacity: 0, y: 20 }}
           animate={{ scale: 1, opacity: 1, y: 0 }}
@@ -37,7 +37,7 @@ export default function CreatePage() {
         >
           {/* Animated Background Elements */}
           <motion.div 
-            className="absolute -top-10 -left-10 w-20 h-20 bg-purple-200 rounded-full blur-3xl"
+            className="absolute -top-8 -left-8 w-16 h-16 bg-purple-200 rounded-full blur-3xl"
             animate={{ 
               scale: [1, 1.2, 1],
               opacity: [0.3, 0.5, 0.3]
@@ -49,7 +49,7 @@ export default function CreatePage() {
             }}
           />
           <motion.div 
-            className="absolute -bottom-10 -right-10 w-20 h-20 bg-pink-200 rounded-full blur-3xl"
+            className="absolute -bottom-8 -right-8 w-16 h-16 bg-pink-200 rounded-full blur-3xl"
             animate={{ 
               scale: [1.2, 1, 1.2],
               opacity: [0.3, 0.5, 0.3]
@@ -62,7 +62,7 @@ export default function CreatePage() {
           />
 
           {/* Octopus Icon with Enhanced Animation */}
-          <div className="w-24 h-24 mx-auto mb-6 relative">
+          <div className="w-20 h-20 mx-auto mb-4 relative">
             <motion.div
               animate={{ 
                 rotate: [0, 5, -5, 0],
@@ -113,19 +113,19 @@ export default function CreatePage() {
           </div>
 
           <motion.h1 
-            className="text-3xl font-bold mb-2 bg-gradient-to-r from-purple-600 to-pink-600 text-transparent bg-clip-text"
+            className="text-2xl font-bold mb-2 bg-gradient-to-r from-purple-600 to-pink-600 text-transparent bg-clip-text"
             animate={{ scale: [1, 1.02, 1] }}
             transition={{ duration: 2, repeat: Infinity }}
           >
             Create your outfit
           </motion.h1>
-          <p className="text-gray-500 text-lg">Start by selecting items</p>
+          <p className="text-gray-500 text-sm">Start by selecting items</p>
         </motion.div>
 
         {/* Looking for new ideas section with Enhanced Design */}
-        <div className="absolute bottom-24 w-full max-w-md px-6">
+        <div className="w-full max-w-md px-6 mt-auto mb-4">
           <motion.p 
-            className="text-gray-500 text-center mb-3"
+            className="text-gray-500 text-center text-sm mb-2"
             initial={{ opacity: 0, y: 10 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ delay: 0.5 }}
@@ -138,7 +138,7 @@ export default function CreatePage() {
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ delay: 0.7 }}
-            className="w-full bg-gradient-to-r from-[#FF7A50] to-[#FF5B7F] text-white rounded-2xl py-4 flex items-center justify-center gap-3 shadow-lg relative overflow-hidden group"
+            className="w-full bg-gradient-to-r from-[#FF7A50] to-[#FF5B7F] text-white rounded-2xl py-3 flex items-center justify-center gap-2 shadow-lg relative overflow-hidden group"
             onClick={() => navigate('/random-style')}
           >
             <motion.div
@@ -152,33 +152,33 @@ export default function CreatePage() {
                 ease: "linear",
               }}
             />
-            <Sparkles className="w-5 h-5" />
-            <span className="font-medium">Style 5 random items</span>
+            <Sparkles className="w-4 h-4" />
+            <span className="font-medium text-sm">Style 5 random items</span>
           </motion.button>
         </div>
       </div>
 
       {/* Bottom Navigation with Glass Effect */}
-      <div className="bg-black/90 backdrop-blur-lg text-white py-5 border-t border-white/10">
-        <div className="flex justify-around items-center max-w-md mx-auto px-6">
+      <div className="h-[15vh] bg-black/90 backdrop-blur-lg text-white flex items-center border-t border-white/10">
+        <div className="flex justify-around items-center w-full max-w-md mx-auto px-6">
           <motion.button 
             whileHover={{ scale: 1.1 }}
             whileTap={{ scale: 0.9 }}
             className="flex flex-col items-center gap-1"
           >
-            <LayoutGrid className="w-6 h-6" />
-            <span className="text-xs font-medium">My Outfits</span>
+            <LayoutGrid className="w-5 h-5" />
+            <span className="text-[10px] font-medium">My Outfits</span>
           </motion.button>
-          <div className="flex gap-8">
+          <div className="flex gap-6">
             <motion.span 
               whileHover={{ scale: 1.1 }}
-              className="text-gray-400 cursor-pointer"
+              className="text-gray-400 cursor-pointer text-sm"
             >
               SWIPE
             </motion.span>
             <motion.span 
               whileHover={{ scale: 1.1 }}
-              className="text-[#FF7A50] cursor-pointer"
+              className="text-[#FF7A50] cursor-pointer text-sm"
             >
               CANVAS
             </motion.span>
@@ -188,8 +188,8 @@ export default function CreatePage() {
             whileTap={{ scale: 0.9 }}
             className="flex flex-col items-center gap-1"
           >
-            <Image className="w-6 h-6" />
-            <span className="text-xs font-medium">Wallpapers</span>
+            <Image className="w-5 h-5" />
+            <span className="text-[10px] font-medium">Wallpapers</span>
           </motion.button>
         </div>
       </div>
