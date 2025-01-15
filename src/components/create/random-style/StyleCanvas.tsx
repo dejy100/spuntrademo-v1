@@ -9,8 +9,8 @@ interface StyleCanvasProps {
 
 export default function StyleCanvas({ items }: StyleCanvasProps) {
   return (
-    <div className="bg-white rounded-2xl shadow-lg p-6 aspect-square relative overflow-hidden">
-      <AnimatePresence>
+    <div className="bg-white rounded-lg sm:rounded-2xl shadow-md sm:shadow-lg p-3 sm:p-6 aspect-square relative overflow-hidden touch-none">
+      <AnimatePresence mode="popLayout">
         {items.map((item) => (
           <DraggableItem key={item.id} {...item} />
         ))}

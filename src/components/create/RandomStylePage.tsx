@@ -48,48 +48,49 @@ export default function RandomStylePage() {
     <div className="min-h-screen bg-gradient-to-br from-purple-50 to-pink-50">
       {/* Header */}
       <div className="fixed top-0 left-0 right-0 bg-white/80 backdrop-blur-md z-50 border-b border-gray-100">
-        <div className="max-w-7xl mx-auto px-4 py-4">
+        <div className="w-full px-3 py-3 sm:px-4 sm:py-4 sm:max-w-2xl md:max-w-4xl lg:max-w-7xl mx-auto">
           <div className="flex items-center justify-between">
-            <div className="flex items-center gap-4">
+            <div className="flex items-center gap-2 sm:gap-4">
               <button 
                 onClick={() => navigate(-1)}
-                className="p-2 hover:bg-gray-100 rounded-full transition-colors"
+                className="p-2 hover:bg-gray-100 active:bg-gray-200 rounded-full transition-colors touch-manipulation"
               >
-                <ArrowLeft className="w-6 h-6" />
+                <ArrowLeft className="w-5 h-5 sm:w-6 sm:h-6" />
               </button>
-              <h1 className="text-2xl font-bold">Style 5 Random Items</h1>
+              <h1 className="text-lg sm:text-2xl font-bold line-clamp-1">Style 5 Random Items</h1>
             </div>
 
-            <div className="flex items-center gap-3">
+            <div className="flex items-center gap-2 sm:gap-3">
               <motion.button
                 whileHover={{ scale: 1.02 }}
                 whileTap={{ scale: 0.95 }}
                 onClick={regenerateOutfit}
                 disabled={isGenerating}
-                className="flex items-center gap-2 px-6 py-3 bg-gradient-to-r from-purple-600 to-pink-600 text-white rounded-full disabled:opacity-50"
+                className="flex items-center gap-1 sm:gap-2 px-3 sm:px-6 py-2 sm:py-3 bg-gradient-to-r from-purple-600 to-pink-600 text-white text-sm sm:text-base rounded-full disabled:opacity-50 touch-manipulation"
               >
                 {isGenerating ? (
-                  <Sparkles className="w-5 h-5 animate-spin" />
+                  <Sparkles className="w-4 h-4 sm:w-5 sm:h-5 animate-spin" />
                 ) : (
-                  <Shuffle className="w-5 h-5" />
+                  <Shuffle className="w-4 h-4 sm:w-5 sm:h-5" />
                 )}
-                Regenerate
+                <span className="hidden xs:inline">Regenerate</span>
+                <span className="xs:hidden">New</span>
               </motion.button>
 
               <motion.button
                 whileHover={{ scale: 1.02 }}
                 whileTap={{ scale: 0.95 }}
-                className="p-3 bg-white rounded-full shadow-sm hover:shadow-md transition-all"
+                className="p-2 sm:p-3 bg-white rounded-full shadow-sm hover:shadow-md active:shadow-sm transition-all touch-manipulation"
               >
-                <Share2 className="w-5 h-5 text-gray-600" />
+                <Share2 className="w-4 h-4 sm:w-5 sm:h-5 text-gray-600" />
               </motion.button>
 
               <motion.button
                 whileHover={{ scale: 1.02 }}
                 whileTap={{ scale: 0.95 }}
-                className="p-3 bg-white rounded-full shadow-sm hover:shadow-md transition-all"
+                className="p-2 sm:p-3 bg-white rounded-full shadow-sm hover:shadow-md active:shadow-sm transition-all touch-manipulation"
               >
-                <Save className="w-5 h-5 text-gray-600" />
+                <Save className="w-4 h-4 sm:w-5 sm:h-5 text-gray-600" />
               </motion.button>
             </div>
           </div>
@@ -97,36 +98,40 @@ export default function RandomStylePage() {
       </div>
 
       {/* Main Content */}
-      <div className="pt-24 px-4 pb-8">
-        <div className="max-w-7xl mx-auto">
-          <div className="grid grid-cols-1 lg:grid-cols-3 gap-8">
+      <div className="pt-16 sm:pt-24 px-3 sm:px-4 pb-6 sm:pb-8">
+        <div className="w-full max-w-2xl md:max-w-4xl lg:max-w-7xl mx-auto">
+          <div className="grid grid-cols-1 lg:grid-cols-3 gap-4 sm:gap-8">
             {/* Canvas Area */}
             <div className="lg:col-span-2">
-              <div className="bg-white rounded-2xl shadow-lg p-6 aspect-square relative">
-                <AnimatePresence>
+              <div className="bg-white rounded-lg sm:rounded-2xl shadow-md sm:shadow-lg p-3 sm:p-6 aspect-square relative touch-none">
+                <AnimatePresence mode="popLayout">
                   {items.map((item, index) => (
                     <motion.div
                       key={item.id}
                       drag
                       dragMomentum={false}
+                      dragElastic={0.1}
+                      dragTransition={{ bounceStiffness: 600, bounceDamping: 20 }}
                       initial={{ opacity: 0, scale: 0.8 }}
                       animate={{ 
                         opacity: 1, 
                         scale: 1,
-                        x: (index % 3) * 150,
-                        y: Math.floor(index / 3) * 150
+                        x: (index % 3) * (window.innerWidth < 640 ? 100 : 150),
+                        y: Math.floor(index / 3) * (window.innerWidth < 640 ? 100 : 150)
                       }}
                       exit={{ opacity: 0, scale: 0.8 }}
-                      className="absolute cursor-move"
-                      whileHover={{ scale: 1.05, zIndex: 10 }}
-                      whileDrag={{ scale: 1.1, zIndex: 20 }}
+                      transition={{ type: "spring", damping: 25, stiffness: 300 }}
+                      className="absolute cursor-move touch-none select-none"
+                      whileHover={{ scale: 1.02, zIndex: 10 }}
+                      whileDrag={{ scale: 1.05, zIndex: 20 }}
                     >
-                      <div className="w-40 h-40 rounded-xl overflow-hidden shadow-lg">
+                      <div className="w-28 h-28 xs:w-32 xs:h-32 sm:w-40 sm:h-40 rounded-lg sm:rounded-xl overflow-hidden shadow-md sm:shadow-lg transition-shadow group">
                         <img
                           src={item.image}
                           alt={item.name}
-                          className="w-full h-full object-cover"
+                          className="w-full h-full object-cover transform group-hover:scale-105 transition-transform"
                           draggable={false}
+                          loading="eager"
                         />
                       </div>
                     </motion.div>
@@ -136,20 +141,20 @@ export default function RandomStylePage() {
             </div>
 
             {/* Tips Panel */}
-            <div className="bg-white rounded-2xl shadow-lg p-6">
-              <h2 className="text-xl font-bold mb-4">Style Tips</h2>
-              <div className="space-y-4">
-                <div className="p-4 bg-purple-50 rounded-xl">
-                  <h3 className="font-medium mb-2">Drag & Drop</h3>
-                  <p className="text-sm text-gray-600">
+            <div className="bg-white rounded-lg sm:rounded-2xl shadow-md sm:shadow-lg p-4 sm:p-6">
+              <h2 className="text-lg sm:text-xl font-bold mb-3 sm:mb-4">Style Tips</h2>
+              <div className="space-y-3 sm:space-y-4">
+                <div className="p-3 sm:p-4 bg-purple-50 rounded-lg sm:rounded-xl">
+                  <h3 className="text-sm sm:text-base font-medium mb-1.5 sm:mb-2">Drag & Drop</h3>
+                  <p className="text-xs sm:text-sm text-gray-600 leading-relaxed">
                     Drag items around to create your perfect outfit combination. 
                     Try different arrangements to find the best look.
                   </p>
                 </div>
 
-                <div className="p-4 bg-purple-50 rounded-xl">
-                  <h3 className="font-medium mb-2">Color Harmony</h3>
-                  <p className="text-sm text-gray-600">
+                <div className="p-3 sm:p-4 bg-purple-50 rounded-lg sm:rounded-xl">
+                  <h3 className="text-sm sm:text-base font-medium mb-1.5 sm:mb-2">Color Harmony</h3>
+                  <p className="text-xs sm:text-sm text-gray-600 leading-relaxed">
                     Group complementary colors together for a cohesive look.
                     Mix and match to create unique combinations.
                   </p>
@@ -157,9 +162,10 @@ export default function RandomStylePage() {
 
                 <motion.button
                   whileHover={{ scale: 1.02 }}
-                  className="w-full py-3 bg-gradient-to-r from-purple-600 to-pink-600 text-white rounded-xl flex items-center justify-center gap-2"
+                  whileTap={{ scale: 0.98 }}
+                  className="w-full py-2.5 sm:py-3 bg-gradient-to-r from-purple-600 to-pink-600 text-white text-sm sm:text-base rounded-lg sm:rounded-xl flex items-center justify-center gap-1.5 sm:gap-2 touch-manipulation"
                 >
-                  <Save className="w-4 h-4" />
+                  <Save className="w-3.5 h-3.5 sm:w-4 sm:h-4" />
                   Save to Wardrobe
                 </motion.button>
               </div>
