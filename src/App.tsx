@@ -6,6 +6,7 @@ import PersonalityQuiz from './components/PersonalityQuiz';
 import ProductDetail from './components/ProductDetail';
 import WardrobePage from './components/wardrobe/WardrobePage';
 import CreatePage from './components/create/CreatePage';
+import SwipePage from './components/create/SwipePage';
 import AddItemPage from './components/wardrobe/AddItemPage';
 import ShopPage from './components/shop/ShopPage';
 import FloatingAssistant from './components/ai/FloatingAssistant';
@@ -52,6 +53,7 @@ function AppContent() {
             <Route path="/product/:id" element={<Layout><ProductDetail /></Layout>} />
             <Route path="/wardrobe" element={<Layout><WardrobePage /></Layout>} />
             <Route path="/create" element={<CreatePage />} />
+            <Route path="/create/swipe" element={<SwipePage />} />
             <Route path="/add-item" element={<AddItemPage />} />
             <Route path="/shop" element={<ShopPage />} />
             <Route path="/in-store-shopping" element={<InStoreShoppingPage />} />
