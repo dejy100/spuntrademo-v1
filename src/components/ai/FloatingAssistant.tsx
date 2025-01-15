@@ -2,8 +2,16 @@ import React, { useState } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { Sparkles, X } from 'lucide-react';
 import AIAssistant from '../AIAssistant';
+import { useLocation } from 'react-router-dom';
 
 export default function FloatingAssistant() {
+  const location = useLocation();
+
+  // Hide on create page
+  if (location.pathname === '/create') {
+    return null;
+  }
+
   const [isOpen, setIsOpen] = useState(false);
 
   return (

@@ -2,8 +2,16 @@ import React, { useState } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { Gamepad2 } from 'lucide-react';
 import StyleArenaModal from './StyleArenaModal';
+import { useLocation } from 'react-router-dom';
 
 export default function StyleArenaButton() {
+  const location = useLocation();
+
+  // Hide on create page
+  if (location.pathname === '/create') {
+    return null;
+  }
+
   const [showModal, setShowModal] = useState(false);
 
   return (
