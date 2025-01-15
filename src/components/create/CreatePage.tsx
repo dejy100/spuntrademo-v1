@@ -49,9 +49,9 @@ export default function CreatePage() {
           <p className="text-gray-500 mb-20">Start by selecting items</p>
           
           <div className="mt-auto w-full">
-            <p className="text-center text-gray-500 mb-4">Looking for new ideas?</p>
-            <button className="w-full bg-[#FF7043] text-white rounded-full py-4 px-6 flex items-center justify-center gap-2">
-              <span className="text-xl">🎲</span>
+            <p className="text-center text-gray-500 mb-3">Looking for new ideas?</p>
+            <button className="mx-auto px-8 py-3 bg-[#FF7043] text-white rounded-full flex items-center justify-center gap-2 text-sm shadow-md">
+              <span className="text-lg">🎲</span>
               Style 5 random items
             </button>
           </div>
