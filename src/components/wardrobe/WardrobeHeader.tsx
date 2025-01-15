@@ -1,9 +1,13 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { motion } from 'framer-motion';
 import SearchButton from './header/SearchButton';
 import StyleMatchButton from './header/StyleMatchButton';
+import StyleMatchModal from './analysis/StyleMatchModal';
 
 export default function WardrobeHeader() {
+  const [showStyleMatch, setShowStyleMatch] = useState(false);
+  const [showSearch, setShowSearch] = useState(false);
+
   return (
     <div className="flex items-center justify-between mb-6 md:mb-8">
       <motion.h1
@@ -15,9 +19,13 @@ export default function WardrobeHeader() {
       </motion.h1>
 
       <div className="flex items-center gap-2 md:gap-3">
-        <StyleMatchButton />
-        <SearchButton />
+        <StyleMatchButton onClick={() => setShowStyleMatch(true)} />
+        <SearchButton onClick={() => setShowSearch(true)} />
       </div>
+
+      {showStyleMatch && (
+        <StyleMatchModal onClose={() => setShowStyleMatch(false)} />
+      )}
     </div>
   );
 }
