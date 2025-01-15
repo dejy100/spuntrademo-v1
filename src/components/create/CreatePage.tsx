@@ -1,5 +1,5 @@
 import React from 'react';
-import { X, Shirt, Wand2, Grid, ImageIcon, Pencil, Heart, CircleDot } from 'lucide-react';
+import { X, Grid, CircleDot, Pencil, Heart, Image } from 'lucide-react';
 import { useNavigate } from 'react-router-dom';
 import { motion } from 'framer-motion';
 
@@ -34,7 +34,7 @@ export default function CreatePage() {
             <button 
               className="w-11 h-11 bg-[#666666] rounded-full flex items-center justify-center"
             >
-              <Shirt className="w-5 h-5 text-white" strokeWidth={2} />
+              <Grid className="w-5 h-5 text-white" strokeWidth={2} />
             </button>
             <span className="text-sm text-white mt-1">Items</span>
           </div>
@@ -140,7 +140,7 @@ export default function CreatePage() {
           <div className="absolute bottom-12 w-full flex flex-col items-center">
             <p className="text-gray-500 mb-0.5 w-[200px] text-center">Need some inspiration?</p>
             <button className="w-[200px] px-6 py-2.5 bg-[#FF7043] text-white rounded-full flex items-center justify-center gap-1.5 text-xs shadow-md">
-              <Wand2 className="w-3.5 h-3.5" />
+              <Pencil className="w-3.5 h-3.5" />
               Get creative ideas
             </button>
           </div>
@@ -149,11 +149,11 @@ export default function CreatePage() {
 
       {/* Clean Modern Navigation */}
       <div className="fixed bottom-0 inset-x-0">
-        <div className="bg-black py-3">
+        <div className="bg-black/90 backdrop-blur-md py-3 border-t border-white/5">
           <div className="max-w-md mx-auto flex justify-between px-8">
             <button className="flex flex-col items-center justify-center w-16 opacity-60 hover:opacity-100 transition-opacity">
               <Grid className="w-5 h-5 text-white" strokeWidth={1.5} />
-              <span className="text-[10px] text-white mt-1.5">My Items</span>
+              <span className="text-[10px] text-white mt-1.5">My Outfits</span>
             </button>
 
             <button className="flex flex-col items-center justify-center w-16 opacity-60 hover:opacity-100 transition-opacity">
@@ -175,8 +175,8 @@ export default function CreatePage() {
             </button>
 
             <button className="flex flex-col items-center justify-center w-16 opacity-60 hover:opacity-100 transition-opacity">
-              <ImageIcon className="w-5 h-5 text-white" strokeWidth={1.5} />
-              <span className="text-[10px] text-white mt-1.5">Gallery</span>
+              <Image className="w-5 h-5 text-white" strokeWidth={1.5} />
+              <span className="text-[10px] text-white mt-1.5">Wallpaper</span>
             </button>
           </div>
         </div>
