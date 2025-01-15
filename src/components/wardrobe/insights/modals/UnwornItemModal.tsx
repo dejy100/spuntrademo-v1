@@ -30,20 +30,20 @@ export default function UnwornItemModal({ insight, onClose }: UnwornItemModalPro
         initial={{ scale: 0.9 }}
         animate={{ scale: 1 }}
         exit={{ scale: 0.9 }}
-        className="bg-white rounded-2xl p-6 max-w-lg w-full mx-4"
+        className="bg-white rounded-xl md:rounded-2xl p-4 md:p-6 max-w-lg w-full mx-3 md:mx-4"
         onClick={e => e.stopPropagation()}
       >
-        <div className="flex items-center justify-between mb-6">
-          <h2 className="text-xl font-semibold">Rediscover Your Style</h2>
+        <div className="flex items-center justify-between mb-4 md:mb-6">
+          <h2 className="text-lg md:text-xl font-semibold">Rediscover Your Style</h2>
           <button
             onClick={onClose}
-            className="p-2 hover:bg-gray-100 rounded-full transition-colors"
+            className="p-1.5 md:p-2 hover:bg-gray-100 rounded-full transition-colors"
           >
-            <X className="w-5 h-5" />
+            <X className="w-4 h-4 md:w-5 md:h-5" />
           </button>
         </div>
 
-        <div className="aspect-video rounded-xl overflow-hidden mb-6 bg-gray-100">
+        <div className="aspect-video rounded-lg md:rounded-xl overflow-hidden mb-4 md:mb-6 bg-gray-100">
           <img
             src="https://images.unsplash.com/photo-1591047139829-d91aecb6caea"
             alt="Item"
@@ -51,59 +51,97 @@ export default function UnwornItemModal({ insight, onClose }: UnwornItemModalPro
           />
         </div>
 
-        <div className="space-y-6">
-          <div>
-            <h3 className="font-medium mb-2">What would you like to do with this item?</h3>
-            <div className="grid grid-cols-2 gap-4">
-              <motion.button
-                whileHover={{ scale: 1.02 }}
-                onClick={handleCreateOutfit}
-                className="p-4 bg-purple-50 rounded-xl text-left hover:bg-purple-100 transition-colors"
-              >
-                <Sparkles className="w-5 h-5 text-purple-600 mb-2" />
-                <p className="font-medium mb-1">Create New Outfit</p>
-                <p className="text-sm text-gray-600">Get AI suggestions for styling</p>
-              </motion.button>
-
-              <motion.button
-                whileHover={{ scale: 1.02 }}
-                className="p-4 bg-purple-50 rounded-xl text-left hover:bg-purple-100 transition-colors"
-              >
-                <Calendar className="w-5 h-5 text-purple-600 mb-2" />
-                <p className="font-medium mb-1">Plan to Wear</p>
-                <p className="text-sm text-gray-600">Schedule for a future date</p>
-              </motion.button>
-
-              <motion.button
-                whileHover={{ scale: 1.02 }}
-                className="p-4 bg-purple-50 rounded-xl text-left hover:bg-purple-100 transition-colors"
-              >
-                <ShoppingBag className="w-5 h-5 text-purple-600 mb-2" />
-                <p className="font-medium mb-1">Shop Complements</p>
-                <p className="text-sm text-gray-600">Find items that match</p>
-              </motion.button>
-
-              <motion.button
-                whileHover={{ scale: 1.02 }}
-                className="p-4 bg-purple-50 rounded-xl text-left hover:bg-purple-100 transition-colors"
-              >
-                <Heart className="w-5 h-5 text-purple-600 mb-2" />
-                <p className="font-medium mb-1">Save for Later</p>
-                <p className="text-sm text-gray-600">Add to favorites</p>
-              </motion.button>
+        <div className="grid grid-cols-1 sm:grid-cols-2 gap-3 md:gap-4">
+          <button
+            onClick={() => setSelectedAction('outfit')}
+            className={`flex items-center gap-2 md:gap-3 p-3 md:p-4 rounded-lg md:rounded-xl border-2 transition-colors ${
+              selectedAction === 'outfit'
+                ? 'border-purple-600 bg-purple-50'
+                : 'border-gray-100 hover:border-purple-100'
+            }`}
+          >
+            <div className="p-2 bg-white rounded-lg">
+              <Calendar className="w-4 h-4 md:w-5 md:h-5 text-purple-600" />
             </div>
-          </div>
+            <div className="flex-1 text-left">
+              <h3 className="text-sm md:text-base font-medium mb-0.5 md:mb-1">Create Outfit</h3>
+              <p className="text-xs md:text-sm text-gray-600">Mix and match with your wardrobe</p>
+            </div>
+            {selectedAction === 'outfit' && (
+              <ArrowRight className="w-4 h-4 md:w-5 md:h-5 text-purple-600" />
+            )}
+          </button>
 
-          <div className="flex justify-end">
-            <motion.button
-              whileHover={{ scale: 1.02 }}
-              onClick={onClose}
-              className="px-6 py-3 bg-purple-600 text-white rounded-xl flex items-center gap-2"
-            >
-              Continue
-              <ArrowRight className="w-4 h-4" />
-            </motion.button>
-          </div>
+          <button
+            onClick={() => setSelectedAction('plan')}
+            className={`flex items-center gap-2 md:gap-3 p-3 md:p-4 rounded-lg md:rounded-xl border-2 transition-colors ${
+              selectedAction === 'plan'
+                ? 'border-purple-600 bg-purple-50'
+                : 'border-gray-100 hover:border-purple-100'
+            }`}
+          >
+            <div className="p-2 bg-white rounded-lg">
+              <Calendar className="w-4 h-4 md:w-5 md:h-5 text-purple-600" />
+            </div>
+            <div className="flex-1 text-left">
+              <h3 className="text-sm md:text-base font-medium mb-0.5 md:mb-1">Plan to Wear</h3>
+              <p className="text-xs md:text-sm text-gray-600">Schedule for a future date</p>
+            </div>
+            {selectedAction === 'plan' && (
+              <ArrowRight className="w-4 h-4 md:w-5 md:h-5 text-purple-600" />
+            )}
+          </button>
+
+          <button
+            onClick={() => setSelectedAction('shop')}
+            className={`flex items-center gap-2 md:gap-3 p-3 md:p-4 rounded-lg md:rounded-xl border-2 transition-colors ${
+              selectedAction === 'shop'
+                ? 'border-purple-600 bg-purple-50'
+                : 'border-gray-100 hover:border-purple-100'
+            }`}
+          >
+            <div className="p-2 bg-white rounded-lg">
+              <ShoppingBag className="w-4 h-4 md:w-5 md:h-5 text-purple-600" />
+            </div>
+            <div className="flex-1 text-left">
+              <h3 className="text-sm md:text-base font-medium mb-0.5 md:mb-1">Shop Complements</h3>
+              <p className="text-xs md:text-sm text-gray-600">Find items that match</p>
+            </div>
+            {selectedAction === 'shop' && (
+              <ArrowRight className="w-4 h-4 md:w-5 md:h-5 text-purple-600" />
+            )}
+          </button>
+
+          <button
+            onClick={() => setSelectedAction('save')}
+            className={`flex items-center gap-2 md:gap-3 p-3 md:p-4 rounded-lg md:rounded-xl border-2 transition-colors ${
+              selectedAction === 'save'
+                ? 'border-purple-600 bg-purple-50'
+                : 'border-gray-100 hover:border-purple-100'
+            }`}
+          >
+            <div className="p-2 bg-white rounded-lg">
+              <Heart className="w-4 h-4 md:w-5 md:h-5 text-purple-600" />
+            </div>
+            <div className="flex-1 text-left">
+              <h3 className="text-sm md:text-base font-medium mb-0.5 md:mb-1">Save for Later</h3>
+              <p className="text-xs md:text-sm text-gray-600">Add to favorites</p>
+            </div>
+            {selectedAction === 'save' && (
+              <ArrowRight className="w-4 h-4 md:w-5 md:h-5 text-purple-600" />
+            )}
+          </button>
+        </div>
+
+        <div className="flex justify-end mt-4 md:mt-6">
+          <motion.button
+            whileHover={{ scale: 1.02 }}
+            onClick={onClose}
+            className="px-6 py-3 bg-purple-600 text-white rounded-xl flex items-center gap-2"
+          >
+            Continue
+            <ArrowRight className="w-4 h-4" />
+          </motion.button>
         </div>
       </motion.div>
     </motion.div>

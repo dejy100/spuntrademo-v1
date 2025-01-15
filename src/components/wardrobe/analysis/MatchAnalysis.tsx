@@ -27,8 +27,8 @@ export default function MatchAnalysis({ imageUrl, onCreateOutfit, onAddToWardrob
   );
 
   return (
-    <div className="space-y-6">
-      <div className="aspect-video rounded-xl overflow-hidden bg-gray-100">
+    <div className="space-y-4 md:space-y-6">
+      <div className="aspect-video rounded-lg md:rounded-xl overflow-hidden bg-gray-100">
         <img
           src={imageUrl}
           alt="Analyzed item"
@@ -36,16 +36,16 @@ export default function MatchAnalysis({ imageUrl, onCreateOutfit, onAddToWardrob
         />
       </div>
 
-      <div className="bg-gradient-to-r from-purple-50 to-pink-50 rounded-xl p-4">
-        <div className="flex items-center justify-between mb-4">
-          <h3 className="font-medium">Style Match Score</h3>
-          <span className="text-2xl font-bold text-purple-600">{overallScore}%</span>
+      <div className="bg-gradient-to-r from-purple-50 to-pink-50 rounded-lg md:rounded-xl p-3 md:p-4">
+        <div className="flex items-center justify-between mb-3 md:mb-4">
+          <h3 className="text-sm md:text-base font-medium">Style Match Score</h3>
+          <span className="text-xl md:text-2xl font-bold text-purple-600">{overallScore}%</span>
         </div>
 
-        <div className="space-y-4">
+        <div className="space-y-3 md:space-y-4">
           {categories.map((category) => (
             <div key={category.name}>
-              <div className="flex justify-between text-sm mb-1">
+              <div className="flex justify-between text-xs md:text-sm mb-1">
                 <span>{category.name}</span>
                 <span className="font-medium">{category.score}%</span>
               </div>
@@ -61,22 +61,23 @@ export default function MatchAnalysis({ imageUrl, onCreateOutfit, onAddToWardrob
         </div>
       </div>
 
-      <div className="flex gap-4">
+      <div className="flex gap-2 md:gap-3">
         <motion.button
           whileHover={{ scale: 1.02 }}
+          whileTap={{ scale: 0.98 }}
           onClick={onCreateOutfit}
-          className="flex-1 py-3 bg-purple-600 text-white rounded-xl flex items-center justify-center gap-2"
+          className="flex-1 flex items-center justify-center gap-1.5 md:gap-2 bg-purple-600 hover:bg-purple-700 text-white py-2 md:py-2.5 px-3 md:px-4 rounded-lg md:rounded-xl text-xs md:text-sm font-medium transition-colors"
         >
-          <PenTool className="w-4 h-4" />
+          <PenTool className="w-3.5 h-3.5 md:w-4 md:h-4" />
           Create Outfit
         </motion.button>
-
         <motion.button
           whileHover={{ scale: 1.02 }}
+          whileTap={{ scale: 0.98 }}
           onClick={onAddToWardrobe}
-          className="flex-1 py-3 border-2 border-purple-600 text-purple-600 rounded-xl flex items-center justify-center gap-2"
+          className="flex-1 flex items-center justify-center gap-1.5 md:gap-2 bg-white hover:bg-gray-50 border border-gray-200 py-2 md:py-2.5 px-3 md:px-4 rounded-lg md:rounded-xl text-xs md:text-sm font-medium transition-colors"
         >
-          <Plus className="w-4 h-4" />
+          <Plus className="w-3.5 h-3.5 md:w-4 md:h-4" />
           Add to Wardrobe
         </motion.button>
       </div>
