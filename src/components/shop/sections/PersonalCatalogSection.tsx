@@ -16,35 +16,38 @@ const brands = [
 export default function PersonalCatalogSection() {
   return (
     <section>
-      <div className="flex items-center justify-between mb-6">
+      <div className="flex items-center justify-between mb-4 md:mb-6">
         <div>
-          <h2 className="text-2xl font-semibold mb-2">Compare Prices</h2>
-          <p className="text-gray-600">Find the best deals across multiple luxury retailers</p>
+          <h2 className="text-lg md:text-xl font-semibold mb-1">Compare Prices</h2>
+          <p className="text-sm md:text-base text-gray-600">Find the best deals across retailers</p>
         </div>
-        <button className="text-purple-600 hover:text-purple-700 font-medium flex items-center gap-1">
-          View all
-          <ChevronRight className="w-4 h-4" />
+        <button className="flex items-center text-sm md:text-base text-purple-600 hover:text-purple-700">
+          View All
+          <ChevronRight className="w-4 h-4 md:w-5 md:h-5 ml-1" />
         </button>
       </div>
 
-      <div className="relative">
-        <div className="grid grid-cols-2 md:grid-cols-4 gap-4 overflow-y-auto max-h-[400px] scrollbar-hide">
-          {brands.map((brand) => (
-            <motion.div
-              key={brand.id}
-              whileHover={{ scale: 1.02 }}
-              className="bg-white rounded-2xl shadow-md overflow-hidden p-6 hover:shadow-lg transition-all"
-            >
+      <div className="grid grid-cols-2 md:grid-cols-4 gap-3 md:gap-4">
+        {brands.map((brand) => (
+          <motion.div
+            key={brand.id}
+            whileHover={{ scale: 1.02 }}
+            whileTap={{ scale: 0.98 }}
+            className="bg-white rounded-lg shadow-sm hover:shadow-md transition-all p-3 md:p-4"
+          >
+            <div className="aspect-square w-full mb-2 md:mb-3">
               <img
                 src={brand.logo}
                 alt={brand.name}
-                className="w-full aspect-square object-cover rounded-xl mb-4"
+                className="w-full h-full object-cover rounded-md"
+                loading="lazy"
               />
-              <p className="font-medium text-center">{brand.name}</p>
-            </motion.div>
-          ))}
-        </div>
-        <div className="absolute inset-x-0 bottom-0 h-20 bg-gradient-to-t from-purple-50 to-transparent pointer-events-none" />
+            </div>
+            <p className="text-sm md:text-base font-medium text-center truncate">
+              {brand.name}
+            </p>
+          </motion.div>
+        ))}
       </div>
     </section>
   );

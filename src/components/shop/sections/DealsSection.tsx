@@ -40,40 +40,45 @@ const deals = [
 export default function DealsSection() {
   return (
     <section>
-      <div className="flex items-center justify-between mb-6">
+      <div className="flex items-center justify-between mb-4 md:mb-6">
         <div>
-          <h2 className="text-2xl font-semibold mb-2">Exclusive Deals</h2>
-          <p className="text-gray-600">Limited time offers from premium brands</p>
+          <h2 className="text-lg md:text-xl font-semibold mb-1">Exclusive Deals</h2>
+          <p className="text-sm md:text-base text-gray-600">Limited time offers from premium brands</p>
         </div>
-        <button className="text-purple-600 hover:text-purple-700 font-medium flex items-center gap-1">
-          View all
-          <ChevronRight className="w-4 h-4" />
+        <button className="flex items-center text-sm md:text-base text-purple-600 hover:text-purple-700">
+          View All
+          <ChevronRight className="w-4 h-4 md:w-5 md:h-5 ml-1" />
         </button>
       </div>
 
-      <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+      <div className="grid grid-cols-1 md:grid-cols-2 gap-3 md:gap-4">
         {deals.map((deal) => (
           <motion.div
             key={deal.id}
-            whileHover={{ scale: 1.02 }}
-            className="bg-white rounded-2xl shadow-md p-6 hover:shadow-lg transition-all"
+            whileHover={{ scale: 1.01 }}
+            whileTap={{ scale: 0.99 }}
+            className="bg-white rounded-lg shadow-sm hover:shadow-md transition-all p-4"
           >
-            <div className="flex items-start justify-between mb-4">
+            <div className="flex items-start justify-between mb-3">
               <div>
-                <h3 className="text-xl font-semibold mb-1">{deal.store}</h3>
-                <p className="text-gray-600">{deal.description}</p>
+                <h3 className="text-base md:text-lg font-medium mb-1">{deal.store}</h3>
+                <p className="text-sm md:text-base text-gray-600">{deal.description}</p>
               </div>
-              <div className="flex items-center gap-2">
-                <Tag className="w-5 h-5 text-purple-600" />
-                <span className="text-lg font-bold text-purple-600">{deal.discount}</span>
-              </div>
+              <Tag className="w-4 h-4 md:w-5 md:h-5 text-purple-600 flex-shrink-0" />
             </div>
-            
-            <div className="flex items-center justify-between">
-              <div className="bg-purple-50 px-4 py-2 rounded-lg">
-                <code className="font-mono text-purple-600 font-medium">{deal.code}</code>
+
+            <div className="flex flex-col md:flex-row md:items-center justify-between gap-2 md:gap-4">
+              <div className="flex items-center gap-2">
+                <span className="text-sm md:text-base font-semibold text-purple-600">
+                  {deal.discount}
+                </span>
+                <span className="text-xs md:text-sm px-2 py-1 bg-purple-100 text-purple-600 rounded-full">
+                  {deal.code}
+                </span>
               </div>
-              <span className="text-sm text-gray-500">Expires in {deal.expiresIn}</span>
+              <span className="text-xs md:text-sm text-gray-500">
+                Expires in {deal.expiresIn}
+              </span>
             </div>
           </motion.div>
         ))}
