@@ -6,6 +6,11 @@ const MobileNavigation = () => {
   const navigate = useNavigate();
   const location = useLocation();
 
+  // Hide navigation on create page
+  if (location.pathname === '/create') {
+    return null;
+  }
+
   const navItems = [
     { icon: Home, label: 'Home', path: '/' },
     { icon: Shirt, label: 'Wardrobe', path: '/wardrobe' },
