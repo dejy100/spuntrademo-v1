@@ -42,6 +42,48 @@ export default function CreatePage() {
 
         {/* Content */}
         <div className="flex flex-col items-center justify-center h-full px-6 pt-16 pb-8">
+          <motion.div
+            className="w-24 h-24 mb-6 relative"
+            initial={{ y: 0, rotate: 0 }}
+            animate={{ 
+              y: [-5, 5, -5],
+              rotate: [-5, 5, -5]
+            }}
+            transition={{
+              y: {
+                repeat: Infinity,
+                duration: 3,
+                ease: "easeInOut"
+              },
+              rotate: {
+                repeat: Infinity,
+                duration: 4,
+                ease: "easeInOut"
+              }
+            }}
+          >
+            <motion.div 
+              className="w-full h-full bg-white rounded-full shadow-lg flex items-center justify-center"
+              whileHover={{ scale: 1.05 }}
+              whileTap={{ scale: 0.95 }}
+            >
+              <svg
+                className="w-16 h-16"
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                strokeWidth="1.5"
+                strokeLinecap="round"
+                strokeLinejoin="round"
+              >
+                <path d="M3 12h2l4-8h6l4 8h2" />
+                <path d="M12 12v9" />
+                <path d="M8 16h8" />
+              </svg>
+            </motion.div>
+            <div className="absolute inset-0 bg-gradient-to-b from-white/20 to-transparent rounded-full" />
+          </motion.div>
+
           <h1 className="text-2xl font-semibold mb-2">Create your outfit</h1>
           <p className="text-gray-500 mb-20">Start by selecting items</p>
           
