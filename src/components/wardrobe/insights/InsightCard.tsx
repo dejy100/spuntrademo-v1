@@ -29,18 +29,18 @@ export default function InsightCard({ insight }: InsightCardProps) {
       <motion.div
         whileHover={{ scale: 1.02 }}
         onClick={handleClick}
-        className="bg-gradient-to-r from-purple-50 to-pink-50 rounded-xl p-4 cursor-pointer group"
+        className="bg-gradient-to-r from-purple-50 to-pink-50 rounded-lg md:rounded-xl p-3 md:p-4 cursor-pointer group"
       >
-        <div className="flex items-start gap-3">
-          <div className="p-2 bg-white rounded-lg">
-            <Icon className="w-5 h-5 text-purple-600" />
+        <div className="flex items-start gap-2 md:gap-3">
+          <div className="p-1.5 md:p-2 bg-white rounded-lg">
+            <Icon className="w-4 h-4 md:w-5 md:h-5 text-purple-600" />
           </div>
           <div className="flex-1">
-            <h3 className="font-medium mb-1">{insight.title}</h3>
-            <p className="text-sm text-gray-600 mb-3">{insight.description}</p>
-            <div className="flex items-center gap-2 text-purple-600 text-sm font-medium opacity-0 group-hover:opacity-100 transition-opacity">
+            <h3 className="text-sm md:text-base font-medium mb-0.5 md:mb-1">{insight.title}</h3>
+            <p className="text-xs md:text-sm text-gray-600 mb-2 md:mb-3">{insight.description}</p>
+            <div className="flex items-center gap-1.5 md:gap-2 text-purple-600 text-xs md:text-sm font-medium opacity-0 group-hover:opacity-100 transition-opacity">
               Take action
-              <ArrowRight className="w-4 h-4" />
+              <ArrowRight className="w-3 h-3 md:w-4 md:h-4" />
             </div>
           </div>
         </div>

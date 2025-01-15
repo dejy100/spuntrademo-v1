@@ -11,17 +11,17 @@ export default function WardrobeInsights() {
     <motion.div
       initial={{ opacity: 0, y: 20 }}
       animate={{ opacity: 1, y: 0 }}
-      className="bg-white rounded-2xl shadow-md p-6 mb-8"
+      className="bg-white rounded-xl md:rounded-2xl shadow-md p-4 md:p-6 mb-6 md:mb-8"
     >
-      <div className="flex items-center justify-between mb-6">
+      <div className="flex items-center justify-between mb-4 md:mb-6">
         <div>
-          <h2 className="text-xl font-semibold mb-1">Wardrobe Insights</h2>
-          <p className="text-sm text-gray-600">Keep your wardrobe fresh and organized</p>
+          <h2 className="text-lg md:text-xl font-semibold mb-1">Wardrobe Insights</h2>
+          <p className="text-xs md:text-sm text-gray-600">Keep your wardrobe fresh and organized</p>
         </div>
-        <Bell className="w-5 h-5 text-purple-600" />
+        <Bell className="w-4 h-4 md:w-5 md:h-5 text-purple-600" />
       </div>
 
-      <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
+      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-3 md:gap-4">
         {insights.map((insight) => (
           <InsightCard key={insight.id} insight={insight} />
         ))}

@@ -16,15 +16,15 @@ export default function ItemCard() {
     <motion.div
       whileHover={{ scale: 1.02 }}
       whileTap={{ scale: 0.98 }}
-      className="aspect-square bg-white rounded-xl p-3 relative shadow-md hover:shadow-lg transition-shadow cursor-pointer group"
+      className="aspect-square bg-white rounded-lg md:rounded-xl p-2 md:p-3 relative shadow-md hover:shadow-lg transition-shadow cursor-pointer group"
     >
-      <div className="absolute top-3 right-3 bg-white/90 backdrop-blur-sm rounded-full p-1.5 z-10">
-        <Shirt className="w-4 h-4 text-gray-600" />
+      <div className="absolute top-2 md:top-3 right-2 md:right-3 bg-white/90 backdrop-blur-sm rounded-full p-1 md:p-1.5 z-10">
+        <Shirt className="w-3.5 h-3.5 md:w-4 md:h-4 text-gray-600" />
       </div>
-      <div className="absolute bottom-3 right-3 bg-white/90 backdrop-blur-sm rounded-full p-1.5 z-10">
-        <Headphones className="w-4 h-4 text-gray-600" />
+      <div className="absolute bottom-2 md:bottom-3 right-2 md:right-3 bg-white/90 backdrop-blur-sm rounded-full p-1 md:p-1.5 z-10">
+        <Headphones className="w-3.5 h-3.5 md:w-4 md:h-4 text-gray-600" />
       </div>
-      <div className="w-full h-full overflow-hidden rounded-lg">
+      <div className="w-full h-full overflow-hidden rounded-md md:rounded-lg">
         <img
           src={randomImage}
           alt="Wardrobe item"
