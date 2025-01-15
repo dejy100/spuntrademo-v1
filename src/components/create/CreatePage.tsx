@@ -1,8 +1,17 @@
 import React from 'react';
-import { X, Grid, CircleDot, Pencil, Heart, Image } from 'lucide-react';
+import { X, Shirt, Grid, CircleDot, Pencil, Heart, Image } from 'lucide-react';
 import { useNavigate } from 'react-router-dom';
 import { motion } from 'framer-motion';
 
+/**
+ * CreatePage component
+ * 
+ * This component renders the create page for users to create their outfits.
+ * It includes a navigation bar at the top, a white card with curved corners,
+ * a navigation bar at the bottom, and a clean modern design.
+ * 
+ * @returns {JSX.Element} The CreatePage component.
+ */
 export default function CreatePage() {
   const navigate = useNavigate();
   
@@ -34,7 +43,7 @@ export default function CreatePage() {
             <button 
               className="w-11 h-11 bg-[#666666] rounded-full flex items-center justify-center"
             >
-              <Grid className="w-5 h-5 text-white" strokeWidth={2} />
+              <Shirt className="w-5 h-5 text-white" strokeWidth={2} />
             </button>
             <span className="text-sm text-white mt-1">Items</span>
           </div>
