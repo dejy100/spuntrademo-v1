@@ -1,5 +1,5 @@
 import React from 'react';
-import { X, Shirt, Wand2, LayoutGrid, Image, MoveHorizontal, Palette } from 'lucide-react';
+import { X, Shirt, Wand2, LayoutGrid, Image, Brush, Layers, PenTool } from 'lucide-react';
 import { useNavigate } from 'react-router-dom';
 import { motion } from 'framer-motion';
 
@@ -147,32 +147,38 @@ export default function CreatePage() {
         </div>
       </motion.div>
 
-      {/* Bottom Navigation */}
-      <div className="fixed bottom-0 inset-x-0 bg-black py-4">
-        <div className="flex justify-between items-center px-8">
-          <div className="flex flex-col items-center">
-            <LayoutGrid className="w-5 h-5 text-white" />
-            <span className="text-[10px] text-white mt-1">My Outfits</span>
-          </div>
+      {/* Creative Mode Navigation */}
+      <div className="fixed bottom-0 inset-x-0">
+        <div className="bg-gradient-to-t from-black to-transparent pt-16 pb-6">
+          <div className="flex justify-center space-x-16 px-8">
+            <div className="flex flex-col items-center group cursor-pointer">
+              <Layers className="w-6 h-6 text-white" />
+              <span className="text-[10px] text-white mt-1.5">Outfits</span>
+            </div>
 
-          <div className="flex flex-col items-center">
-            <MoveHorizontal className="w-5 h-5 text-white" />
-            <span className="text-[10px] text-white mt-1">Swipe</span>
-          </div>
+            <div className="flex flex-col items-center space-y-6">
+              <div className="flex space-x-8">
+                <div className="flex flex-col items-center group cursor-pointer">
+                  <Brush className="w-6 h-6 text-white" />
+                  <span className="text-[10px] text-white mt-1.5">Swipe</span>
+                </div>
 
-          <div className="flex flex-col items-center">
-            <Palette className="w-5 h-5 text-[#FF7043]" />
-            <span className="text-[10px] text-[#FF7043] mt-1">Canvas</span>
-          </div>
+                <div className="flex flex-col items-center group cursor-pointer">
+                  <PenTool className="w-6 h-6 text-[#FF7043]" />
+                  <span className="text-[10px] text-[#FF7043] mt-1.5">Canvas</span>
+                </div>
 
-          <div className="flex flex-col items-center">
-            <Shirt className="w-5 h-5 text-white" />
-            <span className="text-[10px] text-white mt-1">Try On</span>
-          </div>
+                <div className="flex flex-col items-center group cursor-pointer">
+                  <Shirt className="w-6 h-6 text-white" />
+                  <span className="text-[10px] text-white mt-1.5">Try On</span>
+                </div>
+              </div>
+            </div>
 
-          <div className="flex flex-col items-center">
-            <Image className="w-5 h-5 text-white" />
-            <span className="text-[10px] text-white mt-1">Wallpapers</span>
+            <div className="flex flex-col items-center group cursor-pointer">
+              <Image className="w-6 h-6 text-white" />
+              <span className="text-[10px] text-white mt-1.5">Gallery</span>
+            </div>
           </div>
         </div>
       </div>
