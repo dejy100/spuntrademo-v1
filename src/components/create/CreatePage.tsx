@@ -6,9 +6,9 @@ export default function CreatePage() {
   const navigate = useNavigate();
   
   return (
-    <div className="h-screen bg-gradient-to-b from-white to-gray-50">
+    <div className="fixed inset-0 z-50 bg-gradient-to-b from-white to-gray-50">
       {/* Top Navigation */}
-      <div className="flex justify-between items-center p-5">
+      <div className="flex justify-between items-center p-5 bg-white/70">
         <button 
           onClick={() => navigate(-1)}
           className="w-11 h-11 bg-white rounded-full flex items-center justify-center shadow-lg hover:shadow-xl transition-shadow"
