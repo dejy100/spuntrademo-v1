@@ -13,22 +13,6 @@ export default function CreatePage() {
       animate={{ opacity: 1 }}
       exit={{ opacity: 0 }}
     >
-      {/* Top Navigation */}
-      <div className="absolute top-5 inset-x-0 flex justify-between items-center px-5 z-[60]">
-        <button 
-          onClick={() => navigate(-1)}
-          className="w-11 h-11 bg-white rounded-full flex items-center justify-center shadow-lg hover:shadow-xl transition-shadow"
-        >
-          <X className="w-5 h-5 text-gray-700" />
-        </button>
-
-        <button 
-          className="w-11 h-11 bg-white rounded-full flex items-center justify-center shadow-lg hover:shadow-xl transition-shadow"
-        >
-          <Shirt className="w-5 h-5 text-gray-700" strokeWidth={2.5} />
-        </button>
-      </div>
-
       {/* White Card with Curved Corners */}
       <motion.div 
         className="absolute top-[5vh] bottom-[12vh] inset-x-0 bg-white rounded-[1.25rem] shadow-lg"
@@ -37,6 +21,25 @@ export default function CreatePage() {
         exit={{ y: '100%' }}
         transition={{ type: "spring", stiffness: 300, damping: 30 }}
       >
+        {/* Top Navigation */}
+        <div className="absolute top-6 inset-x-0 flex justify-between items-center px-5">
+          <button 
+            onClick={() => navigate(-1)}
+            className="w-11 h-11 bg-[#E0E0E0] rounded-full flex items-center justify-center shadow-lg hover:shadow-xl transition-shadow"
+          >
+            <X className="w-5 h-5 text-gray-700" />
+          </button>
+
+          <div className="flex flex-col items-center">
+            <button 
+              className="w-11 h-11 bg-[#E0E0E0] rounded-full flex items-center justify-center shadow-lg hover:shadow-xl transition-shadow"
+            >
+              <Shirt className="w-5 h-5 text-gray-700" strokeWidth={2.5} />
+            </button>
+            <span className="text-sm text-gray-600 mt-1">Items</span>
+          </div>
+        </div>
+
         {/* Content */}
         <div className="flex flex-col items-center justify-center h-full px-6 pt-16 pb-8">
           <div className="w-20 h-20 mb-6">
