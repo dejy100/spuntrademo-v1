@@ -1,5 +1,5 @@
 import React from 'react';
-import { X, Shirt, Wand2 } from 'lucide-react';
+import { X, Shirt, Wand2, LayoutGrid, Image } from 'lucide-react';
 import { useNavigate } from 'react-router-dom';
 import { motion } from 'framer-motion';
 
@@ -148,36 +148,38 @@ export default function CreatePage() {
       </motion.div>
 
       {/* Bottom Navigation */}
-      <div className="fixed bottom-0 inset-x-0 bg-black">
+      <div className="fixed bottom-0 inset-x-0">
         {/* Center Links */}
-        <div className="absolute -top-1 left-0 right-0 flex justify-center gap-6">
-          <span className="text-white text-sm font-medium opacity-60">SWIPE</span>
-          <span className="text-[#FF7043] text-sm font-medium">CANVAS</span>
-          <span className="text-white text-sm font-medium opacity-60">TRY ON</span>
-        </div>
-
-        {/* Bottom Icons */}
-        <div className="flex justify-between px-8 py-4">
-          <div className="flex flex-col items-center">
-            <button className="p-2">
-              <svg className="w-6 h-6 text-white" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
-                <rect x="3" y="3" width="7" height="7" />
-                <rect x="14" y="3" width="7" height="7" />
-                <rect x="3" y="14" width="7" height="7" />
-                <rect x="14" y="14" width="7" height="7" />
-              </svg>
-            </button>
-            <span className="text-xs text-white mt-1">My Outfits</span>
+        <div className="bg-gradient-to-t from-black via-black to-transparent pt-12 pb-6">
+          <div className="flex justify-center space-x-8 mb-6">
+            <span className="text-white/60 text-sm tracking-wide font-medium">SWIPE</span>
+            <span className="text-[#FF7043] text-sm tracking-wide font-medium relative">
+              CANVAS
+              <div className="absolute -bottom-1 left-1/2 w-1 h-1 bg-[#FF7043] rounded-full transform -translate-x-1/2"></div>
+            </span>
+            <span className="text-white/60 text-sm tracking-wide font-medium">TRY ON</span>
           </div>
 
-          <div className="flex flex-col items-center">
-            <button className="p-2">
-              <svg className="w-6 h-6 text-white" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
-                <path d="M21 19V5a2 2 0 00-2-2H5a2 2 0 00-2 2v14a2 2 0 002 2h14a2 2 0 002-2z" />
-                <path d="M8.5 13.5l2.5 3 3.5-4.5 4.5 6H5l3.5-4.5z" />
-              </svg>
-            </button>
-            <span className="text-xs text-white mt-1">Wallpapers</span>
+          <div className="flex justify-between px-12">
+            <div className="flex flex-col items-center">
+              <button className="group relative">
+                <div className="absolute inset-0 bg-white/5 rounded-xl transform transition-all duration-200 group-hover:scale-110 group-hover:bg-white/10"></div>
+                <div className="relative p-3">
+                  <LayoutGrid className="w-5 h-5 text-white" />
+                </div>
+              </button>
+              <span className="text-[10px] text-white/80 mt-1.5 font-medium">My Outfits</span>
+            </div>
+
+            <div className="flex flex-col items-center">
+              <button className="group relative">
+                <div className="absolute inset-0 bg-white/5 rounded-xl transform transition-all duration-200 group-hover:scale-110 group-hover:bg-white/10"></div>
+                <div className="relative p-3">
+                  <Image className="w-5 h-5 text-white" />
+                </div>
+              </button>
+              <span className="text-[10px] text-white/80 mt-1.5 font-medium">Wallpapers</span>
+            </div>
           </div>
         </div>
       </div>
