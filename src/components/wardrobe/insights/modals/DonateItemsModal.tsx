@@ -31,7 +31,7 @@ export default function DonateItemsModal({ insight, onClose }: DonateItemsModalP
         initial={{ scale: 0.9 }}
         animate={{ scale: 1 }}
         exit={{ scale: 0.9 }}
-        className="bg-white rounded-xl md:rounded-2xl p-4 md:p-6 max-w-lg w-full mx-3 md:mx-4 max-h-[80vh] overflow-y-auto flex flex-col"
+        className="bg-white rounded-xl md:rounded-2xl p-4 md:p-6 max-w-lg w-full mx-3 md:mx-4 max-h-[80vh] overflow-y-auto scrollbar-hide flex flex-col"
         onClick={e => e.stopPropagation()}
       >
         <div className="flex items-center justify-between mb-4 md:mb-6">
@@ -44,7 +44,7 @@ export default function DonateItemsModal({ insight, onClose }: DonateItemsModalP
           </button>
         </div>
 
-        <div className="space-y-4 overflow-y-auto flex-1">
+        <div className="space-y-4 overflow-y-auto scrollbar-hide flex-1">
           {/* Featured Item Display */}
           <div className="aspect-video rounded-lg md:rounded-xl overflow-hidden bg-gray-100">
             <img
