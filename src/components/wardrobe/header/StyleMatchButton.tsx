@@ -15,9 +15,9 @@ export default function StyleMatchButton() {
         onClick={() => setShowModal(true)}
         onMouseEnter={() => setShowTooltip(true)}
         onMouseLeave={() => setShowTooltip(false)}
-        className="p-2 bg-white rounded-full shadow-sm hover:shadow-md transition-all group"
+        className="p-1.5 md:p-2 bg-white rounded-full shadow-sm hover:shadow-md transition-all group"
       >
-        <Wand2 className="w-4 h-4 text-purple-600 group-hover:text-pink-600 transition-colors" />
+        <Wand2 className="w-3.5 h-3.5 md:w-4 md:h-4 text-purple-600 group-hover:text-pink-600 transition-colors" />
       </motion.button>
 
       <AnimatePresence>
@@ -26,10 +26,10 @@ export default function StyleMatchButton() {
             initial={{ opacity: 0, y: 5 }}
             animate={{ opacity: 1, y: 0 }}
             exit={{ opacity: 0, y: 5 }}
-            className="absolute right-0 top-full mt-2 whitespace-nowrap bg-gray-900 text-white text-xs py-1.5 px-3 rounded-lg z-50"
+            className="absolute right-0 top-full mt-1.5 md:mt-2 whitespace-nowrap bg-gray-900 text-white text-[10px] md:text-xs py-1 md:py-1.5 px-2 md:px-3 rounded md:rounded-lg z-50"
           >
             Analyze Style Match
-            <div className="absolute -top-1 right-4 w-2 h-2 bg-gray-900 transform rotate-45" />
+            <div className="absolute -top-1 right-3 md:right-4 w-1.5 md:w-2 h-1.5 md:h-2 bg-gray-900 transform rotate-45" />
           </motion.div>
         )}
 

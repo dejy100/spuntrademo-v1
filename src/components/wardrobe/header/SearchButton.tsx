@@ -11,17 +11,17 @@ export default function SearchButton() {
         {isExpanded && (
           <motion.div
             initial={{ width: 0, opacity: 0 }}
-            animate={{ width: 200, opacity: 1 }}
+            animate={{ width: '80vw', opacity: 1 }}
             exit={{ width: 0, opacity: 0 }}
-            className="absolute right-0 top-1/2 -translate-y-1/2"
+            className="absolute right-0 top-1/2 -translate-y-1/2 md:w-[200px]"
           >
             <input
               type="text"
               placeholder="Search wardrobe..."
-              className="w-full pl-10 pr-4 py-2 bg-white rounded-full border border-gray-200 focus:border-purple-400 focus:ring focus:ring-purple-100 transition-all"
+              className="w-full pl-8 md:pl-10 pr-3 md:pr-4 py-1.5 md:py-2 bg-white rounded-full border border-gray-200 focus:border-purple-400 focus:ring focus:ring-purple-100 transition-all text-sm md:text-base"
               autoFocus
             />
-            <Search className="absolute left-3 top-1/2 -translate-y-1/2 w-4 h-4 text-gray-400" />
+            <Search className="absolute left-2 md:left-3 top-1/2 -translate-y-1/2 w-3.5 h-3.5 md:w-4 md:h-4 text-gray-400" />
           </motion.div>
         )}
       </AnimatePresence>
@@ -31,9 +31,9 @@ export default function SearchButton() {
           whileHover={{ scale: 1.05 }}
           whileTap={{ scale: 0.95 }}
           onClick={() => setIsExpanded(true)}
-          className="p-2 bg-white rounded-full shadow-sm hover:shadow-md transition-all"
+          className="p-1.5 md:p-2 bg-white rounded-full shadow-sm hover:shadow-md transition-all"
         >
-          <Search className="w-4 h-4 text-gray-600" />
+          <Search className="w-3.5 h-3.5 md:w-4 md:h-4 text-gray-600" />
         </motion.button>
       )}
 

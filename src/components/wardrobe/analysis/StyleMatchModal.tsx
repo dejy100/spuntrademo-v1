@@ -37,19 +37,19 @@ export default function StyleMatchModal({ onClose }: StyleMatchModalProps) {
         initial={{ scale: 0.9 }}
         animate={{ scale: 1 }}
         exit={{ scale: 0.9 }}
-        className="bg-white rounded-2xl p-6 max-w-lg w-full mx-4"
+        className="bg-white rounded-xl md:rounded-2xl p-4 md:p-6 max-w-lg w-full mx-3 md:mx-4"
         onClick={e => e.stopPropagation()}
       >
-        <div className="flex items-center justify-between mb-6">
-          <div className="flex items-center gap-2">
-            <Sparkles className="w-5 h-5 text-purple-600" />
-            <h2 className="text-xl font-semibold">Style Match Analysis</h2>
+        <div className="flex items-center justify-between mb-4 md:mb-6">
+          <div className="flex items-center gap-1.5 md:gap-2">
+            <Sparkles className="w-4 h-4 md:w-5 md:h-5 text-purple-600" />
+            <h2 className="text-lg md:text-xl font-semibold">Style Match Analysis</h2>
           </div>
           <button
             onClick={onClose}
-            className="p-2 hover:bg-gray-100 rounded-full transition-colors"
+            className="p-1.5 md:p-2 hover:bg-gray-100 rounded-full transition-colors"
           >
-            <X className="w-5 h-5" />
+            <X className="w-4 h-4 md:w-5 md:h-5 text-gray-500" />
           </button>
         </div>
 
