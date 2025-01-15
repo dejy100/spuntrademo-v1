@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
+import { Search, Camera, X } from 'lucide-react';
 import { motion, AnimatePresence } from 'framer-motion';
-import { Search, Camera, Upload, X } from 'lucide-react';
 import Header from '../navigation/Header';
 import AIStylistSection from './sections/AIStylistSection';
 import PersonalCatalogSection from './sections/PersonalCatalogSection';
@@ -9,15 +9,6 @@ import CategoriesSection from './sections/CategoriesSection';
 
 export default function ShopPage() {
   const [showVisualSearch, setShowVisualSearch] = useState(false);
-  const [isVisualSearchOpen, setIsVisualSearchOpen] = useState(false);
-
-  const handleFileUpload = (event: React.ChangeEvent<HTMLInputElement>) => {
-    const file = event.target.files?.[0];
-    if (file) {
-      console.log('File uploaded:', file);
-      setShowVisualSearch(false);
-    }
-  };
 
   return (
     <div className="min-h-screen bg-gradient-to-br from-purple-50 to-pink-50">
@@ -34,61 +25,38 @@ export default function ShopPage() {
             />
             <Search className="absolute left-3 top-1/2 -translate-y-1/2 w-4 h-4 text-gray-400" />
           </div>
-          <div className="flex gap-2">
-            <button 
-              onClick={() => setIsVisualSearchOpen(true)}
-              className="bg-white rounded-lg p-2.5 hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-purple-500"
-              aria-label="Upload image"
-            >
-              <Upload className="w-4 h-4 text-gray-600" />
-            </button>
-            <button 
-              onClick={() => setIsVisualSearchOpen(true)}
-              className="bg-white rounded-lg p-2.5 hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-purple-500"
-              aria-label="Take photo"
+
+          {/* Visual Search Button */}
+          <div className="relative">
+            <motion.button
+              whileHover={{ scale: 1.05 }}
+              whileTap={{ scale: 0.95 }}
+              onClick={() => setShowVisualSearch(!showVisualSearch)}
+              className="p-2.5 bg-white rounded-lg hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-purple-500"
             >
               <Camera className="w-4 h-4 text-gray-600" />
-            </button>
-          </div>
-        </div>
+            </motion.button>
 
-        <AnimatePresence>
-          {isVisualSearchOpen && (
-            <motion.div
-              initial={{ opacity: 0, y: -20 }}
-              animate={{ opacity: 1, y: 0 }}
-              exit={{ opacity: 0, y: -20 }}
-              className="fixed inset-0 bg-black/50 z-50 p-4"
-              onClick={() => setIsVisualSearchOpen(false)}
-            >
-              <motion.div
-                onClick={(e) => e.stopPropagation()}
-                className="bg-white rounded-xl p-4 mx-auto max-w-lg mt-20"
-              >
-                <div className="space-y-4">
-                  <div className="flex items-center justify-between">
-                    <h3 className="text-lg font-semibold">Visual Search</h3>
-                    <button
-                      onClick={() => setIsVisualSearchOpen(false)}
-                      className="text-gray-400 hover:text-gray-500"
-                    >
-                      Close
-                    </button>
-                  </div>
-                  
-                  <div className="grid grid-cols-2 gap-3">
-                    <label className="flex flex-col items-center justify-center w-full h-28 border-2 border-dashed border-gray-300 rounded-lg cursor-pointer hover:bg-gray-50 transition-colors">
-                      <input
-                        type="file"
-                        accept="image/*"
-                        onChange={handleFileUpload}
-                        className="hidden"
-                      />
-                      <Upload className="w-5 h-5 text-gray-400 mb-2" />
-                      <span className="text-xs text-gray-500 text-center">
-                        Upload an image
-                      </span>
-                    </label>
+            {/* Visual Search Dropdown */}
+            <AnimatePresence>
+              {showVisualSearch && (
+                <motion.div
+                  initial={{ opacity: 0, y: -10 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  exit={{ opacity: 0, y: -10 }}
+                  className="absolute right-0 top-full mt-2 w-[calc(100vw-32px)] bg-white rounded-lg shadow-lg overflow-hidden"
+                >
+                  <div className="p-3">
+                    <div className="flex items-center justify-between mb-3">
+                      <h3 className="text-sm font-medium">Visual Search</h3>
+                      <button
+                        onClick={() => setShowVisualSearch(false)}
+                        className="p-1 hover:bg-gray-100 rounded-full transition-colors"
+                      >
+                        <X className="w-4 h-4 text-gray-500" />
+                      </button>
+                    </div>
+                    
                     <button className="flex flex-col items-center justify-center w-full h-28 border-2 border-gray-300 rounded-lg hover:bg-gray-50 transition-colors">
                       <Camera className="w-5 h-5 text-gray-400 mb-2" />
                       <span className="text-xs text-gray-500 text-center">
@@ -96,11 +64,11 @@ export default function ShopPage() {
                       </span>
                     </button>
                   </div>
-                </div>
-              </motion.div>
-            </motion.div>
-          )}
-        </AnimatePresence>
+                </motion.div>
+              )}
+            </AnimatePresence>
+          </div>
+        </div>
 
         {/* Main Content */}
         <div className="space-y-6">
