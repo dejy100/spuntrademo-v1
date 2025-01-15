@@ -1,38 +1,30 @@
 import React from 'react';
 import { motion } from 'framer-motion';
-import { Tag, ChevronRight } from 'lucide-react';
+import { ChevronRight, Tag } from 'lucide-react';
 
 const deals = [
   {
-    id: 1,
-    store: 'Nordstrom',
-    discount: '30% OFF',
-    code: 'SUMMER30',
-    description: 'Summer collection sale',
+    id: 'macys-deal',
+    store: "Macy's",
+    description: 'End of season sale on all items',
+    discount: '25% OFF',
+    code: 'MACYS25',
     expiresIn: '2 days'
   },
   {
-    id: 2,
-    store: 'Saks Fifth Avenue',
-    discount: '25% OFF',
-    code: 'LUXURY25',
-    description: 'Designer bags and accessories',
+    id: 'nordstrom-deal',
+    store: 'Nordstrom',
+    description: 'Holiday special discount',
+    discount: '30% OFF',
+    code: 'HOLIDAY30',
     expiresIn: '5 days'
   },
   {
-    id: 3,
-    store: 'Bloomingdales',
+    id: 'saks-deal',
+    store: 'Saks Fifth Avenue',
+    description: 'New year clearance sale',
     discount: '40% OFF',
-    code: 'BLOOM40',
-    description: 'Selected items only',
-    expiresIn: '1 week'
-  },
-  {
-    id: 4,
-    store: 'Neiman Marcus',
-    discount: '20% OFF',
-    code: 'LUXURY20',
-    description: 'New arrivals',
+    code: 'NEWYEAR40',
     expiresIn: '3 days'
   }
 ];
@@ -62,11 +54,11 @@ export default function DealsSection() {
             className="bg-white rounded-lg shadow-sm p-3 hover:shadow-md transition-all"
           >
             <div className="flex items-start justify-between mb-3">
-              <div>
-                <h3 className="text-base font-semibold mb-1">{deal.store}</h3>
+              <div className="flex-1 min-w-0 pr-4">
+                <h3 className="text-base font-semibold mb-1 truncate">{deal.store}</h3>
                 <p className="text-sm text-gray-600">{deal.description}</p>
               </div>
-              <div className="flex items-center gap-1">
+              <div className="flex items-center gap-1 whitespace-nowrap">
                 <Tag className="w-4 h-4 text-purple-600" />
                 <span className="text-base font-bold text-purple-600">{deal.discount}</span>
               </div>
