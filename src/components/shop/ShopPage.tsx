@@ -37,8 +37,7 @@ export default function ShopPage() {
   return (
     <div className="min-h-screen bg-gradient-to-br from-purple-50 to-pink-50">
       <Header />
-      
-      <main className="px-4 pt-16 pb-16">
+      <div className="flex flex-col gap-6 p-4 pt-2 pb-32">
         {/* Header with Search */}
         <div className="flex items-center gap-3 mb-6">
           <div className="flex-1 relative">
@@ -139,7 +138,7 @@ export default function ShopPage() {
             <DealsSection />
           </motion.div>
         </div>
-      </main>
+      </div>
     </div>
   );
 }
