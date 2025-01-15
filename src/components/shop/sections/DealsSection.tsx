@@ -41,11 +41,11 @@ export default function DealsSection() {
   return (
     <section>
       <div className="flex items-center justify-between mb-4">
-        <div>
+        <div className="flex-1 min-w-0 pr-6">
           <h2 className="text-lg font-semibold mb-1">Exclusive Deals</h2>
           <p className="text-sm text-gray-600">Limited time offers from premium brands</p>
         </div>
-        <button className="flex items-center text-sm text-purple-600 hover:text-purple-700 font-medium">
+        <button className="flex items-center text-sm text-purple-600 hover:text-purple-700 font-medium whitespace-nowrap">
           View all
           <ChevronRight className="w-4 h-4 ml-1" />
         </button>
