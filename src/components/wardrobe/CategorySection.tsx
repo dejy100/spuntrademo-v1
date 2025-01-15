@@ -33,14 +33,16 @@ export default function CategorySection({ title, categories }: CategorySectionPr
       </div>
       
       <div className="-mx-4 md:-mx-6">
-        <div className="flex gap-3 md:gap-4 overflow-x-auto no-scrollbar py-2 px-4 md:px-6">
+        <div className="flex gap-2 md:gap-4 overflow-x-auto no-scrollbar py-2 px-4 md:px-6 pb-3 md:pb-4">
           {categories.map((category, index) => (
             <motion.button
               key={category}
               initial={{ opacity: 0, x: -20 }}
               animate={{ opacity: 1, x: 0 }}
               transition={{ delay: index * 0.1 }}
-              className="flex-shrink-0 px-4 py-2 md:px-6 md:py-3 bg-white rounded-xl text-sm whitespace-nowrap shadow-sm hover:shadow-md transition-shadow border border-gray-100 hover:bg-purple-50 hover:border-purple-200"
+              whileHover={{ scale: 1.05 }}
+              whileTap={{ scale: 0.95 }}
+              className="flex-shrink-0 px-4 py-2.5 md:px-6 md:py-3 bg-white rounded-xl text-sm font-medium whitespace-nowrap shadow-sm hover:shadow-md transition-all border border-gray-100 hover:bg-purple-50 hover:border-purple-200 hover:text-purple-600 active:bg-purple-100 active:border-purple-300"
             >
               {category}
             </motion.button>
