@@ -3,7 +3,7 @@ import { motion } from 'framer-motion';
 import { ImagePlus, ArrowLeft } from 'lucide-react';
 import { useNavigate } from 'react-router-dom';
 import Header from '../navigation/Header';
-import CreateModeNavigation from './CreateModeNavigation';
+import CreateNavigation from './CreateNavigation';
 import SwipeMode from './modes/swipe/SwipeMode';
 import CanvasMode from './modes/CanvasMode';
 import TryOnMode from './modes/TryOnMode';
@@ -57,7 +57,7 @@ export default function CreatePage() {
         </motion.div>
       </main>
 
-      <CreateModeNavigation mode={mode} onModeChange={setMode} />
+      <CreateNavigation mode={mode} setMode={setMode} />
     </div>
   );
 }
