@@ -42,9 +42,6 @@ export default function CreatePage() {
 
         {/* Content */}
         <div className="flex flex-col items-center justify-center h-full px-6 pt-16 pb-8">
-          <div className="w-20 h-20 mb-6">
-            <img src="/octopus.png" alt="Octopus" className="w-full h-full" />
-          </div>
           <h1 className="text-2xl font-semibold mb-2">Create your outfit</h1>
           <p className="text-gray-500 mb-20">Start by selecting items</p>
           
