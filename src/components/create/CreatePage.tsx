@@ -45,9 +45,9 @@ export default function CreatePage() {
           <h1 className="text-2xl font-semibold mb-2">Create your outfit</h1>
           <p className="text-gray-500 mb-20">Start by selecting items</p>
           
-          <div className="mt-auto w-full">
-            <p className="text-center text-gray-500 mb-1.5">Need some inspiration?</p>
-            <button className="mx-auto px-8 py-3 bg-[#FF7043] text-white rounded-full flex items-center justify-center gap-2 text-sm shadow-md">
+          <div className="mt-auto w-full flex flex-col items-center">
+            <p className="text-gray-500 mb-0.5 w-[240px] text-center">Need some inspiration?</p>
+            <button className="w-[240px] px-8 py-3 bg-[#FF7043] text-white rounded-full flex items-center justify-center gap-2 text-sm shadow-md">
               <span className="text-lg">🎲</span>
               Style 5 random items
             </button>
