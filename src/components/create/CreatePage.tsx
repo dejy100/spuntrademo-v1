@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { motion } from 'framer-motion';
-import { ImagePlus, ArrowLeft } from 'lucide-react';
+import { ImagePlus, ArrowLeft, Layers, PenTool, Shirt, Plus, Camera } from 'lucide-react';
 import { useNavigate } from 'react-router-dom';
 import Header from '../navigation/Header';
 
@@ -24,7 +24,7 @@ export default function CreatePage() {
                 className="flex flex-col items-center gap-2"
               >
                 <button className="w-14 h-14 rounded-full bg-purple-100 hover:bg-purple-200 active:bg-purple-300 flex items-center justify-center transition-colors touch-manipulation">
-                  <span className="text-2xl text-purple-600">+</span>
+                  <Plus className="w-6 h-6 text-purple-600" />
                 </button>
                 <span className="text-sm text-gray-600">{category}</span>
               </motion.div>
@@ -51,7 +51,7 @@ export default function CreatePage() {
               onClick={() => navigate('/random-style')}
               className="w-full max-w-[280px] sm:max-w-md bg-gradient-to-r from-orange-500 to-pink-500 text-white text-sm sm:text-base rounded-lg sm:rounded-xl py-3 sm:py-4 px-4 sm:px-6 flex items-center justify-center gap-1.5 sm:gap-2 shadow-md hover:shadow-lg active:shadow-sm transition-shadow mb-4 sm:mb-6 touch-manipulation"
             >
-              <span className="text-lg">✨</span>
+              <ImagePlus className="w-4 h-4 sm:w-5 sm:h-5" />
               Style 5 random items
             </motion.button>
           </div>
@@ -66,7 +66,7 @@ export default function CreatePage() {
               className="text-center"
             >
               <div className="w-14 h-14 sm:w-16 sm:h-16 bg-purple-100 rounded-full flex items-center justify-center mx-auto mb-4 sm:mb-6">
-                <span className="text-2xl text-purple-600">📸</span>
+                <Camera className="w-7 h-7 sm:w-8 sm:h-8 text-purple-600" />
               </div>
               <h2 className="text-xl sm:text-2xl font-semibold mb-2">Virtual Try-On</h2>
               <p className="text-sm sm:text-base text-gray-600 max-w-[250px] sm:max-w-none mx-auto">
@@ -113,22 +113,26 @@ export default function CreatePage() {
         </motion.div>
       </main>
 
-      <div className="fixed bottom-0 left-0 right-0 bg-white border-t border-gray-100 pb-safe">
+      <div className="fixed bottom-0 left-0 right-0 bg-white border-t border-gray-100 pb-safe z-50">
         <div className="w-full max-w-md mx-auto px-3 py-1 sm:px-6 sm:py-2">
           <div className="flex justify-between items-center">
             {[
-              { id: 'swipe', label: 'SWIPE', icon: '📱' },
-              { id: 'canvas', label: 'CANVAS', icon: '✏️' },
-              { id: 'tryon', label: 'TRY ON', icon: '👕' }
-            ].map(({ id, label, icon }) => (
+              { id: 'swipe', label: 'SWIPE', Icon: Layers },
+              { id: 'canvas', label: 'CANVAS', Icon: PenTool },
+              { id: 'tryon', label: 'TRY ON', Icon: Shirt }
+            ].map(({ id, label, Icon }) => (
               <button
                 key={id}
                 onClick={() => setMode(id as CreateMode)}
                 className="relative flex-1 px-2 sm:px-6 py-2 sm:py-3 flex flex-col items-center gap-0.5 sm:gap-1 touch-manipulation"
               >
-                <span className="text-xl">
-                  {icon}
-                </span>
+                <Icon 
+                  className={`w-5 h-5 ${
+                    mode === id 
+                      ? 'text-purple-600' 
+                      : 'text-gray-400'
+                  }`}
+                />
                 <span 
                   className={`text-[10px] sm:text-xs ${
                     mode === id 
