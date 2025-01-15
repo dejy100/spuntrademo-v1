@@ -84,87 +84,102 @@ export default function WeatherDetailModal({
         initial={{ scale: 0.9 }}
         animate={{ scale: 1 }}
         exit={{ scale: 0.9 }}
-        className="bg-white rounded-lg md:rounded-xl p-4 md:p-6 max-w-md w-full mx-3 md:mx-4 max-h-[85vh] md:max-h-[90vh] overflow-y-auto"
+        className="bg-white rounded-lg md:rounded-xl p-4 md:p-6 max-w-lg w-full mx-3 md:mx-4 max-h-[85vh] overflow-y-auto [&::-webkit-scrollbar]:hidden [-ms-overflow-style:none] [scrollbar-width:none] flex flex-col"
         onClick={e => e.stopPropagation()}
       >
-        {/* Header */}
-        <div className="flex items-center justify-between mb-4 md:mb-6">
-          <div>
-            <h3 className="font-semibold text-base md:text-lg">{formattedDate}</h3>
-            <p className="text-xs md:text-sm text-gray-600">Weather Details</p>
+        <div className="flex items-center justify-between mb-4 md:mb-6 sticky top-0 bg-white z-10">
+          <div className="flex items-center gap-1.5 md:gap-2">
+            <Cloud className="w-5 h-5 md:w-6 md:h-6 text-sky-600" />
+            <h2 className="text-lg md:text-xl font-semibold">{formattedDate}</h2>
           </div>
           <button
             onClick={onClose}
             className="p-1.5 md:p-2 hover:bg-gray-100 rounded-full transition-colors"
           >
-            <X className="w-4 h-4 md:w-5 md:h-5" />
+            <X className="w-5 h-5 md:w-6 md:h-6" />
           </button>
         </div>
 
-        {/* Current Weather */}
-        <div className="bg-gradient-to-r from-blue-50 to-purple-50 rounded-lg md:rounded-xl p-4 md:p-6 mb-4 md:mb-6">
-          <div className="flex items-center justify-between mb-3 md:mb-4">
-            <div className="flex items-center gap-3 md:gap-4">
-              <span className="text-3xl md:text-4xl">{weatherData.icon}</span>
+        <div className="space-y-4 md:space-y-6 flex-1">
+          {/* Current Weather */}
+          <div className="bg-gradient-to-br from-sky-50 to-indigo-50 rounded-lg p-4 md:p-6">
+            <div className="flex items-center justify-between">
               <div>
-                <h4 className="text-xl md:text-2xl font-semibold">{weatherData.temperature}°F</h4>
-                <p className="text-sm md:text-base text-gray-600">{weatherData.condition}</p>
+                <p className="text-3xl md:text-4xl font-bold text-sky-600">
+                  {weatherData.temperature}°F
+                </p>
+                <p className="text-sky-800 mt-1">{weatherData.condition}</p>
+              </div>
+              <div className="text-sky-600 text-6xl md:text-7xl">
+                {weatherData.icon}
+              </div>
+            </div>
+            
+            <div className="grid grid-cols-3 gap-3 md:gap-4 mt-4">
+              <div className="bg-white/80 backdrop-blur-sm rounded-lg p-3 text-center">
+                <ThermometerSun className="w-5 h-5 md:w-6 md:h-6 text-amber-500 mx-auto" />
+                <p className="text-sm mt-1">Feels like</p>
+                <p className="font-medium">{weatherData.feelsLike}°F</p>
+              </div>
+              <div className="bg-white/80 backdrop-blur-sm rounded-lg p-3 text-center">
+                <Droplets className="w-5 h-5 md:w-6 md:h-6 text-blue-500 mx-auto" />
+                <p className="text-sm mt-1">Humidity</p>
+                <p className="font-medium">{weatherData.humidity}%</p>
+              </div>
+              <div className="bg-white/80 backdrop-blur-sm rounded-lg p-3 text-center">
+                <Wind className="w-5 h-5 md:w-6 md:h-6 text-gray-500 mx-auto" />
+                <p className="text-sm mt-1">Wind</p>
+                <p className="font-medium">{weatherData.windSpeed} mph</p>
               </div>
             </div>
           </div>
 
-          <div className="grid grid-cols-2 gap-3 md:gap-4 mt-3 md:mt-4">
-            <div className="flex items-center gap-1.5 md:gap-2">
-              <ThermometerSun className="w-3.5 h-3.5 md:w-4 md:h-4 text-orange-500" />
-              <span className="text-xs md:text-sm">Feels like {weatherData.feelsLike}°F</span>
-            </div>
-            <div className="flex items-center gap-1.5 md:gap-2">
-              <Droplets className="w-3.5 h-3.5 md:w-4 md:h-4 text-blue-500" />
-              <span className="text-xs md:text-sm">Humidity {weatherData.humidity}%</span>
-            </div>
-            <div className="flex items-center gap-1.5 md:gap-2">
-              <Wind className="w-3.5 h-3.5 md:w-4 md:h-4 text-gray-500" />
-              <span className="text-xs md:text-sm">Wind {weatherData.windSpeed} mph</span>
+          {/* Hourly Forecast */}
+          <div>
+            <h3 className="font-medium mb-3">Hourly Forecast</h3>
+            <div className="grid grid-cols-4 gap-2 md:gap-3">
+              {weatherData.hourlyForecast.map((hour, index) => (
+                <div
+                  key={index}
+                  className="bg-gray-50 rounded-lg p-2 md:p-3 text-center"
+                >
+                  <p className="text-sm font-medium">{hour.time}</p>
+                  <div className="text-2xl my-1">{hour.icon}</div>
+                  <p className="text-sm font-medium">{hour.temp}°</p>
+                </div>
+              ))}
             </div>
           </div>
-        </div>
 
-        {/* Hourly Forecast */}
-        <div className="mb-4 md:mb-6">
-          <h4 className="font-medium text-sm md:text-base mb-2 md:mb-3">Hourly Forecast</h4>
-          <div className="flex gap-2 md:gap-4 overflow-x-auto pb-3 md:pb-4">
-            {weatherData.hourlyForecast.map((hour, index) => (
-              <div 
-                key={index}
-                className="flex flex-col items-center min-w-[50px] md:min-w-[60px] p-1.5 md:p-2 rounded-lg bg-gray-50"
-              >
-                <span className="text-xs md:text-sm text-gray-600">{hour.time}</span>
-                <span className="text-lg md:text-xl my-0.5 md:my-1">{hour.icon}</span>
-                <span className="text-sm md:text-base font-medium">{hour.temp}°</span>
+          {/* Clothing Recommendations */}
+          <div>
+            <h3 className="font-medium mb-3">What to Wear</h3>
+            <div className="bg-purple-50 rounded-lg p-4">
+              <div className="flex items-center gap-2 mb-2">
+                <Shirt className="w-5 h-5 text-purple-600" />
+                <p className="font-medium text-purple-900">
+                  {getClothingRecommendations(weatherData.temperature).title}
+                </p>
               </div>
-            ))}
+              <ul className="space-y-2">
+                {getClothingRecommendations(weatherData.temperature).items.map((item, index) => (
+                  <li key={index} className="text-sm text-purple-800">• {item}</li>
+                ))}
+              </ul>
+              <p className="text-sm text-purple-700 mt-3">
+                💡 {getClothingRecommendations(weatherData.temperature).tips}
+              </p>
+            </div>
           </div>
         </div>
 
-        {/* Clothing Recommendations */}
-        <div className="bg-purple-50 rounded-lg md:rounded-xl p-4 md:p-6">
-          <div className="flex items-center gap-1.5 md:gap-2 mb-3 md:mb-4">
-            <Shirt className="w-4 h-4 md:w-5 md:h-5 text-purple-600" />
-            <h4 className="font-medium text-sm md:text-base">{recommendations.title} Outfit Tips</h4>
-          </div>
-          
-          <ul className="space-y-1.5 md:space-y-2 mb-3 md:mb-4">
-            {recommendations.items.map((item, index) => (
-              <li key={index} className="flex items-center gap-1.5 md:gap-2">
-                <span className="w-1 h-1 md:w-1.5 md:h-1.5 rounded-full bg-purple-400" />
-                <span className="text-xs md:text-sm">{item}</span>
-              </li>
-            ))}
-          </ul>
-          
-          <p className="text-xs md:text-sm text-purple-700 bg-purple-100 p-2 md:p-3 rounded-lg">
-            <span className="font-medium">Pro Tip:</span> {recommendations.tips}
-          </p>
+        <div className="mt-6 sticky bottom-0 bg-white pt-4 border-t">
+          <button
+            onClick={onClose}
+            className="w-full py-3 px-6 bg-sky-600 text-white rounded-lg flex items-center justify-center gap-2 hover:bg-sky-700 transition-colors"
+          >
+            Close
+          </button>
         </div>
       </motion.div>
     </motion.div>

@@ -48,17 +48,21 @@ export default function CategorySection({ title, categories }: CategorySectionPr
         </div>
       </div>
 
-      <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 gap-4 md:gap-6 mt-4 md:mt-6">
+      <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 gap-3 md:gap-6 mt-4 md:mt-6">
         <motion.button
           whileHover={{ scale: 1.02 }}
           whileTap={{ scale: 0.98 }}
           onClick={() => navigate('/add-item')}
-          className="aspect-square bg-gradient-to-r from-purple-50 to-pink-50 rounded-lg md:rounded-xl flex flex-col items-center justify-center gap-2 md:gap-3 border-2 border-dashed border-gray-200 hover:border-purple-300 transition-colors group"
+          className="aspect-square bg-gradient-to-br from-purple-50 via-pink-50 to-purple-50 rounded-lg md:rounded-xl p-3 md:p-4 flex flex-col items-center justify-center gap-2 md:gap-3 border-2 border-dashed border-gray-200 hover:border-purple-300 transition-colors group relative overflow-hidden"
         >
-          <div className="w-12 h-12 md:w-14 md:h-14 rounded-full bg-gradient-to-r from-purple-500 to-pink-500 flex items-center justify-center shadow-lg group-hover:shadow-xl transition-shadow">
-            <Plus className="w-6 h-6 md:w-7 md:h-7 text-white" />
+          <div className="absolute inset-0 bg-gradient-to-br from-purple-100 to-pink-100 opacity-0 group-hover:opacity-100 transition-opacity" />
+          <div className="relative">
+            <div className="w-10 h-10 md:w-12 md:h-12 rounded-full bg-gradient-to-r from-purple-500 to-pink-500 flex items-center justify-center shadow-lg group-hover:shadow-xl transition-all group-hover:scale-110 duration-200">
+              <Plus className="w-5 h-5 md:w-6 md:h-6 text-white" />
+            </div>
+            <p className="mt-2 text-xs md:text-sm font-medium text-gray-700 text-center">Add New Item</p>
           </div>
-          <span className="text-xs md:text-sm font-medium text-gray-600">Add New Item</span>
+          <div className="absolute bottom-2 left-2 right-2 h-1 bg-gradient-to-r from-purple-500 to-pink-500 rounded-full transform scale-x-0 group-hover:scale-x-100 transition-transform origin-left" />
         </motion.button>
         
         {[1, 2, 3, 4].map((item) => (
