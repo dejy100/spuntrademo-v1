@@ -1,5 +1,5 @@
 import React from 'react';
-import { X, Shirt, Wand2, LayoutGrid, Image } from 'lucide-react';
+import { X, Shirt, Wand2, LayoutGrid, Image, SwipeHorizontal, Palette, ShirtIcon } from 'lucide-react';
 import { useNavigate } from 'react-router-dom';
 import { motion } from 'framer-motion';
 
@@ -149,21 +149,30 @@ export default function CreatePage() {
 
       {/* Bottom Navigation */}
       <div className="fixed bottom-0 inset-x-0 bg-black py-4">
-        <div className="flex justify-between items-center px-6">
+        <div className="flex justify-between items-center px-8">
           <div className="flex flex-col items-center">
-            <LayoutGrid className="w-5 h-5 text-white mb-1" />
-            <span className="text-xs text-white">My Outfits</span>
-          </div>
-          
-          <div className="flex space-x-6">
-            <span className="text-white/70 text-sm">SWIPE</span>
-            <span className="text-[#FF7043] text-sm">CANVAS</span>
-            <span className="text-white/70 text-sm">TRY ON</span>
+            <LayoutGrid className="w-5 h-5 text-white" />
+            <span className="text-[10px] text-white mt-1">My Outfits</span>
           </div>
 
           <div className="flex flex-col items-center">
-            <Image className="w-5 h-5 text-white mb-1" />
-            <span className="text-xs text-white">Wallpapers</span>
+            <SwipeHorizontal className="w-5 h-5 text-white" />
+            <span className="text-[10px] text-white mt-1">Swipe</span>
+          </div>
+
+          <div className="flex flex-col items-center">
+            <Palette className="w-5 h-5 text-[#FF7043]" />
+            <span className="text-[10px] text-[#FF7043] mt-1">Canvas</span>
+          </div>
+
+          <div className="flex flex-col items-center">
+            <ShirtIcon className="w-5 h-5 text-white" />
+            <span className="text-[10px] text-white mt-1">Try On</span>
+          </div>
+
+          <div className="flex flex-col items-center">
+            <Image className="w-5 h-5 text-white" />
+            <span className="text-[10px] text-white mt-1">Wallpapers</span>
           </div>
         </div>
       </div>
