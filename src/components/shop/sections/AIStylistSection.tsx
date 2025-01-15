@@ -50,7 +50,7 @@ export default function AIStylistSection() {
     <section>
       <div className="flex items-center justify-between mb-4">
         <div className="flex-1 min-w-0 pr-6">
-          <h2 className="text-lg font-semibold mb-1 truncate pr-4">Shop with your AI Stylist</h2>
+          <h2 className="text-lg font-semibold mb-1">Shop with your AI Stylist</h2>
           <p className="text-sm text-gray-600">Browse stores you love and check if a piece fits your style.</p>
         </div>
         <button className="flex items-center text-sm text-purple-600 hover:text-purple-700 font-medium whitespace-nowrap">
