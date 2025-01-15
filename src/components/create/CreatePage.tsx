@@ -5,13 +5,13 @@ import { useNavigate } from 'react-router-dom';
 import Header from '../navigation/Header';
 import CreateNavigation from './CreateNavigation';
 import SwipeMode from './modes/swipe/SwipeMode';
-import CanvasMode from './modes/CanvasMode';
-import TryOnMode from './modes/TryOnMode';
+import CanvasMode from './modes/canvas/CanvasMode';
+import TryOnMode from './modes/tryon/TryOnMode';
 
 type CreateMode = 'swipe' | 'canvas' | 'tryon';
 
 export default function CreatePage() {
-  const [mode, setMode] = useState<CreateMode>('swipe');
+  const [mode, setMode] = useState<CreateMode>('canvas');
   const navigate = useNavigate();
 
   const renderMode = () => {
@@ -22,6 +22,8 @@ export default function CreatePage() {
         return <CanvasMode />;
       case 'tryon':
         return <TryOnMode />;
+      default:
+        return <CanvasMode />;
     }
   };
 
@@ -29,7 +31,7 @@ export default function CreatePage() {
     <div className="min-h-screen bg-gradient-to-br from-purple-50 to-pink-50">
       <Header />
       
-      <main className="w-full px-4 pt-16 pb-20 sm:pt-24 sm:pb-24 sm:max-w-2xl md:max-w-4xl lg:max-w-7xl mx-auto">
+      <main className="w-full px-4 pt-16 pb-20 sm:pt-24 sm:pb-24">
         <div className="flex items-center justify-between mb-4 sm:mb-8">
           <button 
             onClick={() => navigate(-1)}
@@ -49,8 +51,11 @@ export default function CreatePage() {
         </div>
 
         <motion.div
+          key={mode}
           initial={{ opacity: 0, y: 10 }}
           animate={{ opacity: 1, y: 0 }}
+          exit={{ opacity: 0, y: -10 }}
+          transition={{ duration: 0.2 }}
           className="min-h-[calc(100vh-13rem)] sm:min-h-[calc(100vh-16rem)]"
         >
           {renderMode()}
