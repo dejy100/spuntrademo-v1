@@ -10,10 +10,9 @@ import CategoriesSection from './sections/CategoriesSection';
 export default function ShopPage() {
   const [showVisualSearch, setShowVisualSearch] = useState(false);
 
-  const handleFileUpload = (e: React.ChangeEvent<HTMLInputElement>) => {
-    const file = e.target.files?.[0];
+  const handleFileUpload = (event: React.ChangeEvent<HTMLInputElement>) => {
+    const file = event.target.files?.[0];
     if (file) {
-      // Handle file upload logic here
       console.log('File uploaded:', file);
       setShowVisualSearch(false);
     }
@@ -23,27 +22,27 @@ export default function ShopPage() {
     <div className="min-h-screen bg-gradient-to-br from-purple-50 to-pink-50">
       <Header />
       
-      <main className="w-full px-4 md:px-6 pt-16 md:pt-24 pb-16 md:pb-24">
+      <main className="px-3 md:px-6 pt-16 md:pt-24 pb-16 md:pb-24 max-w-screen-2xl mx-auto">
         {/* Header with Search */}
-        <div className="flex flex-col md:flex-row md:items-center gap-3 md:gap-4 mb-6 md:mb-12">
-          <div className="w-full md:flex-1 md:max-w-md relative">
+        <div className="flex flex-col gap-3 mb-6 md:flex-row md:items-center md:gap-4 md:mb-12">
+          <div className="w-full md:max-w-md relative">
             <input
               type="text"
               placeholder="Search products, brands, and more..."
-              className="w-full pl-10 md:pl-12 pr-4 py-2 md:py-3 bg-white rounded-full text-sm md:text-base shadow-sm focus:shadow-md transition-shadow"
+              className="w-full pl-10 pr-3 py-2.5 text-sm bg-white rounded-full shadow-sm focus:shadow-md transition-shadow md:pl-12 md:pr-4 md:py-3 md:text-base"
             />
-            <Search className="absolute left-3 md:left-4 top-1/2 -translate-y-1/2 w-4 h-4 md:w-5 md:h-5 text-gray-400" />
+            <Search className="absolute left-3 top-1/2 -translate-y-1/2 w-4 h-4 text-gray-400 md:left-4 md:w-5 md:h-5" />
           </div>
 
           {/* Visual Search Button */}
-          <motion.div className="relative">
+          <div className="relative">
             <motion.button
               whileHover={{ scale: 1.05 }}
               whileTap={{ scale: 0.95 }}
               onClick={() => setShowVisualSearch(!showVisualSearch)}
-              className="p-2 md:p-3 bg-white rounded-full shadow-sm hover:shadow-md transition-all"
+              className="p-2.5 bg-white rounded-full shadow-sm hover:shadow-md transition-all md:p-3"
             >
-              <Camera className="w-4 h-4 md:w-5 md:h-5 text-gray-600" />
+              <Camera className="w-4 h-4 text-gray-600 md:w-5 md:h-5" />
             </motion.button>
 
             {/* Visual Search Dropdown */}
@@ -53,11 +52,11 @@ export default function ShopPage() {
                   initial={{ opacity: 0, y: -10 }}
                   animate={{ opacity: 1, y: 0 }}
                   exit={{ opacity: 0, y: -10 }}
-                  className="absolute right-0 top-full mt-2 w-64 bg-white rounded-lg shadow-lg overflow-hidden"
+                  className="absolute right-0 top-full mt-2 w-[calc(100vw-24px)] bg-white rounded-lg shadow-lg overflow-hidden md:w-64"
                 >
-                  <div className="p-4">
-                    <div className="flex items-center justify-between mb-4">
-                      <h3 className="text-sm md:text-base font-medium">Visual Search</h3>
+                  <div className="p-3 md:p-4">
+                    <div className="flex items-center justify-between mb-3 md:mb-4">
+                      <h3 className="text-sm font-medium md:text-base">Visual Search</h3>
                       <button
                         onClick={() => setShowVisualSearch(false)}
                         className="p-1 hover:bg-gray-100 rounded-full transition-colors"
@@ -66,15 +65,15 @@ export default function ShopPage() {
                       </button>
                     </div>
                     
-                    <label className="flex flex-col items-center justify-center w-full h-32 border-2 border-dashed border-gray-300 rounded-lg cursor-pointer hover:bg-gray-50 transition-colors">
+                    <label className="flex flex-col items-center justify-center w-full h-28 border-2 border-dashed border-gray-300 rounded-lg cursor-pointer hover:bg-gray-50 transition-colors md:h-32">
                       <input
                         type="file"
                         accept="image/*"
                         onChange={handleFileUpload}
                         className="hidden"
                       />
-                      <Upload className="w-6 h-6 text-gray-400 mb-2" />
-                      <span className="text-xs md:text-sm text-gray-500">
+                      <Upload className="w-5 h-5 text-gray-400 mb-2 md:w-6 md:h-6" />
+                      <span className="text-xs text-gray-500 md:text-sm">
                         Upload an image to search
                       </span>
                     </label>
@@ -82,15 +81,46 @@ export default function ShopPage() {
                 </motion.div>
               )}
             </AnimatePresence>
-          </motion.div>
+          </div>
         </div>
 
         {/* Main Content */}
-        <div className="space-y-6 md:space-y-12">
-          <AIStylistSection />
-          <PersonalCatalogSection />
-          <DealsSection />
-          <CategoriesSection />
+        <div className="flex flex-col gap-6 md:gap-8 lg:grid lg:grid-cols-12">
+          {/* Categories Section - Mobile: Top, Desktop: Left Sidebar */}
+          <div className="order-1 lg:order-none lg:col-span-3">
+            <div className="lg:sticky lg:top-24">
+              <CategoriesSection />
+            </div>
+          </div>
+
+          {/* Main Content Area */}
+          <div className="order-2 space-y-6 lg:order-none lg:col-span-9 lg:space-y-12">
+            {/* AI Stylist Section */}
+            <motion.div
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+            >
+              <AIStylistSection />
+            </motion.div>
+
+            {/* Price Comparison Section */}
+            <motion.div
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ delay: 0.1 }}
+            >
+              <PersonalCatalogSection />
+            </motion.div>
+
+            {/* Deals Section */}
+            <motion.div
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ delay: 0.2 }}
+            >
+              <DealsSection />
+            </motion.div>
+          </div>
         </div>
       </main>
     </div>

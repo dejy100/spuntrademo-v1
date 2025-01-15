@@ -40,41 +40,43 @@ const deals = [
 export default function DealsSection() {
   return (
     <section>
-      <div className="flex items-center justify-between mb-4 md:mb-6">
+      <div className="flex flex-col gap-2 mb-4 md:flex-row md:items-center md:justify-between md:mb-6">
         <div>
-          <h2 className="text-lg md:text-2xl font-semibold mb-1 md:mb-2">Exclusive Deals</h2>
-          <p className="text-sm md:text-base text-gray-600">Limited time offers from premium brands</p>
+          <h2 className="text-lg font-semibold mb-1 md:text-2xl md:mb-2">Exclusive Deals</h2>
+          <p className="text-sm text-gray-600 md:text-base">Limited time offers from premium brands</p>
         </div>
-        <button className="text-sm md:text-base text-purple-600 hover:text-purple-700 font-medium flex items-center gap-1">
+        <button className="flex items-center text-sm text-purple-600 hover:text-purple-700 font-medium md:text-base">
           View all
-          <ChevronRight className="w-4 h-4 md:w-5 md:h-5" />
+          <ChevronRight className="w-4 h-4 ml-1 md:w-5 md:h-5" />
         </button>
       </div>
 
-      <div className="grid grid-cols-1 md:grid-cols-2 gap-3 md:gap-4">
+      <div className="grid grid-cols-1 gap-3 md:grid-cols-2 md:gap-4">
         {deals.map((deal) => (
           <motion.div
             key={deal.id}
-            whileHover={{ scale: 1.02 }}
-            whileTap={{ scale: 0.98 }}
-            className="bg-white rounded-xl shadow-sm hover:shadow-md transition-all p-4 md:p-6"
+            whileHover={{
+              scale: 1.02,
+              transition: { duration: 0.2 }
+            }}
+            className="bg-white rounded-lg shadow-sm p-3 hover:shadow-md transition-all md:rounded-xl md:p-4"
           >
             <div className="flex items-start justify-between mb-3 md:mb-4">
               <div>
-                <h3 className="text-base md:text-xl font-semibold mb-1">{deal.store}</h3>
-                <p className="text-sm md:text-base text-gray-600">{deal.description}</p>
+                <h3 className="text-base font-semibold mb-1 md:text-xl">{deal.store}</h3>
+                <p className="text-sm text-gray-600 md:text-base">{deal.description}</p>
               </div>
-              <div className="flex items-center">
-                <Tag className="w-4 h-4 md:w-5 md:h-5 text-purple-600" />
-                <span className="text-base md:text-lg font-bold text-purple-600 ml-1">{deal.discount}</span>
+              <div className="flex items-center gap-1">
+                <Tag className="w-4 h-4 text-purple-600 md:w-5 md:h-5" />
+                <span className="text-base font-bold text-purple-600 md:text-lg">{deal.discount}</span>
               </div>
             </div>
             
             <div className="flex items-center justify-between">
-              <div className="bg-purple-50 px-3 md:px-4 py-1.5 md:py-2 rounded-lg">
-                <code className="text-sm md:text-base font-mono text-purple-600 font-medium">{deal.code}</code>
+              <div className="bg-purple-50 px-3 py-1.5 rounded-lg md:px-4 md:py-2">
+                <code className="text-sm font-mono text-purple-600 font-medium md:text-base">{deal.code}</code>
               </div>
-              <span className="text-xs md:text-sm text-gray-500">Expires in {deal.expiresIn}</span>
+              <span className="text-xs text-gray-500 md:text-sm">Expires in {deal.expiresIn}</span>
             </div>
           </motion.div>
         ))}

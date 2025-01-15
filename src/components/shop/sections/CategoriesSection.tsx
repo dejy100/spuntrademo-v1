@@ -117,7 +117,7 @@ const categories = [
   {
     id: 'premium',
     name: 'Premium',
-    icon: Crown
+    icon: Heart
   },
   {
     id: 'sale',
@@ -134,9 +134,8 @@ export default function CategoriesSection() {
   };
 
   return (
-    <section className="bg-white rounded-xl shadow-sm p-4 md:p-6">
-      <h2 className="text-lg md:text-xl font-semibold mb-4 md:mb-6">Categories</h2>
-      
+    <section className="bg-white rounded-lg shadow-sm p-3 md:rounded-xl md:shadow-md md:p-4">
+      <h2 className="text-base font-semibold mb-3 md:text-xl md:mb-4">Categories</h2>
       <div className="space-y-1 md:space-y-2">
         {categories.map((category) => {
           const Icon = category.icon;
@@ -148,17 +147,17 @@ export default function CategoriesSection() {
                 whileHover={{ x: 2 }}
                 whileTap={{ scale: 0.98 }}
                 onClick={() => category.subcategories && toggleCategory(category.id)}
-                className="w-full flex items-center justify-between p-3 rounded-lg hover:bg-purple-50 transition-colors group"
+                className="w-full flex items-center justify-between p-2.5 rounded-lg hover:bg-purple-50 transition-colors group md:p-3"
               >
-                <div className="flex items-center gap-3">
-                  <div className="p-2 bg-purple-50 rounded-lg group-hover:bg-white transition-colors">
-                    <Icon className="w-4 h-4 md:w-5 md:h-5 text-purple-600" />
+                <div className="flex items-center gap-2 md:gap-3">
+                  <div className="p-1.5 bg-purple-50 rounded-lg group-hover:bg-white transition-colors md:p-2">
+                    <Icon className="w-4 h-4 text-purple-600" />
                   </div>
-                  <span className="text-sm md:text-base font-medium">{category.name}</span>
+                  <span className="text-sm font-medium md:text-base">{category.name}</span>
                 </div>
                 {category.subcategories && (
                   <ChevronRight 
-                    className={`w-4 h-4 md:w-5 md:h-5 text-gray-400 transition-transform ${
+                    className={`w-4 h-4 text-gray-400 transition-transform ${
                       isExpanded ? 'rotate-90' : ''
                     }`}
                   />
@@ -168,19 +167,19 @@ export default function CategoriesSection() {
               <AnimatePresence>
                 {isExpanded && category.subcategories && (
                   <motion.div
-                    initial={{ height: 0, opacity: 0 }}
-                    animate={{ height: 'auto', opacity: 1 }}
-                    exit={{ height: 0, opacity: 0 }}
+                    initial={{ height: 0 }}
+                    animate={{ height: 'auto' }}
+                    exit={{ height: 0 }}
                     transition={{ duration: 0.2 }}
                     className="overflow-hidden"
                   >
-                    <div className="pl-12 pr-3 py-1 md:py-2 space-y-1">
+                    <div className="pl-10 pr-2 py-1 space-y-1 md:pl-12 md:pr-3 md:py-2">
                       {category.subcategories.map((subcategory) => (
                         <motion.button
                           key={subcategory}
                           whileHover={{ x: 2 }}
                           whileTap={{ scale: 0.98 }}
-                          className="w-full text-left py-2 px-3 rounded-lg text-sm md:text-base text-gray-600 hover:bg-purple-50 hover:text-purple-600 transition-colors"
+                          className="w-full text-left py-2 px-2.5 rounded-lg text-sm text-gray-600 hover:bg-purple-50 hover:text-purple-600 transition-colors md:px-3"
                         >
                           {subcategory}
                         </motion.button>
