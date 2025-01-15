@@ -162,9 +162,10 @@ export default function CreatePage() {
             <span className="text-xs text-white mt-1">My Outfits</span>
           </div>
 
-          <div className="flex flex-col items-center">
-            <div className="text-[#FF7043] font-medium">SWIPE</div>
-            <div className="text-[#FF7043] font-medium">CANVAS</div>
+          <div className="flex gap-4">
+            <span className="text-white text-sm">SWIPE</span>
+            <span className="text-[#FF7043] text-sm">CANVAS</span>
+            <span className="text-white text-sm">TRY ON</span>
           </div>
 
           <div className="flex flex-col items-center">
