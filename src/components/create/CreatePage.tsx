@@ -25,18 +25,18 @@ export default function CreatePage() {
         <div className="absolute top-6 inset-x-0 flex justify-between items-start px-5">
           <button 
             onClick={() => navigate(-1)}
-            className="w-11 h-11 bg-[#E0E0E0] rounded-full flex items-center justify-center shadow-lg hover:shadow-xl transition-shadow"
+            className="w-11 h-11 bg-[#666666] rounded-full flex items-center justify-center"
           >
-            <X className="w-5 h-5 text-gray-700" />
+            <X className="w-5 h-5 text-white" />
           </button>
 
           <div className="flex flex-col items-center">
             <button 
-              className="w-11 h-11 bg-[#E0E0E0] rounded-full flex items-center justify-center shadow-lg hover:shadow-xl transition-shadow"
+              className="w-11 h-11 bg-[#666666] rounded-full flex items-center justify-center"
             >
-              <Shirt className="w-5 h-5 text-gray-700" strokeWidth={2.5} />
+              <Shirt className="w-5 h-5 text-white" strokeWidth={2} />
             </button>
-            <span className="text-sm text-gray-600 mt-1">Items</span>
+            <span className="text-sm text-white mt-1">Items</span>
           </div>
         </div>
 
