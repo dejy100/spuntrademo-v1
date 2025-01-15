@@ -39,7 +39,7 @@ export default function DateOptionsModal({
         initial={{ scale: 0.9 }}
         animate={{ scale: 1 }}
         exit={{ scale: 0.9 }}
-        className="bg-white rounded-lg md:rounded-xl p-4 md:p-6 max-w-md w-full mx-3 md:mx-4"
+        className="bg-white rounded-lg md:rounded-xl p-4 md:p-6 max-w-md w-full mx-3 md:mx-4 max-h-[80vh] overflow-y-auto [&::-webkit-scrollbar]:hidden [-ms-overflow-style:none] [scrollbar-width:none] flex flex-col"
         onClick={e => e.stopPropagation()}
       >
         {/* Header */}
@@ -49,60 +49,47 @@ export default function DateOptionsModal({
             onClick={onClose}
             className="p-1.5 md:p-2 hover:bg-gray-100 rounded-full transition-colors"
           >
-            <X className="w-4 h-4 md:w-5 md:h-5" />
+            <X className="w-5 h-5 md:w-6 md:h-6" />
           </button>
         </div>
 
-        {/* Weather Preview */}
-        {weatherData && (
-          <div className="mb-6 p-4 bg-gradient-to-r from-blue-50 to-purple-50 rounded-lg">
-            <div className="flex items-center gap-3">
-              <span className="text-2xl">{weatherData.icon}</span>
-              <div>
-                <p className="font-medium">{weatherData.temperature}°F</p>
-                <p className="text-sm text-gray-600">{weatherData.condition}</p>
-              </div>
-            </div>
-          </div>
-        )}
-
         {/* Options */}
         <div className="space-y-3 md:space-y-4">
-          {/* Plan Outfit */}
           <button
             onClick={onPlanOutfit}
-            className="w-full flex items-center justify-between p-3 md:p-4 bg-purple-50 hover:bg-purple-100 rounded-lg md:rounded-xl transition-colors group"
+            className="w-full flex items-center justify-between p-3 md:p-4 bg-purple-50 hover:bg-purple-100 rounded-lg transition-colors group"
           >
-            <div className="flex items-center gap-3">
-              <div className="p-2 bg-purple-100 group-hover:bg-purple-200 rounded-lg transition-colors">
-                <Calendar className="w-4 h-4 md:w-5 md:h-5 text-purple-600" />
+            <div className="flex items-center gap-3 md:gap-4">
+              <div className="p-2 bg-white rounded-lg">
+                <Calendar className="w-5 h-5 md:w-6 md:h-6 text-purple-600" />
               </div>
               <div className="text-left">
                 <h4 className="font-medium text-sm md:text-base">Plan Outfit</h4>
-                <p className="text-xs md:text-sm text-gray-600">Choose what to wear</p>
+                <p className="text-xs md:text-sm text-gray-600">Create or edit your planned outfit</p>
               </div>
             </div>
-            <ChevronRight className="w-4 h-4 md:w-5 md:h-5 text-gray-400 group-hover:text-gray-600" />
+            <ChevronRight className="w-5 h-5 md:w-6 md:h-6 text-gray-400 group-hover:text-purple-600 transition-colors" />
           </button>
 
-          {/* View Weather */}
-          <button
-            onClick={onViewWeather}
-            className="w-full flex items-center justify-between p-3 md:p-4 bg-blue-50 hover:bg-blue-100 rounded-lg md:rounded-xl transition-colors group"
-          >
-            <div className="flex items-center gap-3">
-              <div className="p-2 bg-blue-100 group-hover:bg-blue-200 rounded-lg transition-colors">
-                <Cloud className="w-4 h-4 md:w-5 md:h-5 text-blue-600" />
+          {weatherData && (
+            <button
+              onClick={onViewWeather}
+              className="w-full flex items-center justify-between p-3 md:p-4 bg-sky-50 hover:bg-sky-100 rounded-lg transition-colors group"
+            >
+              <div className="flex items-center gap-3 md:gap-4">
+                <div className="p-2 bg-white rounded-lg">
+                  <Cloud className="w-5 h-5 md:w-6 md:h-6 text-sky-600" />
+                </div>
+                <div className="text-left">
+                  <h4 className="font-medium text-sm md:text-base">View Weather</h4>
+                  <p className="text-xs md:text-sm text-gray-600">
+                    {weatherData.temperature}°F • {weatherData.condition}
+                  </p>
+                </div>
               </div>
-              <div className="text-left">
-                <h4 className="font-medium text-sm md:text-base">Weather</h4>
-                <p className="text-xs md:text-sm text-gray-600">
-                  {weatherData ? `${weatherData.temperature}°F, ${weatherData.condition}` : 'Check forecast'}
-                </p>
-              </div>
-            </div>
-            <ChevronRight className="w-4 h-4 md:w-5 md:h-5 text-gray-400 group-hover:text-gray-600" />
-          </button>
+              <ChevronRight className="w-5 h-5 md:w-6 md:h-6 text-gray-400 group-hover:text-sky-600 transition-colors" />
+            </button>
+          )}
         </div>
       </motion.div>
     </motion.div>

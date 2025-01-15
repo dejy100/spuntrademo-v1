@@ -231,129 +231,121 @@ export default function DayOutfitModal({ date, onClose, onSave, initialOutfit }:
       initial={{ opacity: 0 }}
       animate={{ opacity: 1 }}
       exit={{ opacity: 0 }}
-      className="fixed inset-0 bg-black/50 backdrop-blur-sm z-50 flex items-center justify-center"
+      className="fixed inset-0 bg-black/50 z-50 flex items-center justify-center p-4"
       onClick={onClose}
     >
-      <motion.div
-        initial={{ scale: 0.9 }}
-        animate={{ scale: 1 }}
-        exit={{ scale: 0.9 }}
-        className="bg-white rounded-xl p-6 md:p-8 max-w-md md:max-w-lg w-full mx-4 max-h-[90vh] overflow-y-auto"
-        onClick={e => e.stopPropagation()}
-      >
-        <div className="flex items-center justify-between mb-4 md:mb-6">
-          <div className="flex items-center gap-3">
-            <Calendar className="w-5 h-5 md:w-6 md:h-6 text-purple-600" />
-            <div>
-              <h3 className="font-semibold text-base md:text-lg">Plan Your Outfit</h3>
-              <p className="text-sm md:text-base text-gray-600">{new Date(date).toLocaleDateString()}</p>
-            </div>
-          </div>
-          <div className="flex items-center gap-2">
-            {view === 'main' && (
-              <motion.button
-                whileHover={{ scale: 1.05 }}
-                onClick={() => setView('needHelp')}
-                className="p-2 md:p-3 text-purple-600 hover:bg-purple-50 rounded-full transition-colors"
-              >
-                <HelpCircle className="w-5 h-5 md:w-6 md:h-6" />
-              </motion.button>
-            )}
-            <button
-              onClick={onClose}
-              className="p-2 md:p-3 hover:bg-gray-100 rounded-full transition-colors"
-            >
-              <X className="w-5 h-5 md:w-6 md:h-6" />
-            </button>
-          </div>
-        </div>
+      <AnimatePresence mode="wait">
+        <motion.div
+          className="bg-white rounded-xl md:rounded-2xl w-full max-w-lg mx-auto max-h-[80vh] overflow-y-auto [&::-webkit-scrollbar]:hidden [-ms-overflow-style:none] [scrollbar-width:none] flex flex-col"
+          onClick={e => e.stopPropagation()}
+        >
+          {view === 'main' ? (
+            <div className="p-4 md:p-6 flex flex-col gap-4 md:gap-6">
+              <div className="flex items-center justify-between mb-4 md:mb-6">
+                <div className="flex items-center gap-3">
+                  <Calendar className="w-5 h-5 md:w-6 md:h-6 text-purple-600" />
+                  <div>
+                    <h3 className="font-semibold text-base md:text-lg">Plan Your Outfit</h3>
+                    <p className="text-sm md:text-base text-gray-600">{new Date(date).toLocaleDateString()}</p>
+                  </div>
+                </div>
+                <div className="flex items-center gap-2">
+                  {view === 'main' && (
+                    <motion.button
+                      whileHover={{ scale: 1.05 }}
+                      onClick={() => setView('needHelp')}
+                      className="p-2 md:p-3 text-purple-600 hover:bg-purple-50 rounded-full transition-colors"
+                    >
+                      <HelpCircle className="w-5 h-5 md:w-6 md:h-6" />
+                    </motion.button>
+                  )}
+                  <button
+                    onClick={onClose}
+                    className="p-2 md:p-3 hover:bg-gray-100 rounded-full transition-colors"
+                  >
+                    <X className="w-5 h-5 md:w-6 md:h-6" />
+                  </button>
+                </div>
+              </div>
 
-        <AnimatePresence mode="wait">
-          <motion.div
-            key={view}
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            exit={{ opacity: 0, y: -20 }}
-          >
-            {view === 'main' ? (
-              <div className="space-y-6">
+              <motion.button
+                whileHover={{ scale: 1.02 }}
+                onClick={handleCreateOutfit}
+                className="w-full py-3 md:py-4 px-4 md:px-6 bg-gradient-to-r from-purple-50 to-pink-50 text-purple-600 rounded-lg flex items-center justify-center gap-2 hover:from-purple-100 hover:to-pink-100 transition-colors"
+              >
+                <Wand2 className="w-4 h-4 md:w-5 md:h-5" />
+                Create New Outfit in Style Creator
+              </motion.button>
+
+              <div className="space-y-4">
+                <div>
+                  <label className="block text-sm md:text-base font-medium text-gray-700 mb-2">Planned Outfit</label>
+                  <textarea
+                    value={plannedOutfit}
+                    onChange={(e) => setPlannedOutfit(e.target.value)}
+                    placeholder="What do you plan to wear?"
+                    className="w-full px-4 md:px-6 py-3 md:py-4 rounded-lg border border-gray-200 focus:ring-2 focus:ring-purple-500 focus:border-transparent"
+                    rows={3}
+                  />
+                </div>
+
+                <div>
+                  <label className="block text-sm md:text-base font-medium text-gray-700 mb-2">What You Wore</label>
+                  <textarea
+                    value={wornOutfit}
+                    onChange={(e) => setWornOutfit(e.target.value)}
+                    placeholder="What did you actually wear?"
+                    className="w-full px-4 md:px-6 py-3 md:py-4 rounded-lg border border-gray-200 focus:ring-2 focus:ring-purple-500 focus:border-transparent"
+                    rows={3}
+                  />
+                </div>
+
+                <div>
+                  <label className="block text-sm md:text-base font-medium text-gray-700 mb-2 flex items-center gap-2">
+                    <SmilePlus className="w-4 h-4 md:w-5 md:h-5" />
+                    How did you feel in this outfit?
+                  </label>
+                  <select
+                    value={mood}
+                    onChange={(e) => setMood(e.target.value)}
+                    className="w-full px-4 md:px-6 py-3 md:py-4 rounded-lg border border-gray-200 focus:ring-2 focus:ring-purple-500 focus:border-transparent"
+                  >
+                    <option value="">Select a mood</option>
+                    {moodOptions.map(option => (
+                      <option key={option.value} value={option.value}>
+                        {option.label}
+                      </option>
+                    ))}
+                  </select>
+                </div>
+              </div>
+
+              <div className="flex flex-wrap gap-2 overflow-x-auto [&::-webkit-scrollbar]:hidden [-ms-overflow-style:none] [scrollbar-width:none]">
                 <motion.button
                   whileHover={{ scale: 1.02 }}
-                  onClick={handleCreateOutfit}
-                  className="w-full py-3 md:py-4 px-4 md:px-6 bg-gradient-to-r from-purple-50 to-pink-50 text-purple-600 rounded-lg flex items-center justify-center gap-2 hover:from-purple-100 hover:to-pink-100 transition-colors"
+                  className="flex-shrink-0 flex items-center gap-2 px-4 md:px-6 py-2 md:py-3 bg-purple-50 text-purple-600 rounded-lg hover:bg-purple-100 transition-colors"
                 >
-                  <Wand2 className="w-4 h-4 md:w-5 md:h-5" />
-                  Create New Outfit in Style Creator
+                  <CalendarIcon className="w-4 h-4 md:w-5 md:h-5" />
+                  Save for Later
                 </motion.button>
+                <motion.button
+                  whileHover={{ scale: 1.02 }}
+                  className="flex-shrink-0 flex items-center gap-2 px-4 md:px-6 py-2 md:py-3 bg-purple-50 text-purple-600 rounded-lg hover:bg-purple-100 transition-colors"
+                >
+                  <ShoppingBag className="w-4 h-4 md:w-5 md:h-5" />
+                  Shop Complements
+                </motion.button>
+                <motion.button
+                  whileHover={{ scale: 1.02 }}
+                  className="flex-shrink-0 flex items-center gap-2 px-4 md:px-6 py-2 md:py-3 bg-purple-50 text-purple-600 rounded-lg hover:bg-purple-100 transition-colors"
+                >
+                  <BookmarkPlus className="w-4 h-4 md:w-5 md:h-5" />
+                  Add to Favorites
+                </motion.button>
+              </div>
 
-                <div className="space-y-4">
-                  <div>
-                    <label className="block text-sm md:text-base font-medium text-gray-700 mb-2">Planned Outfit</label>
-                    <textarea
-                      value={plannedOutfit}
-                      onChange={(e) => setPlannedOutfit(e.target.value)}
-                      placeholder="What do you plan to wear?"
-                      className="w-full px-4 md:px-6 py-3 md:py-4 rounded-lg border border-gray-200 focus:ring-2 focus:ring-purple-500 focus:border-transparent"
-                      rows={3}
-                    />
-                  </div>
-
-                  <div>
-                    <label className="block text-sm md:text-base font-medium text-gray-700 mb-2">What You Wore</label>
-                    <textarea
-                      value={wornOutfit}
-                      onChange={(e) => setWornOutfit(e.target.value)}
-                      placeholder="What did you actually wear?"
-                      className="w-full px-4 md:px-6 py-3 md:py-4 rounded-lg border border-gray-200 focus:ring-2 focus:ring-purple-500 focus:border-transparent"
-                      rows={3}
-                    />
-                  </div>
-
-                  <div>
-                    <label className="block text-sm md:text-base font-medium text-gray-700 mb-2 flex items-center gap-2">
-                      <SmilePlus className="w-4 h-4 md:w-5 md:h-5" />
-                      How did you feel in this outfit?
-                    </label>
-                    <select
-                      value={mood}
-                      onChange={(e) => setMood(e.target.value)}
-                      className="w-full px-4 md:px-6 py-3 md:py-4 rounded-lg border border-gray-200 focus:ring-2 focus:ring-purple-500 focus:border-transparent"
-                    >
-                      <option value="">Select a mood</option>
-                      {moodOptions.map(option => (
-                        <option key={option.value} value={option.value}>
-                          {option.label}
-                        </option>
-                      ))}
-                    </select>
-                  </div>
-                </div>
-
-                <div className="flex flex-wrap gap-2">
-                  <motion.button
-                    whileHover={{ scale: 1.02 }}
-                    className="flex items-center gap-2 px-4 md:px-6 py-2 md:py-3 bg-purple-50 text-purple-600 rounded-lg hover:bg-purple-100 transition-colors"
-                  >
-                    <CalendarIcon className="w-4 h-4 md:w-5 md:h-5" />
-                    Save for Later
-                  </motion.button>
-                  <motion.button
-                    whileHover={{ scale: 1.02 }}
-                    className="flex items-center gap-2 px-4 md:px-6 py-2 md:py-3 bg-purple-50 text-purple-600 rounded-lg hover:bg-purple-100 transition-colors"
-                  >
-                    <ShoppingBag className="w-4 h-4 md:w-5 md:h-5" />
-                    Shop Complements
-                  </motion.button>
-                  <motion.button
-                    whileHover={{ scale: 1.02 }}
-                    className="flex items-center gap-2 px-4 md:px-6 py-2 md:py-3 bg-purple-50 text-purple-600 rounded-lg hover:bg-purple-100 transition-colors"
-                  >
-                    <BookmarkPlus className="w-4 h-4 md:w-5 md:h-5" />
-                    Add to Favorites
-                  </motion.button>
-                </div>
-
-                <div className="flex justify-end gap-3 pt-4 border-t">
+              <div className="mt-auto pt-4 sticky bottom-0 bg-white border-t">
+                <div className="flex justify-end gap-3">
                   <button
                     onClick={onClose}
                     className="px-4 md:px-6 py-2 md:py-3 text-gray-600 hover:bg-gray-100 rounded-lg transition-colors"
@@ -369,16 +361,16 @@ export default function DayOutfitModal({ date, onClose, onSave, initialOutfit }:
                   </button>
                 </div>
               </div>
-            ) : view === 'needHelp' ? (
-              renderNeedHelpView()
-            ) : view === 'pairItem' ? (
-              renderPairItemView()
-            ) : view === 'occasion' ? (
-              renderOccasionView()
-            ) : null}
-          </motion.div>
-        </AnimatePresence>
-      </motion.div>
+            </div>
+          ) : view === 'needHelp' ? (
+            renderNeedHelpView()
+          ) : view === 'pairItem' ? (
+            renderPairItemView()
+          ) : view === 'occasion' ? (
+            renderOccasionView()
+          ) : null}
+        </motion.div>
+      </AnimatePresence>
     </motion.div>
   );
 }
