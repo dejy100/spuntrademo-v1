@@ -1,5 +1,5 @@
 import React from 'react';
-import { X, Shirt, Wand2, LayoutGrid, Image, Brush, Layers, PenTool } from 'lucide-react';
+import { X, Shirt, Wand2, Squares2X2, GalleryHorizontalEnd, Paintbrush2, PenSquare, Shapes } from 'lucide-react';
 import { useNavigate } from 'react-router-dom';
 import { motion } from 'framer-motion';
 
@@ -147,38 +147,36 @@ export default function CreatePage() {
         </div>
       </motion.div>
 
-      {/* Creative Mode Navigation */}
+      {/* Modern Creative Navigation */}
       <div className="fixed bottom-0 inset-x-0">
-        <div className="bg-gradient-to-t from-black to-transparent pt-16 pb-6">
-          <div className="flex justify-center space-x-16 px-8">
-            <div className="flex flex-col items-center group cursor-pointer">
-              <Layers className="w-6 h-6 text-white" />
-              <span className="text-[10px] text-white mt-1.5">Outfits</span>
+        <div className="bg-black/95 backdrop-blur-sm px-6 py-4">
+          <div className="flex justify-between items-center">
+            <button className="flex flex-col items-center w-12 transition-colors">
+              <Squares2X2 className="w-6 h-6 text-white/80" strokeWidth={1.5} />
+              <span className="text-[10px] text-white/80 mt-1">Outfits</span>
+            </button>
+
+            <div className="flex gap-12">
+              <button className="flex flex-col items-center w-12 transition-colors">
+                <Paintbrush2 className="w-6 h-6 text-white/80" strokeWidth={1.5} />
+                <span className="text-[10px] text-white/80 mt-1">Swipe</span>
+              </button>
+
+              <button className="flex flex-col items-center w-12 transition-colors">
+                <PenSquare className="w-6 h-6 text-[#FF7043]" strokeWidth={1.5} />
+                <span className="text-[10px] text-[#FF7043] mt-1">Canvas</span>
+              </button>
+
+              <button className="flex flex-col items-center w-12 transition-colors">
+                <Shapes className="w-6 h-6 text-white/80" strokeWidth={1.5} />
+                <span className="text-[10px] text-white/80 mt-1">Try On</span>
+              </button>
             </div>
 
-            <div className="flex flex-col items-center space-y-6">
-              <div className="flex space-x-8">
-                <div className="flex flex-col items-center group cursor-pointer">
-                  <Brush className="w-6 h-6 text-white" />
-                  <span className="text-[10px] text-white mt-1.5">Swipe</span>
-                </div>
-
-                <div className="flex flex-col items-center group cursor-pointer">
-                  <PenTool className="w-6 h-6 text-[#FF7043]" />
-                  <span className="text-[10px] text-[#FF7043] mt-1.5">Canvas</span>
-                </div>
-
-                <div className="flex flex-col items-center group cursor-pointer">
-                  <Shirt className="w-6 h-6 text-white" />
-                  <span className="text-[10px] text-white mt-1.5">Try On</span>
-                </div>
-              </div>
-            </div>
-
-            <div className="flex flex-col items-center group cursor-pointer">
-              <Image className="w-6 h-6 text-white" />
-              <span className="text-[10px] text-white mt-1.5">Gallery</span>
-            </div>
+            <button className="flex flex-col items-center w-12 transition-colors">
+              <GalleryHorizontalEnd className="w-6 h-6 text-white/80" strokeWidth={1.5} />
+              <span className="text-[10px] text-white/80 mt-1">Gallery</span>
+            </button>
           </div>
         </div>
       </div>
