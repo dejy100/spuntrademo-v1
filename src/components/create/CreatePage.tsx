@@ -43,11 +43,11 @@ export default function CreatePage() {
         {/* Content */}
         <div className="flex flex-col items-center justify-center h-full px-6 pt-16 pb-8">
           <motion.div
-            className="w-20 h-20 mb-6 relative"
+            className="w-16 h-16 mb-8 relative"
             initial={{ y: 0, rotate: 0 }}
             animate={{ 
-              y: [-4, 4, -4],
-              rotate: [-5, 5, -5]
+              y: [-3, 3, -3],
+              rotate: [-4, 4, -4]
             }}
             transition={{
               y: {
@@ -63,13 +63,13 @@ export default function CreatePage() {
             }}
           >
             <motion.div 
-              className="w-full h-full bg-gradient-to-br from-[#FF7043] via-[#FF9D80] to-[#FFB74D] rounded-xl shadow-xl flex items-center justify-center relative overflow-hidden"
+              className="w-full h-full bg-gradient-to-br from-[#FF7043] via-[#FF9D80] to-[#FFB74D] rounded-lg shadow-xl flex items-center justify-center relative overflow-hidden"
               whileHover={{ scale: 1.05 }}
               whileTap={{ scale: 0.95 }}
             >
               {/* Creative Elements */}
               <motion.div 
-                className="absolute w-14 h-14 bg-white/20 rounded-full"
+                className="absolute w-12 h-12 bg-white/20 rounded-full"
                 animate={{ 
                   scale: [1, 1.2, 1],
                   rotate: [0, 180, 360]
@@ -81,7 +81,7 @@ export default function CreatePage() {
                 }}
               />
               <motion.div 
-                className="absolute w-10 h-10 bg-white/30 rounded-full"
+                className="absolute w-8 h-8 bg-white/30 rounded-full"
                 animate={{ 
                   scale: [1.2, 1, 1.2],
                   rotate: [360, 180, 0]
@@ -95,7 +95,7 @@ export default function CreatePage() {
               
               {/* Fashion Icon */}
               <svg
-                className="w-10 h-10 text-white relative z-10"
+                className="w-8 h-8 text-white relative z-10"
                 viewBox="0 0 24 24"
                 fill="none"
                 strokeWidth="1.5"
@@ -115,11 +115,11 @@ export default function CreatePage() {
               </svg>
             </motion.div>
             {/* Enhanced Shadow Effect */}
-            <div className="absolute -inset-1 bg-gradient-to-b from-white/10 via-[#FF7043]/20 to-transparent rounded-xl blur-xl" />
+            <div className="absolute -inset-1 bg-gradient-to-b from-white/10 via-[#FF7043]/20 to-transparent rounded-lg blur-xl" />
           </motion.div>
 
           <motion.h1 
-            className="text-2xl font-semibold mb-2"
+            className="text-2xl font-semibold mb-3"
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ delay: 0.2, duration: 0.6 }}
@@ -127,7 +127,7 @@ export default function CreatePage() {
             Create your outfit
           </motion.h1>
           <motion.p 
-            className="text-gray-500 mb-20"
+            className="text-gray-500 mb-[35vh]"
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ delay: 0.3, duration: 0.6 }}
