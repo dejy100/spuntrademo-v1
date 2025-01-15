@@ -8,9 +8,14 @@ interface Props {
 
 export default function StyleMatchModal({ onClose }: Props) {
   const fileInputRef = useRef<HTMLInputElement>(null);
+  const cameraInputRef = useRef<HTMLInputElement>(null);
 
   const handleUploadClick = () => {
     fileInputRef.current?.click();
+  };
+
+  const handleTakePhotoClick = () => {
+    cameraInputRef.current?.click();
   };
 
   const handleFileChange = (event: React.ChangeEvent<HTMLInputElement>) => {
@@ -18,16 +23,6 @@ export default function StyleMatchModal({ onClose }: Props) {
     if (file) {
       // Handle the selected file here
       console.log('Selected file:', file);
-    }
-  };
-
-  const handleTakePhoto = async () => {
-    try {
-      const stream = await navigator.mediaDevices.getUserMedia({ video: true });
-      // Handle the camera stream here
-      console.log('Camera access granted:', stream);
-    } catch (error) {
-      console.error('Error accessing camera:', error);
     }
   };
 
@@ -46,6 +41,14 @@ export default function StyleMatchModal({ onClose }: Props) {
             onChange={handleFileChange}
             className="hidden"
           />
+          <input
+            type="file"
+            ref={cameraInputRef}
+            accept="image/*"
+            capture="environment"
+            onChange={handleFileChange}
+            className="hidden"
+          />
           <button 
             className="w-full flex items-center gap-2 px-4 py-3 bg-purple-50 hover:bg-purple-100 rounded-lg text-sm text-purple-700 transition-colors"
             onClick={handleUploadClick}
@@ -56,7 +59,7 @@ export default function StyleMatchModal({ onClose }: Props) {
           
           <button 
             className="w-full flex items-center gap-2 px-4 py-3 bg-purple-50 hover:bg-purple-100 rounded-lg text-sm text-purple-700 transition-colors"
-            onClick={handleTakePhoto}
+            onClick={handleTakePhotoClick}
           >
             <Camera size={18} />
             Take Photo
