@@ -1,5 +1,5 @@
 import React from 'react';
-import { X, Shirt, Wand2, LayoutGrid, Image, SwipeHorizontal, Palette, ShirtIcon } from 'lucide-react';
+import { X, Shirt, Wand2, LayoutGrid, Image, MoveHorizontal, Palette } from 'lucide-react';
 import { useNavigate } from 'react-router-dom';
 import { motion } from 'framer-motion';
 
@@ -156,7 +156,7 @@ export default function CreatePage() {
           </div>
 
           <div className="flex flex-col items-center">
-            <SwipeHorizontal className="w-5 h-5 text-white" />
+            <MoveHorizontal className="w-5 h-5 text-white" />
             <span className="text-[10px] text-white mt-1">Swipe</span>
           </div>
 
@@ -166,7 +166,7 @@ export default function CreatePage() {
           </div>
 
           <div className="flex flex-col items-center">
-            <ShirtIcon className="w-5 h-5 text-white" />
+            <Shirt className="w-5 h-5 text-white" />
             <span className="text-[10px] text-white mt-1">Try On</span>
           </div>
 
