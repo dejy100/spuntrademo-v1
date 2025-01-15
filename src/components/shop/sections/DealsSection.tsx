@@ -51,16 +51,16 @@ export default function DealsSection() {
               scale: 1.02,
               transition: { duration: 0.2 }
             }}
-            className="bg-white rounded-lg shadow-sm p-3 hover:shadow-md transition-all"
+            className="bg-white rounded-lg shadow-sm p-4 hover:shadow-md transition-all w-full"
           >
             <div className="flex items-start justify-between mb-3">
-              <div className="flex-1 min-w-0 pr-4">
+              <div className="flex-1 min-w-0 pr-6">
                 <h3 className="text-base font-semibold mb-1 truncate">{deal.store}</h3>
-                <p className="text-sm text-gray-600">{deal.description}</p>
+                <p className="text-sm text-gray-600 line-clamp-1">{deal.description}</p>
               </div>
-              <div className="flex items-center gap-1 whitespace-nowrap">
-                <Tag className="w-4 h-4 text-purple-600" />
-                <span className="text-base font-bold text-purple-600">{deal.discount}</span>
+              <div className="flex items-center gap-1 shrink-0">
+                <Tag className="w-4 h-4 text-purple-600 shrink-0" />
+                <span className="text-base font-bold text-purple-600 whitespace-nowrap">{deal.discount}</span>
               </div>
             </div>
             
@@ -68,7 +68,7 @@ export default function DealsSection() {
               <div className="bg-purple-50 px-3 py-1.5 rounded-lg">
                 <code className="text-sm font-mono text-purple-600 font-medium">{deal.code}</code>
               </div>
-              <span className="text-xs text-gray-500">Expires in {deal.expiresIn}</span>
+              <span className="text-xs text-gray-500 whitespace-nowrap">Expires in {deal.expiresIn}</span>
             </div>
           </motion.div>
         ))}
