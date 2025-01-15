@@ -34,7 +34,7 @@ export default function UnwornItemModal({ insight, onClose }: UnwornItemModalPro
         initial={{ scale: 0.9 }}
         animate={{ scale: 1 }}
         exit={{ scale: 0.9 }}
-        className="bg-white rounded-xl md:rounded-2xl p-4 md:p-6 max-w-lg w-full mx-3 md:mx-4 max-h-[80vh] overflow-y-auto scrollbar-hide flex flex-col"
+        className="bg-white rounded-xl md:rounded-2xl p-4 md:p-6 max-w-lg w-full mx-3 md:mx-4 max-h-[80vh] overflow-y-auto [&::-webkit-scrollbar]:hidden [-ms-overflow-style:none] [scrollbar-width:none] flex flex-col"
         onClick={e => e.stopPropagation()}
       >
         <div className="flex items-center justify-between mb-4 md:mb-6">
@@ -55,7 +55,7 @@ export default function UnwornItemModal({ insight, onClose }: UnwornItemModalPro
           />
         </div>
 
-        <div className="space-y-4 overflow-y-auto scrollbar-hide flex-1">
+        <div className="space-y-4 overflow-y-auto [&::-webkit-scrollbar]:hidden [-ms-overflow-style:none] [scrollbar-width:none] flex-1">
           <div className="grid grid-cols-1 sm:grid-cols-2 gap-3 md:gap-4">
             <button
               onClick={() => setSelectedAction('outfit')}
