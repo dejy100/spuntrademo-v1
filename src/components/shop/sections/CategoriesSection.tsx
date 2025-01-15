@@ -50,48 +50,74 @@ const categories = [
     icon: Watch,
     subcategories: [
       'All Accessories',
-      'Bags',
       'Jewelry',
-      'Belts',
-      'Sunglasses',
+      'Watches',
       'Scarves',
-      'Hats',
-      'Gloves'
+      'Belts',
+      'Hair Accessories',
+      'Sunglasses'
     ]
   },
   {
-    id: 'beauty',
-    name: 'Beauty',
+    id: 'bags',
+    name: 'Bags',
+    icon: ShoppingBag,
+    subcategories: [
+      'All Bags',
+      'Handbags',
+      'Crossbody Bags',
+      'Shoulder Bags',
+      'Totes',
+      'Backpacks',
+      'Clutches'
+    ]
+  },
+  {
+    id: 'jewelry',
+    name: 'Jewelry',
+    icon: Crown,
+    subcategories: [
+      'All Jewelry',
+      'Necklaces',
+      'Earrings',
+      'Bracelets',
+      'Rings',
+      'Fine Jewelry',
+      'Fashion Jewelry'
+    ]
+  },
+  {
+    id: 'makeup',
+    name: 'Makeup',
     icon: Palette,
     subcategories: [
-      'All Beauty',
-      'Makeup',
-      'Skincare',
-      'Haircare',
-      'Fragrances',
-      'Tools'
+      'All Makeup',
+      'Face',
+      'Eyes',
+      'Lips',
+      'Cheeks',
+      'Brushes',
+      'Sets'
     ]
   },
   {
-    id: 'designers',
-    name: 'Designers',
+    id: 'hair',
+    name: 'Hair',
     icon: Scissors,
     subcategories: [
-      'All Designers',
-      'Luxury',
-      'Contemporary',
-      'Emerging'
+      'All Hair',
+      'Shampoo',
+      'Conditioner',
+      'Treatments',
+      'Styling',
+      'Tools',
+      'Accessories'
     ]
   },
   {
     id: 'premium',
     name: 'Premium',
     icon: Crown
-  },
-  {
-    id: 'favorites',
-    name: 'Favorites',
-    icon: Heart
   },
   {
     id: 'sale',
@@ -103,58 +129,69 @@ const categories = [
 export default function CategoriesSection() {
   const [expandedCategory, setExpandedCategory] = useState<string | null>(null);
 
+  const toggleCategory = (categoryId: string) => {
+    setExpandedCategory(expandedCategory === categoryId ? null : categoryId);
+  };
+
   return (
-    <section className="bg-white rounded-lg shadow-sm p-4 md:p-6">
-      <div className="flex items-center justify-between mb-4">
-        <h2 className="text-lg md:text-xl font-semibold">Categories</h2>
-      </div>
-
-      <div className="space-y-2">
-        {categories.map((category) => (
-          <div key={category.id}>
-            <motion.button
-              onClick={() => setExpandedCategory(
-                expandedCategory === category.id ? null : category.id
-              )}
-              className="w-full flex items-center justify-between p-2 md:p-3 rounded-lg hover:bg-gray-50 transition-colors"
-            >
-              <div className="flex items-center gap-3">
-                <category.icon className="w-4 h-4 md:w-5 md:h-5 text-gray-600" />
-                <span className="text-sm md:text-base">{category.name}</span>
-              </div>
-              {category.subcategories && (
-                <ChevronDown
-                  className={`w-4 h-4 md:w-5 md:h-5 text-gray-400 transition-transform ${
-                    expandedCategory === category.id ? 'rotate-180' : ''
-                  }`}
-                />
-              )}
-            </motion.button>
-
-            <AnimatePresence>
-              {category.subcategories && expandedCategory === category.id && (
-                <motion.div
-                  initial={{ height: 0, opacity: 0 }}
-                  animate={{ height: 'auto', opacity: 1 }}
-                  exit={{ height: 0, opacity: 0 }}
-                  transition={{ duration: 0.2 }}
-                  className="overflow-hidden"
-                >
-                  <div className="pl-9 pr-2 py-1 space-y-1">
-                    {category.subcategories.map((subcategory) => (
-                      <button
-                        key={subcategory}
-                        className="w-full text-left p-2 rounded-lg text-sm md:text-base text-gray-600 hover:text-gray-900 hover:bg-gray-50 transition-colors"
-                      >
-                        {subcategory}
-                      </button>
-                    ))}
+    <section className="bg-white rounded-xl shadow-sm p-4 md:p-6">
+      <h2 className="text-lg md:text-xl font-semibold mb-4 md:mb-6">Categories</h2>
+      
+      <div className="space-y-1 md:space-y-2">
+        {categories.map((category) => {
+          const Icon = category.icon;
+          const isExpanded = expandedCategory === category.id;
+          
+          return (
+            <div key={category.id}>
+              <motion.button
+                whileHover={{ x: 2 }}
+                whileTap={{ scale: 0.98 }}
+                onClick={() => category.subcategories && toggleCategory(category.id)}
+                className="w-full flex items-center justify-between p-3 rounded-lg hover:bg-purple-50 transition-colors group"
+              >
+                <div className="flex items-center gap-3">
+                  <div className="p-2 bg-purple-50 rounded-lg group-hover:bg-white transition-colors">
+                    <Icon className="w-4 h-4 md:w-5 md:h-5 text-purple-600" />
                   </div>
-                </motion.div>
-              )}
-            </AnimatePresence>
-          </div>
-        ))}
+                  <span className="text-sm md:text-base font-medium">{category.name}</span>
+                </div>
+                {category.subcategories && (
+                  <ChevronRight 
+                    className={`w-4 h-4 md:w-5 md:h-5 text-gray-400 transition-transform ${
+                      isExpanded ? 'rotate-90' : ''
+                    }`}
+                  />
+                )}
+              </motion.button>
+
+              <AnimatePresence>
+                {isExpanded && category.subcategories && (
+                  <motion.div
+                    initial={{ height: 0, opacity: 0 }}
+                    animate={{ height: 'auto', opacity: 1 }}
+                    exit={{ height: 0, opacity: 0 }}
+                    transition={{ duration: 0.2 }}
+                    className="overflow-hidden"
+                  >
+                    <div className="pl-12 pr-3 py-1 md:py-2 space-y-1">
+                      {category.subcategories.map((subcategory) => (
+                        <motion.button
+                          key={subcategory}
+                          whileHover={{ x: 2 }}
+                          whileTap={{ scale: 0.98 }}
+                          className="w-full text-left py-2 px-3 rounded-lg text-sm md:text-base text-gray-600 hover:bg-purple-50 hover:text-purple-600 transition-colors"
+                        >
+                          {subcategory}
+                        </motion.button>
+                      ))}
+                    </div>
+                  </motion.div>
+                )}
+              </AnimatePresence>
+            </div>
+          );
+        })}
       </div>
     </section>
   );
