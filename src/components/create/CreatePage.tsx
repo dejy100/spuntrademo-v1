@@ -137,7 +137,7 @@ export default function CreatePage() {
             </motion.p>
           </div>
           
-          <div className="absolute bottom-20 w-full flex flex-col items-center">
+          <div className="absolute bottom-12 w-full flex flex-col items-center">
             <p className="text-gray-500 mb-0.5 w-[240px] text-center">Need some inspiration?</p>
             <button className="w-[240px] px-8 py-3 bg-[#FF7043] text-white rounded-full flex items-center justify-center gap-2 text-sm shadow-md">
               <span className="text-lg">🎲</span>
