@@ -48,24 +48,24 @@ const aiStores = [
 export default function AIStylistSection() {
   return (
     <section>
-      <div className="flex items-center justify-between mb-6">
-        <div>
-          <h2 className="text-2xl font-semibold mb-2">Shop with your AI Stylist</h2>
-          <p className="text-gray-600">Browse stores you love and check if a piece fits your style and closet before you buy it.</p>
+      <div className="flex items-center justify-between mb-4">
+        <div className="flex-1 min-w-0">
+          <h2 className="text-lg font-semibold mb-1 truncate pr-4">Shop with your AI Stylist</h2>
+          <p className="text-sm text-gray-600">Browse stores you love and check if a piece fits your style.</p>
         </div>
-        <button className="text-purple-600 hover:text-purple-700 font-medium flex items-center gap-1">
+        <button className="flex items-center text-sm text-purple-600 hover:text-purple-700 font-medium whitespace-nowrap">
           View all
-          <ChevronRight className="w-4 h-4" />
+          <ChevronRight className="w-4 h-4 ml-1" />
         </button>
       </div>
 
       <div className="relative">
-        <div className="grid grid-cols-2 md:grid-cols-4 gap-4 overflow-y-auto max-h-[400px] scrollbar-hide">
+        <div className="grid grid-cols-2 gap-3 overflow-y-auto max-h-[400px] scrollbar-hide">
           {aiStores.map((store) => (
             <motion.div
               key={store.id}
               whileHover={{ scale: 1.02 }}
-              className="relative aspect-square bg-white rounded-2xl shadow-md overflow-hidden group"
+              className="relative aspect-square rounded-lg overflow-hidden bg-gray-100"
             >
               <img
                 src={store.logo}
@@ -73,19 +73,19 @@ export default function AIStylistSection() {
                 className="w-full h-full object-cover"
               />
               {/* Spuntra Hanger Logo Overlay */}
-              <div className="absolute top-4 right-4 p-2 bg-white/90 backdrop-blur-sm rounded-xl shadow-lg">
-                <Shirt className="w-5 h-5 text-purple-600" />
+              <div className="absolute top-3 right-3 p-1.5 bg-white/90 backdrop-blur-sm rounded-lg shadow-sm">
+                <Shirt className="w-4 h-4 text-purple-600" />
               </div>
               {/* Hover Overlay */}
               <div className="absolute inset-0 bg-black/40 opacity-0 group-hover:opacity-100 transition-opacity" />
               {/* Brand Name */}
-              <div className="absolute bottom-0 left-0 right-0 bg-white/90 backdrop-blur-sm p-4">
-                <p className="font-medium text-center">{store.name}</p>
+              <div className="absolute bottom-0 left-0 right-0 bg-white/90 backdrop-blur-sm p-3">
+                <p className="text-sm font-medium text-center truncate">{store.name}</p>
               </div>
             </motion.div>
           ))}
         </div>
-        <div className="absolute inset-x-0 bottom-0 h-20 bg-gradient-to-t from-purple-50 to-transparent pointer-events-none" />
+        <div className="absolute inset-x-0 bottom-0 h-16 bg-gradient-to-t from-purple-50 to-transparent pointer-events-none" />
       </div>
     </section>
   );
