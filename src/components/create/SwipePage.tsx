@@ -100,8 +100,8 @@ export default function SwipePage() {
         </div>
       </div>
 
-      {/* Bottom Navigation - Same as CreatePage */}
-      <div className="fixed bottom-0 inset-x-0 h-16">
+      {/* Bottom Navigation */}
+      <div className="fixed bottom-0 inset-x-0">
         <div className="bg-black/90 backdrop-blur-md py-3 border-t border-white/5">
           <div className="max-w-md mx-auto flex justify-between px-8">
             <button 
@@ -112,7 +112,9 @@ export default function SwipePage() {
               <span className="text-[10px] text-white mt-1.5">My Outfits</span>
             </button>
 
-            <button className="flex flex-col items-center justify-center w-16">
+            <button 
+              onClick={() => navigate('/create/swipe')}
+              className="flex flex-col items-center justify-center w-16">
               <div className="relative flex items-center justify-center">
                 <div className="absolute -inset-3 bg-[#FF7043]/10 rounded-full"></div>
                 <CircleDot className="w-5 h-5 text-[#FF7043]" strokeWidth={1.5} />
