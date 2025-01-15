@@ -148,38 +148,22 @@ export default function CreatePage() {
       </motion.div>
 
       {/* Bottom Navigation */}
-      <div className="fixed bottom-0 inset-x-0">
-        {/* Center Links */}
-        <div className="bg-gradient-to-t from-black via-black to-transparent pt-12 pb-6">
-          <div className="flex justify-center space-x-8 mb-6">
-            <span className="text-white/60 text-sm tracking-wide font-medium">SWIPE</span>
-            <span className="text-[#FF7043] text-sm tracking-wide font-medium relative">
-              CANVAS
-              <div className="absolute -bottom-1 left-1/2 w-1 h-1 bg-[#FF7043] rounded-full transform -translate-x-1/2"></div>
-            </span>
-            <span className="text-white/60 text-sm tracking-wide font-medium">TRY ON</span>
+      <div className="fixed bottom-0 inset-x-0 bg-black py-4">
+        <div className="flex justify-between items-center px-6">
+          <div className="flex flex-col items-center">
+            <LayoutGrid className="w-5 h-5 text-white mb-1" />
+            <span className="text-xs text-white">My Outfits</span>
+          </div>
+          
+          <div className="flex space-x-6">
+            <span className="text-white/70 text-sm">SWIPE</span>
+            <span className="text-[#FF7043] text-sm">CANVAS</span>
+            <span className="text-white/70 text-sm">TRY ON</span>
           </div>
 
-          <div className="flex justify-between px-12">
-            <div className="flex flex-col items-center">
-              <button className="group relative">
-                <div className="absolute inset-0 bg-white/5 rounded-xl transform transition-all duration-200 group-hover:scale-110 group-hover:bg-white/10"></div>
-                <div className="relative p-3">
-                  <LayoutGrid className="w-5 h-5 text-white" />
-                </div>
-              </button>
-              <span className="text-[10px] text-white/80 mt-1.5 font-medium">My Outfits</span>
-            </div>
-
-            <div className="flex flex-col items-center">
-              <button className="group relative">
-                <div className="absolute inset-0 bg-white/5 rounded-xl transform transition-all duration-200 group-hover:scale-110 group-hover:bg-white/10"></div>
-                <div className="relative p-3">
-                  <Image className="w-5 h-5 text-white" />
-                </div>
-              </button>
-              <span className="text-[10px] text-white/80 mt-1.5 font-medium">Wallpapers</span>
-            </div>
+          <div className="flex flex-col items-center">
+            <Image className="w-5 h-5 text-white mb-1" />
+            <span className="text-xs text-white">Wallpapers</span>
           </div>
         </div>
       </div>
