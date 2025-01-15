@@ -1,5 +1,5 @@
 import React from 'react';
-import { X, HelpCircle, Star, Plus } from 'lucide-react';
+import { X, HelpCircle, Star, Plus, Grid, CircleDot, Pencil, Heart, Image } from 'lucide-react';
 import { useNavigate } from 'react-router-dom';
 
 /**
@@ -141,6 +141,53 @@ export default function SwipePage() {
                 </svg>
               </button>
             </div>
+          </div>
+        </div>
+      </div>
+
+      {/* Clean Modern Navigation */}
+      <div className="fixed bottom-0 inset-x-0">
+        <div className="bg-black/90 backdrop-blur-md py-3 border-t border-white/5">
+          <div className="max-w-md mx-auto flex justify-between px-8">
+            <button 
+              onClick={() => navigate('/create')}
+              className="flex flex-col items-center justify-center w-16 opacity-60 hover:opacity-100 transition-opacity"
+            >
+              <Grid className="w-5 h-5 text-white" strokeWidth={1.5} />
+              <span className="text-[10px] text-white mt-1.5">My Outfits</span>
+            </button>
+
+            <button className="flex flex-col items-center justify-center w-16">
+              <div className="relative flex items-center justify-center">
+                <div className="absolute -inset-3 bg-[#FF7043]/10 rounded-full"></div>
+                <CircleDot className="w-5 h-5 text-[#FF7043]" strokeWidth={1.5} />
+              </div>
+              <span className="text-[10px] text-[#FF7043] mt-1.5">Swipe</span>
+            </button>
+
+            <button 
+              onClick={() => navigate('/create/canvas')}
+              className="flex flex-col items-center justify-center w-16 opacity-60 hover:opacity-100 transition-opacity"
+            >
+              <Pencil className="w-5 h-5 text-white" strokeWidth={1.5} />
+              <span className="text-[10px] text-white mt-1.5">Canvas</span>
+            </button>
+
+            <button 
+              onClick={() => navigate('/create/try-on')}
+              className="flex flex-col items-center justify-center w-16 opacity-60 hover:opacity-100 transition-opacity"
+            >
+              <Heart className="w-5 h-5 text-white" strokeWidth={1.5} />
+              <span className="text-[10px] text-white mt-1.5">Try On</span>
+            </button>
+
+            <button 
+              onClick={() => navigate('/create/wallpaper')}
+              className="flex flex-col items-center justify-center w-16 opacity-60 hover:opacity-100 transition-opacity"
+            >
+              <Image className="w-5 h-5 text-white" strokeWidth={1.5} />
+              <span className="text-[10px] text-white mt-1.5">Wallpaper</span>
+            </button>
           </div>
         </div>
       </div>
