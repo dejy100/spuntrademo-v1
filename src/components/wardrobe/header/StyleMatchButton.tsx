@@ -1,20 +1,42 @@
-import React from 'react';
-import { motion } from 'framer-motion';
-import { Sparkles } from 'lucide-react';
+import React, { useState } from 'react';
+import { motion, AnimatePresence } from 'framer-motion';
+import { Wand2 } from 'lucide-react';
+import StyleMatchModal from '../analysis/StyleMatchModal';
 
-interface Props {
-  onClick: () => void;
-}
+export default function StyleMatchButton() {
+  const [showModal, setShowModal] = useState(false);
+  const [showTooltip, setShowTooltip] = useState(false);
 
-export default function StyleMatchButton({ onClick }: Props) {
   return (
-    <motion.button
-      whileHover={{ scale: 1.05 }}
-      whileTap={{ scale: 0.95 }}
-      onClick={onClick}
-      className="w-10 h-10 md:w-11 md:h-11 flex items-center justify-center rounded-full bg-white shadow-sm hover:shadow-md transition-all"
-    >
-      <Sparkles className="w-5 h-5 md:w-6 md:h-6 text-gray-600" />
-    </motion.button>
+    <div className="relative">
+      <motion.button
+        whileHover={{ scale: 1.05 }}
+        whileTap={{ scale: 0.95 }}
+        onClick={() => setShowModal(true)}
+        onMouseEnter={() => setShowTooltip(true)}
+        onMouseLeave={() => setShowTooltip(false)}
+        className="p-1.5 md:p-2 bg-white rounded-full shadow-sm hover:shadow-md transition-all group"
+      >
+        <Wand2 className="w-3.5 h-3.5 md:w-4 md:h-4 text-purple-600 group-hover:text-pink-600 transition-colors" />
+      </motion.button>
+
+      <AnimatePresence>
+        {showTooltip && (
+          <motion.div
+            initial={{ opacity: 0, y: 5 }}
+            animate={{ opacity: 1, y: 0 }}
+            exit={{ opacity: 0, y: 5 }}
+            className="absolute right-0 top-full mt-1.5 md:mt-2 whitespace-nowrap bg-gray-900 text-white text-[10px] md:text-xs py-1 md:py-1.5 px-2 md:px-3 rounded md:rounded-lg z-50"
+          >
+            Analyze Style Match
+            <div className="absolute -top-1 right-3 md:right-4 w-1.5 md:w-2 h-1.5 md:h-2 bg-gray-900 transform rotate-45" />
+          </motion.div>
+        )}
+
+        {showModal && (
+          <StyleMatchModal onClose={() => setShowModal(false)} />
+        )}
+      </AnimatePresence>
+    </div>
   );
 }
