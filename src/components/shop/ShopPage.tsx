@@ -19,6 +19,21 @@ export default function ShopPage() {
     }
   };
 
+  const handleTakePhoto = () => {
+    const input = document.createElement('input');
+    input.type = 'file';
+    input.accept = 'image/*';
+    input.capture = 'environment'; // This opens the back camera
+    input.onchange = (e) => {
+      const file = (e.target as HTMLInputElement).files?.[0];
+      if (file) {
+        console.log('Photo taken:', file);
+        setShowVisualSearch(false);
+      }
+    };
+    input.click();
+  };
+
   return (
     <div className="min-h-screen bg-gradient-to-br from-purple-50 to-pink-50">
       <Header />
@@ -78,7 +93,10 @@ export default function ShopPage() {
                         <Upload className="w-5 h-5 text-purple-600" />
                         <span className="text-sm text-purple-600 font-medium">Upload Image</span>
                       </label>
-                      <button className="flex items-center gap-3 w-full p-3 bg-purple-50 rounded-lg hover:bg-purple-100 transition-colors">
+                      <button 
+                        onClick={handleTakePhoto}
+                        className="flex items-center gap-3 w-full p-3 bg-purple-50 rounded-lg hover:bg-purple-100 transition-colors"
+                      >
                         <Camera className="w-5 h-5 text-purple-600" />
                         <span className="text-sm text-purple-600 font-medium">Take Photo</span>
                       </button>
