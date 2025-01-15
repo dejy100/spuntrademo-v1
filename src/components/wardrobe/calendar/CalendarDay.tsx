@@ -59,19 +59,19 @@ export default function CalendarDay({
       whileTap={{ scale: 0.95 }}
       onClick={onClick}
       className={`
-        relative aspect-square rounded-xl p-2 text-sm 
-        ${isToday ? 'ring-2 ring-purple-400 ring-offset-2' : ''}
+        relative aspect-square rounded-lg md:rounded-xl p-1.5 md:p-2 text-xs md:text-sm 
+        ${isToday ? 'ring-1 md:ring-2 ring-purple-400 ring-offset-1 md:ring-offset-2' : ''}
         ${specialDate ? 'bg-purple-50 text-purple-600' : 'hover:bg-gray-50'}
         transition-all duration-200
       `}
     >
       {/* Status Indicators */}
-      <div className="absolute top-1 right-1 flex flex-col gap-1">
+      <div className="absolute top-0.5 md:top-1 right-0.5 md:right-1 flex flex-col gap-0.5 md:gap-1">
         {outfitPlanned && (
-          <div className="w-2 h-2 rounded-full bg-purple-400" />
+          <div className="w-1.5 h-1.5 md:w-2 md:h-2 rounded-full bg-purple-400" />
         )}
         {outfitLogged && (
-          <div className="w-2 h-2 rounded-full bg-green-400" />
+          <div className="w-1.5 h-1.5 md:w-2 md:h-2 rounded-full bg-green-400" />
         )}
       </div>
 
@@ -80,7 +80,7 @@ export default function CalendarDay({
 
       {/* Weather Preview */}
       {(weatherIcon || temperature) && (
-        <div className="absolute bottom-1 left-1 flex items-center gap-1 text-xs">
+        <div className="absolute bottom-0.5 md:bottom-1 left-0.5 md:left-1 flex items-center gap-0.5 md:gap-1 text-[10px] md:text-xs">
           {getWeatherIcon()}
           {temperature && (
             <span className={`${getTemperatureColor(temperature)}`}>
@@ -92,8 +92,8 @@ export default function CalendarDay({
       
       {/* Special Date Hover */}
       {specialDate && (
-        <div className="absolute inset-0 flex items-center justify-center opacity-0 group-hover:opacity-100 bg-purple-600 text-white rounded-xl transition-opacity">
-          <span className="text-xs text-center px-1">
+        <div className="absolute inset-0 flex items-center justify-center opacity-0 group-hover:opacity-100 bg-purple-600 text-white rounded-lg md:rounded-xl transition-opacity">
+          <span className="text-[10px] md:text-xs text-center px-0.5 md:px-1">
             {specialDate.name}
           </span>
         </div>
@@ -101,7 +101,7 @@ export default function CalendarDay({
 
       {/* Event Indicator */}
       {specialDate && (
-        <div className="absolute bottom-1 right-1 w-1.5 h-1.5 rounded-full bg-purple-400" />
+        <div className="absolute bottom-0.5 md:bottom-1 right-0.5 md:right-1 w-1 h-1 md:w-1.5 md:h-1.5 rounded-full bg-purple-400" />
       )}
     </motion.button>
   );

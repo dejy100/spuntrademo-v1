@@ -199,30 +199,30 @@ export default function OutfitCalendar({ onClose }: OutfitCalendarProps) {
           initial={{ scale: 0.9 }}
           animate={{ scale: 1 }}
           exit={{ scale: 0.9 }}
-          className="bg-white rounded-2xl p-6 max-w-2xl w-full mx-4 shadow-xl"
+          className="bg-white rounded-xl md:rounded-2xl p-4 md:p-6 max-w-2xl w-full mx-3 md:mx-4 shadow-xl"
           onClick={e => e.stopPropagation()}
         >
-          <div className="flex items-center justify-between mb-6">
+          <div className="flex items-center justify-between mb-4 md:mb-6">
             <div>
-              <h2 className="text-xl font-semibold">
+              <h2 className="text-lg md:text-xl font-semibold">
                 {months[currentMonth.getMonth()]} {currentMonth.getFullYear()}
               </h2>
-              <p className="text-sm text-gray-600">Plan your outfits</p>
+              <p className="text-xs md:text-sm text-gray-600">Plan your outfits</p>
             </div>
-            <div className="flex items-center gap-3">
+            <div className="flex items-center gap-2 md:gap-3">
               <motion.button
                 whileHover={{ scale: 1.05 }}
                 onClick={() => setShowPlanner(true)}
-                className="flex items-center gap-2 px-4 py-2 bg-purple-600 text-white rounded-lg hover:bg-purple-700 transition-colors"
+                className="flex items-center gap-1.5 md:gap-2 px-3 md:px-4 py-1.5 md:py-2 bg-purple-600 text-white text-xs md:text-sm rounded-lg hover:bg-purple-700 transition-colors"
               >
-                <Calendar className="w-4 h-4" />
+                <Calendar className="w-3.5 h-3.5 md:w-4 md:h-4" />
                 Plan Week
               </motion.button>
               <button
                 onClick={onClose}
-                className="p-2 hover:bg-gray-100 rounded-full transition-colors"
+                className="p-1.5 md:p-2 hover:bg-gray-100 rounded-full transition-colors"
               >
-                <X className="w-5 h-5" />
+                <X className="w-4 h-4 md:w-5 md:h-5" />
               </button>
             </div>
           </div>
@@ -234,15 +234,15 @@ export default function OutfitCalendar({ onClose }: OutfitCalendarProps) {
             onNextMonth={nextMonth}
           />
 
-          <div className="grid grid-cols-7 gap-2 mb-4">
+          <div className="grid grid-cols-7 gap-1 md:gap-2 mb-3 md:mb-4">
             {['Sun', 'Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat'].map(day => (
-              <div key={day} className="text-center text-sm font-medium text-gray-500">
+              <div key={day} className="text-center text-xs md:text-sm font-medium text-gray-500">
                 {day}
               </div>
             ))}
           </div>
 
-          <div className="grid grid-cols-7 gap-2">
+          <div className="grid grid-cols-7 gap-1 md:gap-2">
             {[...Array(firstDayOfMonth)].map((_, index) => (
               <div key={`empty-${index}`} className="aspect-square" />
             ))}
