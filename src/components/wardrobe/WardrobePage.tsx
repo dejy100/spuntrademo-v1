@@ -16,7 +16,7 @@ import {
 export default function WardrobePage() {
   return (
     <div className="min-h-screen bg-gray-50 pb-24">
-      <div className="px-8 py-8 max-w-[1400px] mx-auto">
+      <div className="px-4 py-4 md:px-8 md:py-8 max-w-[1400px] mx-auto">
         <WardrobeHeader />
         <WardrobeStats />
         <WardrobeInsights />
