@@ -31,9 +31,9 @@ export default function SearchButton() {
           whileHover={{ scale: 1.05 }}
           whileTap={{ scale: 0.95 }}
           onClick={() => setIsExpanded(true)}
-          className="p-1.5 md:p-2 bg-white rounded-full shadow-sm hover:shadow-md transition-all"
+          className="p-2.5 md:p-3 bg-white rounded-full shadow-sm hover:shadow-md transition-all"
         >
-          <Search className="w-3.5 h-3.5 md:w-4 md:h-4 text-gray-600" />
+          <Search className="w-5 h-5 md:w-6 md:h-6 text-gray-600" />
         </motion.button>
       )}
 

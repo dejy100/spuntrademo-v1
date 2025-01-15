@@ -15,9 +15,9 @@ export default function StyleMatchButton() {
         onClick={() => setShowModal(true)}
         onMouseEnter={() => setShowTooltip(true)}
         onMouseLeave={() => setShowTooltip(false)}
-        className="p-1.5 md:p-2 bg-white rounded-full shadow-sm hover:shadow-md transition-all group"
+        className="p-2.5 md:p-3 bg-white rounded-full shadow-sm hover:shadow-md transition-all group"
       >
-        <Wand2 className="w-3.5 h-3.5 md:w-4 md:h-4 text-purple-600 group-hover:text-pink-600 transition-colors" />
+        <Wand2 className="w-5 h-5 md:w-6 md:h-6 text-purple-600 group-hover:text-pink-600 transition-colors" />
       </motion.button>
 
       <AnimatePresence>
