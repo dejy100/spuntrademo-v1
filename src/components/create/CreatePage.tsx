@@ -148,8 +148,16 @@ export default function CreatePage() {
       </motion.div>
 
       {/* Bottom Navigation */}
-      <div className="fixed bottom-0 inset-x-0 bg-black py-4 px-8">
-        <div className="flex justify-between items-center">
+      <div className="fixed bottom-0 inset-x-0 bg-black">
+        {/* Center Links */}
+        <div className="absolute -top-1 left-0 right-0 flex justify-center gap-6">
+          <span className="text-white text-sm font-medium opacity-60">SWIPE</span>
+          <span className="text-[#FF7043] text-sm font-medium">CANVAS</span>
+          <span className="text-white text-sm font-medium opacity-60">TRY ON</span>
+        </div>
+
+        {/* Bottom Icons */}
+        <div className="flex justify-between px-8 py-4">
           <div className="flex flex-col items-center">
             <button className="p-2">
               <svg className="w-6 h-6 text-white" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
@@ -160,12 +168,6 @@ export default function CreatePage() {
               </svg>
             </button>
             <span className="text-xs text-white mt-1">My Outfits</span>
-          </div>
-
-          <div className="flex gap-4">
-            <span className="text-white text-sm">SWIPE</span>
-            <span className="text-[#FF7043] text-sm">CANVAS</span>
-            <span className="text-white text-sm">TRY ON</span>
           </div>
 
           <div className="flex flex-col items-center">
