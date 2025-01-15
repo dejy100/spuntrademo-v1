@@ -165,7 +165,10 @@ export default function CreatePage() {
               <span className="text-[10px] text-white mt-1.5">My Outfits</span>
             </button>
 
-            <button className="flex flex-col items-center justify-center w-16 opacity-60 hover:opacity-100 transition-opacity">
+            <button 
+              onClick={() => navigate('/create/swipe')}
+              className="flex flex-col items-center justify-center w-16 opacity-60 hover:opacity-100 transition-opacity"
+            >
               <CircleDot className="w-5 h-5 text-white" strokeWidth={1.5} />
               <span className="text-[10px] text-white mt-1.5">Swipe</span>
             </button>
