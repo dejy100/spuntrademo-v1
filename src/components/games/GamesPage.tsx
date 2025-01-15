@@ -36,84 +36,75 @@ export default function GamesPage() {
   return (
     <div className="min-h-screen bg-black text-white">
       {/* Header Section */}
-      <div className="relative h-80 overflow-hidden">
+      <div className="relative h-48 md:h-80 overflow-hidden">
         <div className="absolute inset-0 bg-gradient-to-b from-purple-600/20 via-pink-500/20 to-transparent" />
-        <div className="absolute inset-0 backdrop-blur-sm" />
-        <div className="relative h-full flex flex-col justify-center items-center text-center px-6">
+        <div className="absolute inset-0 backdrop-blur-[2px]" />
+        <div className="relative h-full flex flex-col justify-center items-center text-center px-4 md:px-6">
           <motion.h1 
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
-            className="text-4xl font-bold mb-4 bg-gradient-to-r from-white via-gray-200 to-gray-400 bg-clip-text text-transparent"
+            transition={{ duration: 0.3 }}
+            className="text-2xl md:text-4xl font-bold mb-2 md:mb-4 bg-gradient-to-r from-white via-gray-200 to-gray-400 bg-clip-text text-transparent"
           >
             SPUNTRA GAMES
           </motion.h1>
           <motion.p
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
-            transition={{ delay: 0.1 }}
-            className="text-lg text-gray-300 max-w-md"
+            transition={{ duration: 0.3, delay: 0.1 }}
+            className="text-sm md:text-base text-gray-300 max-w-md"
           >
-            Where Fashion Meets Fantasy. Play, Compete, and Win Exclusive Fashion Pieces
+            Play, compete, and unlock exclusive fashion rewards
           </motion.p>
         </div>
       </div>
 
       {/* Games Grid */}
-      <div className="max-w-4xl mx-auto px-4 py-12">
-        <div className="space-y-6">
-          {games.map((game, index) => (
+      <div className="px-4 md:px-6 py-6 md:py-12">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 md:gap-6">
+          {games.map((game) => (
             <motion.div
               key={game.id}
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
-              transition={{ delay: index * 0.1 }}
-              className={`relative overflow-hidden rounded-2xl bg-gradient-to-r ${game.gradient} p-6 hover:scale-[1.02] transition-transform duration-300`}
+              transition={{ duration: 0.3 }}
+              className={`
+                relative overflow-hidden rounded-lg
+                bg-gradient-to-br ${game.gradient}
+                p-4 md:p-6
+                cursor-pointer
+                transform transition-transform hover:scale-[1.02]
+                touch-action-manipulation
+              `}
+              onClick={() => !game.comingSoon && navigate(`/games/${game.id}`)}
             >
-              <div className="flex items-center gap-6">
-                <div className="w-16 h-16 rounded-xl bg-white/10 backdrop-blur-sm flex items-center justify-center flex-shrink-0">
-                  <game.icon className="w-8 h-8 text-white" />
+              <div className="flex items-start justify-between mb-4">
+                <div className="p-2 md:p-3 bg-white/10 rounded-lg">
+                  <game.icon className="w-5 h-5 md:w-6 md:h-6 text-white" />
                 </div>
-                <div className="flex-1">
-                  <h3 className="text-xl font-semibold mb-2">{game.title}</h3>
-                  <p className="text-gray-300 text-sm">{game.description}</p>
-                </div>
-                <button 
-                  onClick={() => !game.comingSoon && navigate(`/games/${game.id}`)}
-                  className={`flex items-center gap-2 px-6 py-3 rounded-xl ${
-                    game.comingSoon 
-                      ? 'bg-white/10 text-gray-400 cursor-not-allowed'
-                      : 'bg-white text-black hover:bg-gray-100'
-                  } transition-colors`}
-                >
-                  {game.comingSoon ? (
-                    'Coming Soon'
-                  ) : (
-                    <>
-                      Play Now
-                      <ArrowRight className="w-4 h-4" />
-                    </>
-                  )}
-                </button>
+                {game.comingSoon && (
+                  <span className="text-xs md:text-sm px-2 py-1 bg-white/10 rounded-full">
+                    Coming Soon
+                  </span>
+                )}
               </div>
+              
+              <h3 className="text-lg md:text-xl font-semibold mb-2">
+                {game.title}
+              </h3>
+              
+              <p className="text-sm md:text-base text-gray-300 mb-4">
+                {game.description}
+              </p>
+
+              {!game.comingSoon && (
+                <div className="flex items-center text-sm md:text-base font-medium">
+                  Play Now
+                  <ArrowRight className="ml-2 w-4 h-4" />
+                </div>
+              )}
             </motion.div>
           ))}
-        </div>
-      </div>
-
-      {/* Footer CTA */}
-      <div className="bg-gradient-to-t from-purple-900/50 to-transparent py-12 px-4">
-        <div className="max-w-4xl mx-auto text-center">
-          <h2 className="text-2xl font-semibold mb-4">Ready to Play?</h2>
-          <p className="text-gray-400 mb-8">
-            Win exclusive fashion pieces and showcase your style mastery
-          </p>
-          <motion.button
-            whileHover={{ scale: 1.05 }}
-            whileTap={{ scale: 0.95 }}
-            className="px-8 py-4 bg-gradient-to-r from-purple-600 to-pink-600 rounded-xl font-medium hover:from-purple-500 hover:to-pink-500 transition-all"
-          >
-            Start Your Fashion Game Journey
-          </motion.button>
         </div>
       </div>
     </div>

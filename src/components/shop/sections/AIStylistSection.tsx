@@ -48,44 +48,38 @@ const aiStores = [
 export default function AIStylistSection() {
   return (
     <section>
-      <div className="flex items-center justify-between mb-6">
+      <div className="flex items-center justify-between mb-4 md:mb-6">
         <div>
-          <h2 className="text-2xl font-semibold mb-2">Shop with your AI Stylist</h2>
-          <p className="text-gray-600">Browse stores you love and check if a piece fits your style and closet before you buy it.</p>
+          <h2 className="text-lg md:text-xl font-semibold mb-1">AI Fashion Stylist</h2>
+          <p className="text-sm md:text-base text-gray-600">Get personalized recommendations</p>
         </div>
-        <button className="text-purple-600 hover:text-purple-700 font-medium flex items-center gap-1">
-          View all
-          <ChevronRight className="w-4 h-4" />
+        <button className="flex items-center text-sm md:text-base text-purple-600 hover:text-purple-700">
+          View All
+          <ChevronRight className="w-4 h-4 md:w-5 md:h-5 ml-1" />
         </button>
       </div>
 
-      <div className="relative">
-        <div className="grid grid-cols-2 md:grid-cols-4 gap-4 overflow-y-auto max-h-[400px] scrollbar-hide">
-          {aiStores.map((store) => (
-            <motion.div
-              key={store.id}
-              whileHover={{ scale: 1.02 }}
-              className="relative aspect-square bg-white rounded-2xl shadow-md overflow-hidden group"
-            >
-              <img
-                src={store.logo}
-                alt={store.name}
-                className="w-full h-full object-cover"
-              />
-              {/* Spuntra Hanger Logo Overlay */}
-              <div className="absolute top-4 right-4 p-2 bg-white/90 backdrop-blur-sm rounded-xl shadow-lg">
-                <Shirt className="w-5 h-5 text-purple-600" />
-              </div>
-              {/* Hover Overlay */}
-              <div className="absolute inset-0 bg-black/40 opacity-0 group-hover:opacity-100 transition-opacity" />
-              {/* Brand Name */}
-              <div className="absolute bottom-0 left-0 right-0 bg-white/90 backdrop-blur-sm p-4">
-                <p className="font-medium text-center">{store.name}</p>
-              </div>
-            </motion.div>
-          ))}
-        </div>
-        <div className="absolute inset-x-0 bottom-0 h-20 bg-gradient-to-t from-purple-50 to-transparent pointer-events-none" />
+      <div className="grid grid-cols-2 md:grid-cols-4 gap-3 md:gap-4">
+        {aiStores.map((store) => (
+          <motion.div
+            key={store.id}
+            whileHover={{ scale: 1.02 }}
+            whileTap={{ scale: 0.98 }}
+            className="group relative aspect-square rounded-lg overflow-hidden bg-gray-100"
+          >
+            <img
+              src={store.logo}
+              alt={store.name}
+              className="w-full h-full object-cover transition-transform group-hover:scale-110"
+            />
+            <div className="absolute inset-0 bg-black/40 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity">
+              <button className="flex items-center space-x-2 px-3 py-2 bg-white/90 rounded-full text-sm font-medium">
+                <Shirt className="w-4 h-4" />
+                <span>Style Me</span>
+              </button>
+            </div>
+          </motion.div>
+        ))}
       </div>
     </section>
   );
